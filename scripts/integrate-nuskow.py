@@ -13,6 +13,7 @@ ROOT = Path("/workspace")
 ARCHIVE = ROOT / "archive/nuskowcars-original-20250902"
 ASSETS = ROOT / "assets"
 CDN = ARCHIVE / "assets/cdn.prod.website-files.com"
+LOGO_FILE = ASSETS / "nuskowcars-logo.png"
 GLOBAL_CDN = "666a07b245930cb23ff3b913"
 VEHICLE_CDN = "666bb9e682a568931397e7f9"
 HOMEPAGE_FEATURE_SLUG = "lamborghini-huracan-evo"
@@ -657,12 +658,14 @@ def fleet_list_item(v: dict, t: dict, prefix: str = "") -> str:
 
 
 def copy_branding_assets():
-    logo_src = CDN / f"{GLOBAL_CDN}/666a4156648b83c7d4054d94_Logo nuskow off-p-800.jpg"
+    if LOGO_FILE.exists():
+        shutil.copy2(LOGO_FILE, ASSETS / "logo.png")
     fav_src = CDN / f"{GLOBAL_CDN}/6672e4cd45fb958c490406ca_mini 2.jpg"
     apple_src = CDN / f"{GLOBAL_CDN}/6672e4689aebf2e4a633a119_minii.jpg"
-    shutil.copy2(logo_src, ASSETS / "logo.png")
-    shutil.copy2(fav_src, ASSETS / "favicon.png")
-    shutil.copy2(apple_src, ASSETS / "apple-touch-icon.png")
+    if fav_src.exists():
+        shutil.copy2(fav_src, ASSETS / "favicon.png")
+    if apple_src.exists():
+        shutil.copy2(apple_src, ASSETS / "apple-touch-icon.png")
     hero_vid = ARCHIVE / f"assets/cdn.prod.website-files.com/{GLOBAL_CDN}/668801726c7ee14880ab8e85_vidéo background(1)(1)-transcode.mp4"
     if hero_vid.exists():
         shutil.copy2(hero_vid, ASSETS / "hero.mp4")
