@@ -1,23 +1,31 @@
-# NuskowCars — Site en refonte
+# NuskowCars — Site sur base btcar75
 
-Ce dépôt héberge la refonte du site [NuskowCars](https://www.nuskowcars-gmbh.com).
+Site de location de véhicules de prestige [NuskowCars](https://www.nuskowcars-gmbh.com), construit sur le design **btcar75** avec le contenu issu de l'ancien site Webflow.
 
-## Structure actuelle
+## Structure
 
-| Emplacement | Rôle |
+| Emplacement | Contenu |
 |---|---|
-| **Racine** | Site actif **btcar75** (design cible, export du 2 sept. 2026) |
-| **`archive/nuskowcars-original-20250902/`** | Ancien site Webflow NuskowCars complet (référence contenu) |
+| **Racine** | Site actif FR : `index.html`, `flotte.html`, `a-propos.html`, `faq.html` |
+| **`vehicules/`** | 12 fiches véhicules (FR) |
+| **`german.html`** + **`german/`** | Version allemande (accueil + pages + véhicules) |
+| **`en.html`** + **`en/`** | Version anglaise |
+| **`assets/`** | Logo, favicon, hero, images véhicules (`assets/vehicules/{slug}/`) |
+| **`archive/nuskowcars-original-20250902/`** | Ancien site Webflow (référence permanente) |
 
-## Site actif (btcar75)
+## Langues
 
-Pages HTML : `index.html`, `flotte.html`, `a-propos.html`, `faq.html`, fiches véhicules, etc.
+- **FR** : racine (`index.html`, `flotte.html`, …)
+- **DE** : `german.html` (accueil) + `german/flotte.html`, `german/vehicules/…`
+- **EN** : `en.html` + `en/flotte.html`, `en/vehicules/…`
 
-Assets : `assets/`, `wp-content/`, `wp-includes/`
+Sélecteur de langue (🇫🇷 🇩🇪 🇬🇧) dans le header de chaque page.
 
-## Prochaine étape — intégration contenu Nuskow
+## Contact
 
-Le contenu de l'ancien site (textes, véhicules, images, logo, pages FR/DE/EN, vidéos LFS) sera migré depuis `archive/nuskowcars-original-20250902/` vers la base btcar75. **Aucune fusion n'a encore été effectuée.**
+- Téléphone / WhatsApp : **06 37 00 20 45**
+- Instagram : [@nuskowcars](https://www.instagram.com/nuskowcars/)
+- Snapchat : [nuskowcars](https://snapchat.com/t/FrTH4qct)
 
 ## Lancer en local
 
@@ -27,15 +35,14 @@ python3 -m http.server 8080
 
 Puis ouvrir http://localhost:8080
 
-## Vidéos LFS (archive Nuskow)
+## Vidéos LFS (archive)
 
-Les 5 vidéos de l'ancien site sont dans l'archive, trackées via Git LFS. Après clone :
+Les vidéos de l'ancien site restent dans `archive/nuskowcars-original-20250902/` via Git LFS. Le hero vidéo actif est `assets/hero.mp4` (copié depuis l'archive).
 
-```bash
-git lfs install
-git lfs pull
-```
+## Script d'intégration
 
-## Export btcar75 (release)
+`scripts/integrate-nuskow.py` — régénère pages véhicules et peut repatcher le contenu depuis l'archive.
 
-Le ZIP source est disponible en [GitHub Release](https://github.com/mb-studioweb/nuskowcars/releases/tag/btcar75-export-20260902) : `btcar75-export-20260902.zip`
+## Export design btcar75
+
+ZIP source : [GitHub Release btcar75-export-20260902](https://github.com/mb-studioweb/nuskowcars/releases/tag/btcar75-export-20260902)
