@@ -49,6 +49,15 @@
 .vehicle-btn{display:inline-flex;align-items:center;justify-content:center;min-width:11rem;height:3.25rem;padding:0 1.75rem;border-radius:999px;font-family:Inter Tight,sans-serif}
 .vehicle-btn--outline{border:1px solid rgba(255,255,255,.35);color:#fff}
 .vehicle-btn--wa{background:#fff;color:#111}
+.vehicle-perfs{padding:clamp(3rem,6vw,5rem) 4rem;background:#000;color:#fff}
+.vehicle-perfs__inner{max-width:56rem;margin:0 auto;text-align:center}
+.vehicle-perfs h2{font-family:Inter Tight,sans-serif;font-size:clamp(1.5rem,1rem + 2vw,2rem);font-weight:400;margin:0 0 2.5rem}
+.vehicle-perfs__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+.vehicle-perf{padding:1.5rem 1rem;border:1px solid rgba(255,255,255,.12);border-radius:16px}
+.vehicle-perf__value{font-family:Inter Tight,sans-serif;font-size:clamp(1.75rem,1rem + 2vw,2.5rem);font-weight:300;margin:0 0 .35rem}
+.vehicle-perf__label{font-family:Geist Mono,monospace;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;opacity:.65;margin:0}
+@media(max-width:48em){.vehicle-perfs{padding:2.5rem 1.25rem}.vehicle-perfs__grid{grid-template-columns:1fr}}
+
 </style>
     <script src="../../wp-includes/js/jquery/jquery.min.js"></script>
   </head>
@@ -126,6 +135,25 @@
           <p class="vehicle-intro__tag">NuskowCars · Lamborghini · 640 ch</p>
           <h2 class="vehicle-intro__title">Lamborghini Huracán Evo</h2>
           <p class="vehicle-intro__text">La Huracán Evo incarne l&#x27;ADN sportif de Lamborghini. Lignes agressives, V10 et sensations immédiates pour vivre la route autrement.</p>
+        </div>
+      </section>
+      <section class="vehicle-perfs remove-canvas">
+        <div class="vehicle-perfs__inner">
+          <h2>Leistung</h2>
+          <div class="vehicle-perfs__grid">
+            <div class="vehicle-perf">
+              <p class="vehicle-perf__value">640 ch</p>
+              <p class="vehicle-perf__label">Maximale Leistung</p>
+            </div>
+            <div class="vehicle-perf">
+              <p class="vehicle-perf__value">2,9 s</p>
+              <p class="vehicle-perf__label">0-100 km/h</p>
+            </div>
+            <div class="vehicle-perf">
+              <p class="vehicle-perf__value">325 km/h</p>
+              <p class="vehicle-perf__label">Höchstgeschwindigkeit</p>
+            </div>
+          </div>
         </div>
       </section>
       <section class="vehicle-gallery remove-canvas" aria-labelledby="vehicle-gallery-title">

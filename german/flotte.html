@@ -61,6 +61,11 @@
 .fleet-list__btn--wa{background:#111;color:#fff;border:1px solid #111}
 .fleet-list__btn--wa:hover{background:#2a2a2a;border-color:#2a2a2a}
 @media(max-width:62em){.fleet-list{padding:3rem 2rem 6rem}.fleet-list__item{grid-template-columns:1fr;gap:2rem;padding:3rem 0}}
+
+.fleet-list__perfs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.75rem;margin:0 0 1.5rem;max-width:28rem}
+.fleet-list__perf{padding:.85rem .75rem;border:1px solid rgba(0,0,0,.1);border-radius:12px;text-align:center}
+.fleet-list__perf-value{display:block;font-family:Inter Tight,sans-serif;font-size:1.1rem;font-weight:600;margin-bottom:.15rem}
+.fleet-list__perf-label{display:block;font-family:Geist Mono,monospace;font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;opacity:.6}
 @media(max-width:48em){.fleet-list{padding:2.5rem 1.25rem 5rem}.fleet-list__actions{flex-direction:column;align-items:stretch}.fleet-list__btn{width:100%;min-width:0}}
 </style>
     <script type="text/javascript" src="wp-includes/js/jquery/jquery.min.js"></script>
@@ -143,6 +148,11 @@
     <p class="fleet-list__tag">SUV iconique</p>
     <h2 class="fleet-list__title">Mercedes-Benz G63 AMG</h2>
     <p class="fleet-list__desc">Le G-Class légendaire version AMG — présence et puissance. · 585 ch</p>
+    <div class="fleet-list__perfs">
+      <div class="fleet-list__perf"><span class="fleet-list__perf-value">585 ch</span><span class="fleet-list__perf-label">Leistung</span></div>
+      <div class="fleet-list__perf"><span class="fleet-list__perf-value">4,5 s</span><span class="fleet-list__perf-label">0-100</span></div>
+      <div class="fleet-list__perf"><span class="fleet-list__perf-value">240 km/h</span><span class="fleet-list__perf-label">Höchsttempo</span></div>
+    </div>
     <div class="fleet-pricing">
       <div class="fleet-pricing__item"><span class="fleet-pricing__label">24h Wochentag</span><span class="fleet-pricing__value">dès 699 €</span></div>
       <div class="fleet-pricing__item"><span class="fleet-pricing__label">Kaution</span><span class="fleet-pricing__value">10 000 €</span></div>
@@ -159,6 +169,11 @@
     <p class="fleet-list__tag">SUV coupé sportif</p>
     <h2 class="fleet-list__title">Mercedes GLE 63 S AMG Coupé</h2>
     <p class="fleet-list__desc">Élégance coupé et performances AMG dans un SUV premium. · 585 ch</p>
+    <div class="fleet-list__perfs">
+      <div class="fleet-list__perf"><span class="fleet-list__perf-value">585 ch</span><span class="fleet-list__perf-label">Leistung</span></div>
+      <div class="fleet-list__perf"><span class="fleet-list__perf-value">4,0 s</span><span class="fleet-list__perf-label">0-100</span></div>
+      <div class="fleet-list__perf"><span class="fleet-list__perf-value">280 km/h</span><span class="fleet-list__perf-label">Höchsttempo</span></div>
+    </div>
     <div class="fleet-pricing">
       <div class="fleet-pricing__item"><span class="fleet-pricing__label">24h Wochentag</span><span class="fleet-pricing__value">dès 499 €</span></div>
       <div class="fleet-pricing__item"><span class="fleet-pricing__label">Kaution</span><span class="fleet-pricing__value">10 000 €</span></div>
@@ -175,6 +190,11 @@
     <p class="fleet-list__tag">Sportive compacte</p>
     <h2 class="fleet-list__title">Audi RS3 2024</h2>
     <p class="fleet-list__desc">Compacte ultra-sportive, 400 ch pour des sensations immédiates. · 400 ch</p>
+    <div class="fleet-list__perfs">
+      <div class="fleet-list__perf"><span class="fleet-list__perf-value">400 ch</span><span class="fleet-list__perf-label">Leistung</span></div>
+      <div class="fleet-list__perf"><span class="fleet-list__perf-value">3,8 s</span><span class="fleet-list__perf-label">0-100</span></div>
+      <div class="fleet-list__perf"><span class="fleet-list__perf-value">280 km/h</span><span class="fleet-list__perf-label">Höchsttempo</span></div>
+    </div>
     <div class="fleet-pricing">
       <div class="fleet-pricing__item"><span class="fleet-pricing__label">24h Wochentag</span><span class="fleet-pricing__value">dès 299 €</span></div>
       <div class="fleet-pricing__item"><span class="fleet-pricing__label">Kaution</span><span class="fleet-pricing__value">6 000 €</span></div>
@@ -191,6 +211,11 @@
     <p class="fleet-list__tag">Berline sportive</p>
     <h2 class="fleet-list__title">BMW M3 Compétition 2025</h2>
     <p class="fleet-list__desc">La référence berline sportive : 510 ch et châssis affûté. · 510 ch</p>
+    <div class="fleet-list__perfs">
+      <div class="fleet-list__perf"><span class="fleet-list__perf-value">510 ch</span><span class="fleet-list__perf-label">Leistung</span></div>
+      <div class="fleet-list__perf"><span class="fleet-list__perf-value">4,5 s</span><span class="fleet-list__perf-label">0-100</span></div>
+      <div class="fleet-list__perf"><span class="fleet-list__perf-value">296 km/h</span><span class="fleet-list__perf-label">Höchsttempo</span></div>
+    </div>
     <div class="fleet-pricing">
       <div class="fleet-pricing__item"><span class="fleet-pricing__label">24h Wochentag</span><span class="fleet-pricing__value">dès 399 €</span></div>
       <div class="fleet-pricing__item"><span class="fleet-pricing__label">Kaution</span><span class="fleet-pricing__value">8 000 €</span></div>
@@ -207,6 +232,11 @@
     <p class="fleet-list__tag">SUV sportif</p>
     <h2 class="fleet-list__title">Audi RSQ8 APR 2023</h2>
     <p class="fleet-list__desc">SUV de 720 ch préparé APR — présence et performances extrêmes. · 720 ch</p>
+    <div class="fleet-list__perfs">
+      <div class="fleet-list__perf"><span class="fleet-list__perf-value">720 ch</span><span class="fleet-list__perf-label">Leistung</span></div>
+      <div class="fleet-list__perf"><span class="fleet-list__perf-value">3,8 s</span><span class="fleet-list__perf-label">0-100</span></div>
+      <div class="fleet-list__perf"><span class="fleet-list__perf-value">305 km/h</span><span class="fleet-list__perf-label">Höchsttempo</span></div>
+    </div>
     <div class="fleet-pricing">
       <div class="fleet-pricing__item"><span class="fleet-pricing__label">24h Wochentag</span><span class="fleet-pricing__value">dès 499 €</span></div>
       <div class="fleet-pricing__item"><span class="fleet-pricing__label">Kaution</span><span class="fleet-pricing__value">10 000 €</span></div>
@@ -223,6 +253,11 @@
     <p class="fleet-list__tag">SUV super sport</p>
     <h2 class="fleet-list__title">Lamborghini Urus</h2>
     <p class="fleet-list__desc">Le SUV le plus extrême : 650 ch et présence inégalée. · 650 ch</p>
+    <div class="fleet-list__perfs">
+      <div class="fleet-list__perf"><span class="fleet-list__perf-value">650 ch</span><span class="fleet-list__perf-label">Leistung</span></div>
+      <div class="fleet-list__perf"><span class="fleet-list__perf-value">3,6 s</span><span class="fleet-list__perf-label">0-100</span></div>
+      <div class="fleet-list__perf"><span class="fleet-list__perf-value">305 km/h</span><span class="fleet-list__perf-label">Höchsttempo</span></div>
+    </div>
     <div class="fleet-pricing">
       <div class="fleet-pricing__item"><span class="fleet-pricing__label">24h Wochentag</span><span class="fleet-pricing__value">dès 1 800 €</span></div>
       <div class="fleet-pricing__item"><span class="fleet-pricing__label">Kaution</span><span class="fleet-pricing__value">10 000 €</span></div>
@@ -239,6 +274,11 @@
     <p class="fleet-list__tag">SUV super sport</p>
     <h2 class="fleet-list__title">Lamborghini Urus Performante</h2>
     <p class="fleet-list__desc">Version Performante : encore plus affûtée, 666 ch. · 666 ch</p>
+    <div class="fleet-list__perfs">
+      <div class="fleet-list__perf"><span class="fleet-list__perf-value">666 ch</span><span class="fleet-list__perf-label">Leistung</span></div>
+      <div class="fleet-list__perf"><span class="fleet-list__perf-value">3,3 s</span><span class="fleet-list__perf-label">0-100</span></div>
+      <div class="fleet-list__perf"><span class="fleet-list__perf-value">306 km/h</span><span class="fleet-list__perf-label">Höchsttempo</span></div>
+    </div>
     <div class="fleet-pricing">
       <div class="fleet-pricing__item"><span class="fleet-pricing__label">24h Wochentag</span><span class="fleet-pricing__value">dès 2 000 €</span></div>
       <div class="fleet-pricing__item"><span class="fleet-pricing__label">Kaution</span><span class="fleet-pricing__value">10 000 €</span></div>
@@ -255,6 +295,11 @@
     <p class="fleet-list__tag">Supercar</p>
     <h2 class="fleet-list__title">Lamborghini Huracán Evo</h2>
     <p class="fleet-list__desc">V10 atmosphérique et design acéré — l&#x27;émotion Lamborghini. · 640 ch</p>
+    <div class="fleet-list__perfs">
+      <div class="fleet-list__perf"><span class="fleet-list__perf-value">640 ch</span><span class="fleet-list__perf-label">Leistung</span></div>
+      <div class="fleet-list__perf"><span class="fleet-list__perf-value">2,9 s</span><span class="fleet-list__perf-label">0-100</span></div>
+      <div class="fleet-list__perf"><span class="fleet-list__perf-value">325 km/h</span><span class="fleet-list__perf-label">Höchsttempo</span></div>
+    </div>
     <div class="fleet-pricing">
       <div class="fleet-pricing__item"><span class="fleet-pricing__label">24h Wochentag</span><span class="fleet-pricing__value">dès 1 750 €</span></div>
       <div class="fleet-pricing__item"><span class="fleet-pricing__label">Kaution</span><span class="fleet-pricing__value">10 000 €</span></div>
