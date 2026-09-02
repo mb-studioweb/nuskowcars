@@ -19,9 +19,9 @@ VEHICLE_CDN = "666bb9e682a568931397e7f9"
 HOMEPAGE_FEATURE_SLUG = "lamborghini-huracan-evo"
 HOMEPAGE_GALLERY_SLUG = "audi-rsq8-apr-2023"
 STEP_VEHICLE_SLUGS = [
-    "audi-rs3-2024",
     "mercedes-benz-g63-amg",
-    "lamborghini-huracan-evo",
+    "mercedes-benz-gle63s-amg-coupe",
+    "audi-rs3-2024",
     "bmw-m3-competition-510ch-2025",
 ]
 
@@ -36,7 +36,82 @@ SITE = {
     "location": "France",
 }
 
+REMOVED_VEHICLE_SLUGS = (
+    "audi-rs6-performance",
+    "ferrari-488",
+    "mercedes-gt63-amg",
+    "mercedes-benz-cla45s-amg",
+)
+
+RESERVATION_VEHICLE_VALUES = (
+    "Mercedes-benz G63 AMG",
+    "Mercedes-benz GLE 63S",
+    "Audi RS3",
+    "BMW M3 Compétition",
+    "Audi RSQ8 APR",
+    "Lamborghini Urus",
+    "Lamborghini Huracan Evo",
+)
+
+HOME_META_DESCRIPTION = {
+    "fr": (
+        "NuskowCars : location de voitures de prestige en France. G63 AMG, GLE 63 S, RS3, M3, "
+        "RSQ8, Urus, Huracán Evo et GT 63 S E-Performance. Kilométrage illimité, livraison "
+        "et réservation WhatsApp."
+    ),
+    "de": (
+        "NuskowCars: Premium-Autovermietung in Frankreich. G63 AMG, GLE 63 S, RS3, M3, RSQ8, "
+        "Urus, Huracán Evo und GT 63 S E-Performance. Unbegrenzte Kilometer, Lieferung und "
+        "WhatsApp-Buchung."
+    ),
+    "en": (
+        "NuskowCars: premium car rental in France. G63 AMG, GLE 63 S, RS3, M3, RSQ8, Urus, "
+        "Huracán Evo and GT 63 S E-Performance. Unlimited mileage, delivery and WhatsApp booking."
+    ),
+}
+
 VEHICLES = [
+    {
+        "slug": "mercedes-benz-g63-amg",
+        "title": "Mercedes-Benz G63 AMG",
+        "brand": "Mercedes-Benz",
+        "category": "SUV iconique",
+        "power": "585 ch",
+        "price_24h": "dès 699 €",
+        "deposit": "10 000 €",
+        "hero_title": "G63 AMG",
+        "tag": "SUV iconique · France",
+        "desc_short": "Le G-Class légendaire version AMG — présence et puissance.",
+        "desc_long": "Le Mercedes-Benz G63 AMG est une icône indémodable. 585 ch dans un châssis mythique, pour une expérience unique sur route ou en ville.",
+        "pricing": [
+            ("24h semaine (250 km)", "699 €"),
+            ("24h semaine (illimité)", "999 €"),
+            ("24h week-end", "1 300 €"),
+            ("48h week-end", "2 200 €"),
+            ("72h", "2 800 €"),
+            ("7 jours", "4 500 €"),
+        ],
+    },
+    {
+        "slug": "mercedes-benz-gle63s-amg-coupe",
+        "title": "Mercedes GLE 63 S AMG Coupé",
+        "brand": "Mercedes-Benz",
+        "category": "SUV coupé sportif",
+        "power": "585 ch",
+        "price_24h": "dès 499 €",
+        "deposit": "10 000 €",
+        "hero_title": "GLE 63 S",
+        "tag": "SUV coupé · France",
+        "desc_short": "Élégance coupé et performances AMG dans un SUV premium.",
+        "desc_long": "Le GLE 63 S AMG Coupé allie lignes fluides et moteur V8 biturbo. Confort, espace et sportivité pour vos déplacements haut de gamme.",
+        "pricing": [
+            ("24h semaine (250 km)", "499 €"),
+            ("24h semaine (illimité)", "699 €"),
+            ("24h week-end (250 km)", "1 000 €"),
+            ("48h week-end", "1 900 €"),
+            ("7 jours", "3 800 €"),
+        ],
+    },
     {
         "slug": "audi-rs3-2024",
         "title": "Audi RS3 2024",
@@ -56,26 +131,26 @@ VEHICLES = [
             ("72h", "1 100 €"),
             ("7 jours", "1 770 €"),
         ],
-        "on_demand": False,
     },
     {
-        "slug": "audi-rs6-performance",
-        "title": "Audi RS6 Performance",
-        "brand": "Audi",
-        "category": "Break sportif",
-        "power": "635 ch",
-        "price_24h": "dès 999 €",
-        "deposit": "10 000 €",
-        "hero_title": "AUDI RS6",
-        "tag": "Break sportif · France",
-        "desc_short": "Le break le plus radical : 635 ch et polyvalence absolue.",
-        "desc_long": "L'Audi RS6 Performance incarne le break sportif ultime. Puissance, espace et confort pour voyager vite et loin, en toute discrétion.",
+        "slug": "bmw-m3-competition-510ch-2025",
+        "title": "BMW M3 Compétition 2025",
+        "brand": "BMW",
+        "category": "Berline sportive",
+        "power": "510 ch",
+        "price_24h": "dès 399 €",
+        "deposit": "8 000 €",
+        "hero_title": "BMW M3",
+        "tag": "Berline sportive · France",
+        "desc_short": "La référence berline sportive : 510 ch et châssis affûté.",
+        "desc_long": "La BMW M3 Compétition 2025 offre le meilleur de la sportivité allemande : précision, puissance et quotidien possible. Location idéale pour événements ou plaisir de conduite.",
         "pricing": [
-            ("24h semaine (illimité)", "999 €"),
-            ("24h week-end", "1 100 €"),
-            ("48h week-end", "1 900 €"),
+            ("24h semaine (250 km)", "399 €"),
+            ("24h semaine (illimité)", "499 €"),
+            ("48h week-end", "1 200 €"),
+            ("72h", "1 400 €"),
+            ("7 jours", "2 200 €"),
         ],
-        "on_demand": True,
     },
     {
         "slug": "audi-rsq8-apr-2023",
@@ -98,65 +173,6 @@ VEHICLES = [
             ("72h", "2 300 €"),
             ("7 jours", "3 800 €"),
         ],
-        "on_demand": False,
-    },
-    {
-        "slug": "bmw-m3-competition-510ch-2025",
-        "title": "BMW M3 Compétition 2025",
-        "brand": "BMW",
-        "category": "Berline sportive",
-        "power": "510 ch",
-        "price_24h": "dès 399 €",
-        "deposit": "8 000 €",
-        "hero_title": "BMW M3",
-        "tag": "Berline sportive · France",
-        "desc_short": "La référence berline sportive : 510 ch et châssis affûté.",
-        "desc_long": "La BMW M3 Compétition 2025 offre le meilleur de la sportivité allemande : précision, puissance et quotidien possible. Location idéale pour événements ou plaisir de conduite.",
-        "pricing": [
-            ("24h semaine (250 km)", "399 €"),
-            ("24h semaine (illimité)", "499 €"),
-            ("48h week-end", "1 200 €"),
-            ("72h", "1 400 €"),
-            ("7 jours", "2 200 €"),
-        ],
-        "on_demand": False,
-    },
-    {
-        "slug": "ferrari-488",
-        "title": "Ferrari 488",
-        "brand": "Ferrari",
-        "category": "Supercar",
-        "power": "670 ch",
-        "price_24h": "dès 1 850 €",
-        "deposit": "10 000 €",
-        "hero_title": "FERRARI 488",
-        "tag": "Supercar · France",
-        "desc_short": "L'icône italienne : V8 biturbo et émotions pures.",
-        "desc_long": "La Ferrari 488 représente l'excellence de Maranello. Une supercar mythique pour les moments d'exception, disponible sur demande.",
-        "pricing": [
-            ("24h semaine (illimité)", "1 850 €"),
-            ("24h week-end", "2 000 €"),
-        ],
-        "on_demand": True,
-    },
-    {
-        "slug": "lamborghini-huracan-evo",
-        "title": "Lamborghini Huracán Evo",
-        "brand": "Lamborghini",
-        "category": "Supercar",
-        "power": "640 ch",
-        "price_24h": "dès 1 750 €",
-        "deposit": "10 000 €",
-        "hero_title": "HURACÁN EVO",
-        "tag": "Supercar · France",
-        "desc_short": "V10 atmosphérique et design acéré — l'émotion Lamborghini.",
-        "desc_long": "La Huracán Evo incarne l'ADN sportif de Lamborghini. Lignes agressives, V10 et sensations immédiates pour vivre la route autrement.",
-        "pricing": [
-            ("24h semaine", "1 750 €"),
-            ("24h week-end", "1 900 €"),
-            ("48h week-end", "3 500 €"),
-        ],
-        "on_demand": False,
     },
     {
         "slug": "lamborghini-urus",
@@ -175,7 +191,6 @@ VEHICLES = [
             ("24h week-end", "2 000 €"),
             ("48h week-end", "3 500 €"),
         ],
-        "on_demand": False,
     },
     {
         "slug": "lamborghini-urus-2",
@@ -194,69 +209,6 @@ VEHICLES = [
             ("24h week-end (illimité)", "2 500 €"),
             ("48h week-end (illimité)", "4 000 €"),
         ],
-        "on_demand": False,
-    },
-    {
-        "slug": "mercedes-benz-g63-amg",
-        "title": "Mercedes-Benz G63 AMG",
-        "brand": "Mercedes-Benz",
-        "category": "SUV iconique",
-        "power": "585 ch",
-        "price_24h": "dès 699 €",
-        "deposit": "10 000 €",
-        "hero_title": "G63 AMG",
-        "tag": "SUV iconique · France",
-        "desc_short": "Le G-Class légendaire version AMG — présence et puissance.",
-        "desc_long": "Le Mercedes-Benz G63 AMG est une icône indémodable. 585 ch dans un châssis mythique, pour une expérience unique sur route ou en ville.",
-        "pricing": [
-            ("24h semaine (250 km)", "699 €"),
-            ("24h semaine (illimité)", "999 €"),
-            ("24h week-end", "1 300 €"),
-            ("48h week-end", "2 200 €"),
-            ("72h", "2 800 €"),
-            ("7 jours", "4 500 €"),
-        ],
-        "on_demand": False,
-    },
-    {
-        "slug": "mercedes-benz-gle63s-amg-coupe",
-        "title": "Mercedes GLE 63 S AMG Coupé",
-        "brand": "Mercedes-Benz",
-        "category": "SUV coupé sportif",
-        "power": "585 ch",
-        "price_24h": "dès 499 €",
-        "deposit": "10 000 €",
-        "hero_title": "GLE 63 S",
-        "tag": "SUV coupé · France",
-        "desc_short": "Élégance coupé et performances AMG dans un SUV premium.",
-        "desc_long": "Le GLE 63 S AMG Coupé allie lignes fluides et moteur V8 biturbo. Confort, espace et sportivité pour vos déplacements haut de gamme.",
-        "pricing": [
-            ("24h semaine (250 km)", "499 €"),
-            ("24h semaine (illimité)", "699 €"),
-            ("24h week-end (250 km)", "1 000 €"),
-            ("48h week-end", "1 900 €"),
-            ("7 jours", "3 800 €"),
-        ],
-        "on_demand": False,
-    },
-    {
-        "slug": "mercedes-gt63-amg",
-        "title": "Mercedes GT63 AMG",
-        "brand": "Mercedes-Benz",
-        "category": "Grand tourisme",
-        "power": "585 ch",
-        "price_24h": "dès 1 400 €",
-        "deposit": "10 000 €",
-        "hero_title": "GT63 AMG",
-        "tag": "Grand tourisme · France",
-        "desc_short": "Coupé 4 places ultra-performant signé AMG.",
-        "desc_long": "Le Mercedes GT63 AMG combine grand tourisme et performances de supercar. Disponible sur demande pour vos événements et séjours d'exception.",
-        "pricing": [
-            ("24h semaine", "1 400 €"),
-            ("24h week-end", "1 500 €"),
-            ("48h week-end", "2 700 €"),
-        ],
-        "on_demand": True,
     },
     {
         "slug": "mercedes-gt63s-eperformance",
@@ -275,27 +227,24 @@ VEHICLES = [
             ("24h week-end", "1 300 €"),
             ("48h week-end", "2 200 €"),
         ],
-        "on_demand": False,
     },
     {
-        "slug": "mercedes-benz-cla45s-amg",
-        "title": "Mercedes-Benz CLA45S AMG",
-        "brand": "Mercedes-Benz",
-        "category": "Berline sportive",
-        "power": "520 ch",
-        "price_24h": "dès 299 €",
-        "deposit": "6 000 €",
-        "hero_title": "CLA45S AMG",
-        "tag": "Berline sportive · France",
-        "desc_short": "Compacte sportive 520 ch — performances et élégance au quotidien.",
-        "desc_long": "La Mercedes-Benz CLA45S AMG combine design coupé et moteur AMG de 520 ch. Idéale pour un essai sportif ou une location courte, avec formules flexibles.",
+        "slug": "lamborghini-huracan-evo",
+        "title": "Lamborghini Huracán Evo",
+        "brand": "Lamborghini",
+        "category": "Supercar",
+        "power": "640 ch",
+        "price_24h": "dès 1 750 €",
+        "deposit": "10 000 €",
+        "hero_title": "HURACÁN EVO",
+        "tag": "Supercar · France",
+        "desc_short": "V10 atmosphérique et design acéré — l'émotion Lamborghini.",
+        "desc_long": "La Huracán Evo incarne l'ADN sportif de Lamborghini. Lignes agressives, V10 et sensations immédiates pour vivre la route autrement.",
         "pricing": [
-            ("24h semaine (250 km)", "299 €"),
-            ("24h semaine (illimité)", "399 €"),
-            ("48h week-end", "1 500 €"),
-            ("72h", "1 900 €"),
+            ("24h semaine", "1 750 €"),
+            ("24h week-end", "1 900 €"),
+            ("48h week-end", "3 500 €"),
         ],
-        "on_demand": False,
     },
 ]
 
@@ -619,11 +568,10 @@ def vehicle_page(v: dict, lang: str = "fr", prefix: str = "") -> str:
 def fleet_card(v: dict, t: dict, prefix: str = "", compact: bool = False) -> str:
     slug = v["slug"]
     desc = "" if compact else f'<p class="desc">{escape(v["desc_short"])}</p>'
-    demand = f' · {t["on_demand"]}' if v.get("on_demand") else ""
     return f"""<article class="fleet-card">
   <div class="fleet-card__img"><img src="{prefix}assets/vehicules/{slug}/1.jpg" alt="{escape(v['title'])}" /></div>
   <div class="fleet-card__content">
-    <p class="location">{escape(v['category'])}{demand}</p>
+    <p class="location">{escape(v['category'])}</p>
     <h3 class="title">{escape(v['title'])}</h3>
     {desc}
     <div class="fleet-pricing">
@@ -637,12 +585,11 @@ def fleet_card(v: dict, t: dict, prefix: str = "", compact: bool = False) -> str
 
 def fleet_list_item(v: dict, t: dict, prefix: str = "") -> str:
     slug = v["slug"]
-    demand = f" · {t['on_demand']}" if v.get("on_demand") else ""
     wa = wa_link(f"Bonjour, je souhaite louer {v['title']} chez NuskowCars.")
     return f"""<article class="fleet-list__item">
   <div class="fleet-list__media"><img src="{prefix}assets/vehicules/{slug}/1.jpg" alt="{escape(v['title'])}" /></div>
   <div class="fleet-list__body">
-    <p class="fleet-list__tag">{escape(v['category'])}{demand}</p>
+    <p class="fleet-list__tag">{escape(v['category'])}</p>
     <h2 class="fleet-list__title">{escape(v['title'])}</h2>
     <p class="fleet-list__desc">{escape(v['desc_short'])} · {v['power']}</p>
     <div class="fleet-pricing">
@@ -880,13 +827,12 @@ def replace_header_footer(text: str, lang: str, page: str, prefix: str = "") -> 
 
 def featured_fleet_html(lang: str = "fr", prefix: str = "", compact: bool = False) -> str:
     t = TRANSLATIONS[lang]
-    featured = [v for v in VEHICLES if not v.get("on_demand")][:6]
-    return "\n".join(fleet_card(v, t, prefix, compact) for v in featured)
+    return "\n".join(fleet_card(v, t, prefix, compact) for v in VEHICLES)
 
 
 def mobile_fleet_html(lang: str = "fr", prefix: str = "") -> str:
     t = TRANSLATIONS[lang]
-    featured = [v for v in VEHICLES if not v.get("on_demand")][:6]
+    featured = VEHICLES
     blocks = []
     for v in featured:
         blocks.append(f"""                        <div class="slider-projects__slide">
@@ -962,7 +908,7 @@ def patch_homepage_images(text: str, prefix: str = "") -> str:
         flags=re.S,
     )
 
-    popup_slugs = [v["slug"] for v in VEHICLES if not v.get("on_demand")][:6]
+    popup_slugs = [v["slug"] for v in VEHICLES][:6]
     popup_html = "\n".join(
         f'                        <div class="media"><img src="{vehicle_img(slug, prefix=prefix)}" alt="{SITE["name"]}" /></div>'
         for slug in popup_slugs
@@ -1110,6 +1056,16 @@ def patch_index(path: Path, lang: str = "fr", prefix: str = ""):
     text = text.replace('alt="Audi RS6"', f'alt="{SITE["name"]}"')
     text = text.replace('alt="Lamborghini Huracán Tecnica"', f'alt="{SITE["name"]}"')
 
+    meta = HOME_META_DESCRIPTION[lang]
+    text = re.sub(r'<meta name="description" content="[^"]*"', f'<meta name="description" content="{meta}"', text, count=1)
+    text = re.sub(r'<meta property="og:description" content="[^"]*"', f'<meta property="og:description" content="{meta}"', text, count=1)
+    text = re.sub(r'<meta name="twitter:description" content="[^"]*"', f'<meta name="twitter:description" content="{meta}"', text, count=1)
+    legacy_meta = (
+        "NuskowCars : location de voitures de prestige en France. Audi RS3, G63 AMG, Huracán Evo, Urus, "
+        "Ferrari 488, RS6 et plus. Kilométrage illimité, livraison et réservation WhatsApp. Réservation sur WhatsApp."
+    )
+    text = text.replace(legacy_meta, meta)
+
     if lang == "de":
         text = text.replace("<html lang=\"fr\">", '<html lang="de">')
         text = text.replace("NuskowCars — Location de véhicules haut de gamme", "NuskowCars — Premium-Fahrzeugvermietung")
@@ -1163,6 +1119,12 @@ def patch_about(path: Path, lang: str = "fr", prefix: str = ""):
         )
         text = text.replace("assets/g800-brabus/video.mp4", f"{prefix}assets/hero.mp4")
         text = text.replace('type="video/mp4"', 'type="video/mp4"')
+    text = text.replace(
+        "Une sélection rigoureuse : Audi RS3, G63 AMG, Huracán Evo, Urus, Ferrari 488, RS6 et plus. "
+        "Kilométrage illimité, livraison et réservation WhatsApp et d'autres modèles de prestige, entretenus avec soin.",
+        "Une sélection rigoureuse : G63 AMG, GLE 63 S, RS3, M3, RSQ8, Urus, Huracán Evo et GT 63 S E-Performance. "
+        "Kilométrage illimité, livraison et réservation WhatsApp — chaque véhicule entretenu avec soin.",
+    )
     if lang == "de":
         text = text.replace("<html lang=\"fr\">", '<html lang="de">')
         text = text.replace("À PROPOS", "ÜBER UNS")
@@ -1199,6 +1161,21 @@ def patch_faq(path: Path, lang: str = "fr", prefix: str = ""):
     path.write_text(text, encoding="utf-8")
 
 
+def remove_retired_vehicle_pages():
+    for slug in REMOVED_VEHICLE_SLUGS:
+        for base in (ROOT / "vehicules", ROOT / "german" / "vehicules", ROOT / "en" / "vehicules"):
+            page = base / f"{slug}.html"
+            if page.exists():
+                page.unlink()
+
+
+def remove_retired_vehicle_assets():
+    for slug in REMOVED_VEHICLE_SLUGS:
+        asset_dir = ASSETS / "vehicules" / slug
+        if asset_dir.exists():
+            shutil.rmtree(asset_dir)
+
+
 def create_lang_copies():
     shutil.copy2(ROOT / "index.html", ROOT / "german.html")
     shutil.copy2(ROOT / "index.html", ROOT / "en.html")
@@ -1212,7 +1189,6 @@ def create_lang_copies():
 def main():
     print("Copying assets...")
     copy_vehicle_assets()
-    copy_cla45_assets()
     copy_branding_assets()
     if (ASSETS / "hero-flotte.jpg").exists():
         shutil.copy2(ASSETS / "hero-flotte.jpg", ASSETS / "hero-fotte.jpg")
@@ -1226,8 +1202,10 @@ def main():
         if d.exists():
             shutil.rmtree(d)
 
+    remove_retired_vehicle_assets()
     veh_dir = ROOT / "vehicules"
     veh_dir.mkdir(exist_ok=True)
+    remove_retired_vehicle_pages()
     for v in VEHICLES:
         (veh_dir / f"{v['slug']}.html").write_text(vehicle_page(v, "fr", "../"), encoding="utf-8")
     for lang in ("de", "en"):

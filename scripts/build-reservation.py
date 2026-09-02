@@ -121,6 +121,26 @@ def copy_reservation_assets():
                     shutil.copy2(src, dst)
 
 
+def filter_reservation_vehicles(html: str) -> str:
+    """Ne garde que les véhicules présents dans la flotte active (étape choix véhicule)."""
+    keep = set(integrate.RESERVATION_VEHICLE_VALUES)
+    start = html.find('if-step="Vehicule choice"')
+    if start < 0:
+        return html
+    end = html.find('if-step="C63S-Prices"', start)
+    if end < 0:
+        return html
+    step = html[start:end]
+
+    def card_repl(match: re.Match) -> str:
+        card = match.group(0)
+        val = re.search(r'name="Choix-V-hicule"[^>]*value="([^"]+)"', card)
+        return card if val and val.group(1) in keep else ""
+
+    filtered = re.sub(r'<div class="choix-offre_card">.*?</label></div>', card_repl, step, flags=re.S)
+    return html[:start] + filtered + html[end:]
+
+
 def rewrite_asset_paths(html: str, prefix: str) -> str:
     html = html.replace("../assets/cdn.prod.website-files.com/", f"{prefix}assets/reservation/cdn/")
     html = html.replace("assets/cdn.prod.website-files.com/", f"{prefix}assets/reservation/cdn/")
@@ -157,6 +177,7 @@ def reservation_page(lang: str) -> str:
     prefix = PREFIX[lang]
     src_html = ARCHIVE_SOURCES[lang].read_text(encoding="utf-8", errors="replace")
     body = extract_form_body(src_html)
+    body = filter_reservation_vehicles(body)
     body = rewrite_asset_paths(body, prefix)
     body = re.sub(
         r'(<div[^>]*if-step="Vehicule choice"[^>]*class="form_step)(")',
