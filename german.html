@@ -113,6 +113,34 @@ section.slider-morph-responsive.slider-morph-rental>a.btn.wa-step-link{display:n
 @media(max-width:48em){.faq-section .accordion__question{font-size:1rem;line-height:1.4;padding-right:2.5rem}.faq-section .accordion__question .plus,.faq-section .accordion__question .minus{top:1.35rem}}
 .faq-section .accordion__answer p{padding:0 0 1.5rem;font-family:Inter Tight,sans-serif;font-size:clamp(1rem,.85rem + .4vw,1.125rem);line-height:1.55;opacity:.85}
 .faq-section__cta{text-align:center;margin-top:2.5rem}
+.reviews-section.latest-news-light{background:#fff;color:#000}
+.reviews-section h2{text-align:center;margin-bottom:2.5rem}
+.reviews-section__inner{max-width:72rem;margin:0 auto;padding:0 clamp(1.25rem,4vw,4rem) 4.5rem}
+.reviews-swiper{position:relative}
+.reviews-swiper__head{display:flex;align-items:center;justify-content:flex-end;margin-bottom:1.25rem}
+.reviews-swiper__nav{display:flex;gap:.6rem}
+.reviews-swiper__btn{width:2.75rem;height:2.75rem;border-radius:50%;border:1px solid rgba(0,0,0,.18);background:transparent;color:#000;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:border-color .25s,background .25s,transform .25s}
+.reviews-swiper__btn:hover:not(:disabled){border-color:#000;background:rgba(0,0,0,.04);transform:scale(1.04)}
+.reviews-swiper__btn:disabled{opacity:.35;cursor:not-allowed}
+.reviews-swiper__btn svg{width:1rem;height:1rem}
+.reviews-swiper__viewport{overflow:hidden;cursor:grab;touch-action:pan-y}
+.reviews-swiper__viewport.is-dragging{cursor:grabbing}
+.reviews-swiper__track{display:flex;gap:1.25rem;will-change:transform;transition:transform .45s cubic-bezier(.25,.8,.25,1)}
+.reviews-swiper__dots{display:flex;justify-content:center;gap:.45rem;margin-top:1.5rem}
+.reviews-swiper__dot{width:.45rem;height:.45rem;border-radius:50%;border:0;background:rgba(0,0,0,.18);padding:0;cursor:pointer}
+.reviews-swiper__dot.is-active{background:#000;transform:scale(1.15)}
+.review-card{flex:0 0 calc((100% - 2.5rem) / 3);min-width:0;background:#f7f7f7;border:1px solid rgba(0,0,0,.08);border-radius:18px;padding:1.5rem 1.35rem 1.35rem;display:flex;flex-direction:column;gap:1rem;min-height:100%}
+.review-card__top{display:flex;align-items:flex-start;justify-content:space-between;gap:.75rem}
+.review-card__avatar{width:3.5rem;height:3.5rem;border-radius:50%;object-fit:cover;flex-shrink:0}
+.review-card__quote-icon{width:1.5rem;opacity:.35;flex-shrink:0}
+.review-card__stars{color:#f5b301;font-size:.95rem;letter-spacing:.08em;line-height:1}
+.review-card__text{font-family:Inter Tight,sans-serif;font-size:clamp(.95rem,.9rem + .2vw,1.05rem);line-height:1.55;margin:0;opacity:.9}
+.review-card__name{font-family:Geist Mono,monospace;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;opacity:.65;margin-top:auto}
+.reviews-section__cta{text-align:center;margin-top:2rem}
+.reviews-section__cta .a{display:inline-flex;align-items:center;gap:.35rem;font-family:Geist Mono,monospace;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;border:1px solid rgba(0,0,0,.2);border-radius:999px;padding:.65rem 1.25rem;transition:border-color .25s,background .25s}
+.reviews-section__cta .a:hover{border-color:#000;background:rgba(0,0,0,.04)}
+@media(max-width:64em){.review-card{flex:0 0 calc((100% - 1.25rem) / 2)}}
+@media(max-width:40em){.review-card{flex:0 0 100%}.reviews-swiper__head{justify-content:center}}
 
 .slider-morph-rental.slider-morph{position:relative}
 .slider-morph-rental .slider-morph__bgs{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
@@ -677,6 +705,86 @@ Mariages, événements, séjours ou déplacements professionnels : chaque locati
             </section>
             <!-- RESPONSIVE MORPH DIFFERENT CONTAINER BECAUSE ITS NOT A SLIDER -->
             
+            <section class="latest-news latest-news-light reviews-section" id="avis">
+                <h2>Die Meinungen unserer Kunden</h2>
+                <div class="reviews-section__inner">
+                    <div class="reviews-swiper" data-reviews-swiper>
+                        <div class="reviews-swiper__head">
+                            <div class="reviews-swiper__nav">
+                                <button type="button" class="reviews-swiper__btn" data-reviews-prev aria-label="Vorherige Bewertungen">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+                                </button>
+                                <button type="button" class="reviews-swiper__btn" data-reviews-next aria-label="Nächste Bewertungen">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="reviews-swiper__viewport" data-reviews-viewport>
+                            <div class="reviews-swiper__track" data-reviews-track>
+                                <article class="review-card" itemscope itemtype="https://schema.org/Review">
+                                    <div class="review-card__top">
+                                        <img src="assets/avis/66d7da5dd02b79beaca70d30_unnamed.png" alt="" class="review-card__avatar" width="56" height="56" loading="lazy" />
+                                        <img src="assets/avis/quote.svg" alt="" class="review-card__quote-icon" width="24" height="24" aria-hidden="true" />
+                                    </div>
+                                    <div class="review-card__stars" aria-label="5 von 5 Sternen">★★★★★</div>
+                                    <p class="review-card__text" itemprop="reviewBody">Wir haben letztes Wochenende drei Sportwagen für 48 Stunden gemietet. Der Service war erstklassig: aufmerksames, professionelles und freundliches Personal. Ich empfehle es ohne zu zögern! 👍</p>
+                                    <p class="review-card__name" itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="name">Serdar Kaya</span></p>
+                                </article>
+                                <article class="review-card" itemscope itemtype="https://schema.org/Review">
+                                    <div class="review-card__top">
+                                        <img src="assets/avis/66d7dae7fb1b2bac5213b605_unnamed.png" alt="" class="review-card__avatar" width="56" height="56" loading="lazy" />
+                                        <img src="assets/avis/quote.svg" alt="" class="review-card__quote-icon" width="24" height="24" aria-hidden="true" />
+                                    </div>
+                                    <div class="review-card__stars" aria-label="5 von 5 Sternen">★★★★★</div>
+                                    <p class="review-card__text" itemprop="reviewBody">Top Service ! Professionell, voller Ratschläge; sowohl für den Fahrzeugkauf (Audi A1) als auch für die Anmietung hochwertiger Autos. Ich empfehle es ohne zu zögern.</p>
+                                    <p class="review-card__name" itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="name">Marine Harnist</span></p>
+                                </article>
+                                <article class="review-card" itemscope itemtype="https://schema.org/Review">
+                                    <div class="review-card__top">
+                                        <img src="assets/avis/66d7db41d02b79beaca7b984_unnamed.png" alt="" class="review-card__avatar" width="56" height="56" loading="lazy" />
+                                        <img src="assets/avis/quote.svg" alt="" class="review-card__quote-icon" width="24" height="24" aria-hidden="true" />
+                                    </div>
+                                    <div class="review-card__stars" aria-label="5 von 5 Sternen">★★★★★</div>
+                                    <p class="review-card__text" itemprop="reviewBody">Ich habe mein Fahrzeug über sie sehr schnell verkauft! Ein professionelles, schnelles und effizientes Team! Ich empfehle sie wärmstens!</p>
+                                    <p class="review-card__name" itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="name">Julien</span></p>
+                                </article>
+                                <article class="review-card" itemscope itemtype="https://schema.org/Review">
+                                    <div class="review-card__top">
+                                        <img src="assets/avis/66d7dbaa30c5efeb4dfa5508_unnamed.png" alt="" class="review-card__avatar" width="56" height="56" loading="lazy" />
+                                        <img src="assets/avis/quote.svg" alt="" class="review-card__quote-icon" width="24" height="24" aria-hidden="true" />
+                                    </div>
+                                    <div class="review-card__stars" aria-label="5 von 5 Sternen">★★★★★</div>
+                                    <p class="review-card__text" itemprop="reviewBody">Ich habe in dieser Werkstatt einen Polo gekauft und bin sehr zufrieden. Das Personal war aufmerksam und freundlich. Ich musste nicht viele Formalitäten erledigen; sie haben sich um die Zulassung gekümmert usw. 🙃</p>
+                                    <p class="review-card__name" itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="name">Loanne Ltl</span></p>
+                                </article>
+                                <article class="review-card" itemscope itemtype="https://schema.org/Review">
+                                    <div class="review-card__top">
+                                        <img src="assets/avis/66d7dc06800fffe2b79f00cf_unnamed.png" alt="" class="review-card__avatar" width="56" height="56" loading="lazy" />
+                                        <img src="assets/avis/quote.svg" alt="" class="review-card__quote-icon" width="24" height="24" aria-hidden="true" />
+                                    </div>
+                                    <div class="review-card__stars" aria-label="5 von 5 Sternen">★★★★★</div>
+                                    <p class="review-card__text" itemprop="reviewBody">Ich wurde in der Agentur NUSKOWCARS herzlich empfangen, um ein Fahrzeug für die Hochzeit meines Bruders zu mieten. Nach der Anmietung eines Prestigefahrzeugs bei ihnen war ich mehr als begeistert.</p>
+                                    <p class="review-card__name" itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="name">Ardrin Ademi</span></p>
+                                </article>
+                                <article class="review-card" itemscope itemtype="https://schema.org/Review">
+                                    <div class="review-card__top">
+                                        <img src="assets/avis/66d7dc98fb1b2bac521524d5_unnamed.png" alt="" class="review-card__avatar" width="56" height="56" loading="lazy" />
+                                        <img src="assets/avis/quote.svg" alt="" class="review-card__quote-icon" width="24" height="24" aria-hidden="true" />
+                                    </div>
+                                    <div class="review-card__stars" aria-label="5 von 5 Sternen">★★★★★</div>
+                                    <p class="review-card__text" itemprop="reviewBody">Top Werkstatt, ich empfehle sie jedem. Sehr professionell in allen Bereichen… (Sie werden nicht enttäuscht sein)</p>
+                                    <p class="review-card__name" itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="name">Amin Okanovic</span></p>
+                                </article>
+                            </div>
+                        </div>
+                        <div class="reviews-swiper__dots" data-reviews-dots></div>
+                    </div>
+                    <p class="reviews-section__cta">
+                        <a href="https://share.google/ERlHfXEMUr9uduOEE" class="a" target="_blank" rel="noopener noreferrer">Mehr</a>
+                    </p>
+                </div>
+            </section>
+
             <section class="latest-news latest-news-light faq-section" id="faq">
                 <h2>FAQ</h2>
                 <div class="faq-section__content" itemscope itemtype="https://schema.org/FAQPage">
@@ -926,10 +1034,101 @@ Mariages, événements, séjours ou déplacements professionnels : chaque locati
     }
   }
 
+  function initReviewsSwiper(root) {
+    var viewport = root.querySelector("[data-reviews-viewport]");
+    var track = root.querySelector("[data-reviews-track]");
+    var prev = root.querySelector("[data-reviews-prev]");
+    var next = root.querySelector("[data-reviews-next]");
+    var dotsWrap = root.querySelector("[data-reviews-dots]");
+    if (!viewport || !track || !prev || !next || !dotsWrap) return;
+    var cards = Array.from(track.querySelectorAll(".review-card"));
+    if (!cards.length) return;
+    var index = 0;
+    var dragging = false;
+    var startX = 0;
+    var startTranslate = 0;
+
+    cards.forEach(function (_, i) {
+      var dot = document.createElement("button");
+      dot.type = "button";
+      dot.className = "reviews-swiper__dot" + (i === 0 ? " is-active" : "");
+      dot.setAttribute("aria-label", "Avis " + (i + 1));
+      dot.addEventListener("click", function () { goTo(i); });
+      dotsWrap.appendChild(dot);
+    });
+    var dots = Array.from(dotsWrap.querySelectorAll(".reviews-swiper__dot"));
+
+    function cardStep() {
+      var card = cards[0];
+      var gap = parseFloat(getComputedStyle(track).gap) || 20;
+      return card.offsetWidth + gap;
+    }
+
+    function maxIndex() {
+      var visible = Math.max(1, Math.round(viewport.offsetWidth / cardStep()));
+      return Math.max(0, cards.length - visible);
+    }
+
+    function offsetFor(i) {
+      return -i * cardStep();
+    }
+
+    function goTo(i, animate) {
+      var max = maxIndex();
+      if (max === 0) {
+        index = ((i % cards.length) + cards.length) % cards.length;
+        track.style.transition = animate === false ? "none" : "";
+        track.style.transform = "translate3d(0,0,0)";
+      } else {
+        index = Math.max(0, Math.min(i, max));
+        track.style.transition = animate === false ? "none" : "";
+        track.style.transform = "translate3d(" + offsetFor(index) + "px,0,0)";
+      }
+      dots.forEach(function (d, n) {
+        d.classList.toggle("is-active", n === index);
+      });
+      prev.disabled = max > 0 && index === 0;
+      next.disabled = max > 0 && index === max;
+    }
+
+    prev.addEventListener("click", function () { goTo(index - 1); });
+    next.addEventListener("click", function () { goTo(index + 1); });
+
+    viewport.addEventListener("pointerdown", function (e) {
+      if (e.button !== 0) return;
+      dragging = true;
+      startX = e.clientX;
+      startTranslate = offsetFor(index);
+      viewport.classList.add("is-dragging");
+      track.style.transition = "none";
+      viewport.setPointerCapture(e.pointerId);
+    });
+
+    viewport.addEventListener("pointermove", function (e) {
+      if (!dragging) return;
+      track.style.transform = "translate3d(" + (startTranslate + e.clientX - startX) + "px,0,0)";
+    });
+
+    function endDrag(e) {
+      if (!dragging) return;
+      dragging = false;
+      viewport.classList.remove("is-dragging");
+      var dx = e.clientX - startX;
+      if (Math.abs(dx) > 60) goTo(index + (dx < 0 ? 1 : -1));
+      else goTo(index);
+    }
+
+    viewport.addEventListener("pointerup", endDrag);
+    viewport.addEventListener("pointercancel", endDrag);
+    window.addEventListener("resize", function () { goTo(index, false); });
+    goTo(0, false);
+  }
+
   function boot() {
     fixSingleGallery();
     initMorphBackgrounds();
     document.querySelectorAll("[data-fleet-swiper]").forEach(initFleetSwiper);
+    document.querySelectorAll("[data-reviews-swiper]").forEach(initReviewsSwiper);
   }
 
   if (document.readyState === "loading") {
