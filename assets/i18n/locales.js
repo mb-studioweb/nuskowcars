@@ -74,7 +74,7 @@ window.NUSKOW_LOCALES = {
       "page.home_title": "NuskowCars — Location véhicules de prestige en France",
       "about.pillar1_num": "01 — Flotte",
       "about.pillar1_title": "Véhicules d'exception",
-      "about.pillar1_desc": "Une sélection rigoureuse : G63 AMG, GLE 63 S, RS3, M3, RSQ8, Urus, Huracán Evo et GT 63 S E-Performance. Kilométrage illimité, livraison et réservation WhatsApp — chaque véhicule entretenu avec soin.",
+      "about.pillar1_desc": "Une sélection rigoureuse : G63 AMG, GLE 63 S, RS3, M3, RSQ8, Urus et Huracán Evo. Kilométrage illimité, livraison et réservation WhatsApp — chaque véhicule entretenu avec soin.",
       "about.pillar2_num": "02 — Service",
       "about.pillar2_title": "Accompagnement sur mesure",
       "about.pillar2_desc": "Réservation simple par WhatsApp, réponse rapide, véhicule préparé selon vos dates et un suivi personnalisé jusqu'à la remise des clés.",
@@ -208,7 +208,7 @@ window.NUSKOW_LOCALES = {
       "page.home_title": "NuskowCars — Premium-Fahrzeugvermietung in Frankreich",
       "about.pillar1_num": "01 — Flotte",
       "about.pillar1_title": "Außergewöhnliche Fahrzeuge",
-      "about.pillar1_desc": "Eine sorgfältige Auswahl: G63 AMG, GLE 63 S, RS3, M3, RSQ8, Urus, Huracán Evo und GT 63 S E-Performance. Unbegrenzte Kilometer, Lieferung und WhatsApp-Buchung — jedes Fahrzeug perfekt gewartet.",
+      "about.pillar1_desc": "Eine sorgfältige Auswahl: G63 AMG, GLE 63 S, RS3, M3, RSQ8, Urus und Huracán Evo. Unbegrenzte Kilometer, Lieferung und WhatsApp-Buchung — jedes Fahrzeug perfekt gewartet.",
       "about.pillar2_num": "02 — Service",
       "about.pillar2_title": "Maßgeschneiderte Betreuung",
       "about.pillar2_desc": "Einfache Buchung per WhatsApp, schnelle Antwort, Fahrzeug nach Ihren Daten vorbereitet und persönliche Begleitung bis zur Schlüsselübergabe.",
@@ -342,7 +342,7 @@ window.NUSKOW_LOCALES = {
       "page.home_title": "NuskowCars — Premium car rental in France",
       "about.pillar1_num": "01 — Fleet",
       "about.pillar1_title": "Exceptional vehicles",
-      "about.pillar1_desc": "A rigorous selection: G63 AMG, GLE 63 S, RS3, M3, RSQ8, Urus, Huracán Evo and GT 63 S E-Performance. Unlimited mileage, delivery and WhatsApp booking — every vehicle meticulously maintained.",
+      "about.pillar1_desc": "A rigorous selection: G63 AMG, GLE 63 S, RS3, M3, RSQ8, Urus and Huracán Evo. Unlimited mileage, delivery and WhatsApp booking — every vehicle meticulously maintained.",
       "about.pillar2_num": "02 — Service",
       "about.pillar2_title": "Tailored support",
       "about.pillar2_desc": "Simple WhatsApp booking, fast response, vehicle prepared for your dates and personal follow-up until key handover.",
@@ -775,52 +775,6 @@ window.NUSKOW_LOCALES = {
           "tag": "Super sport SUV · France",
           "desc_short": "Performante edition: even sharper, 666 hp.",
           "desc_long": "The Urus Performante pushes extremes further — optimised chassis, more power and maximum presence."
-        }
-      }
-    },
-    {
-      "slug": "mercedes-gt63s-eperformance",
-      "title": "Mercedes GT 63 S E-Performance",
-      "brand": "Mercedes-Benz",
-      "category": "Hybride performance",
-      "tag": "Hybride · France",
-      "power": "805 ch",
-      "hero_title": "GT 63 S E-PERF",
-      "desc_short": "805 ch hybrides — le summum de la technologie AMG.",
-      "desc_long": "Le GT 63 S E-Performance repousse les limites avec 805 ch hybrides. Accélérations fulgurantes et technologie de pointe pour une expérience inoubliable.",
-      "deposit": "10 000 €",
-      "price_24h": "dès 699 €",
-      "pricing": [
-        [
-          "24h semaine",
-          "699 €"
-        ],
-        [
-          "24h week-end",
-          "1 300 €"
-        ],
-        [
-          "48h week-end",
-          "2 200 €"
-        ]
-      ],
-      "perfs": [
-        "805 ch",
-        "2,8 s",
-        "315 km/h"
-      ],
-      "i18n": {
-        "de": {
-          "category": "Performance-Hybrid",
-          "tag": "Hybrid · Europa",
-          "desc_short": "805 PS Hybrid — der Höhepunkt der AMG-Technologie.",
-          "desc_long": "Der GT 63 S E-Performance mit 805 PS Hybridleistung — atemberaubende Beschleunigung und Spitzentechnologie."
-        },
-        "en": {
-          "category": "Performance hybrid",
-          "tag": "Hybrid · Europe",
-          "desc_short": "805 hp hybrid — the pinnacle of AMG technology.",
-          "desc_long": "The GT 63 S E-Performance with 805 hybrid hp — breathtaking acceleration and cutting-edge tech."
         }
       }
     },
