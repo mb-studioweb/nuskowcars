@@ -86,6 +86,7 @@
 .fleet-swiper__dot.is-active{background:#cbc3e5;transform:scale(1.35)}
 .fleet-swiper__hint{text-align:center;margin-top:1rem;font-family:Geist Mono,monospace;font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;opacity:.45;padding:0 4rem}
 @media(min-width:48.125em){.fleet-desktop{display:block}.projects.fleet-preview{display:none!important}}
+.slider-projects.fleet-preview .related,.slider-projects.fleet-preview .related span{white-space:normal;overflow-wrap:break-word;word-break:break-word;max-width:100%}
 @media(max-width:75em){.fleet-card{flex:0 0 calc((100% - 1.5rem) / 2);min-width:calc((100% - 1.5rem) / 2)}}
 @media(max-width:48.0625em){.fleet-desktop{display:none!important}}
 @media(max-width:48.0625em){.pop-up-gallery__inner>p{display:none!important}}
@@ -256,7 +257,7 @@ Mariages, événements, séjours ou déplacements professionnels : chaque locati
 				
                 <section class="fleet-desktop" id="flotte">
                     <div class="fleet-desktop__head">
-                        <p class="related"><span data-i18n="home.fleet_preview">Aperçu de la flotte</span></p>
+                        <p class="related"><span data-i18n-html="home.fleet_preview">Aperçu de la flotte</span></p>
                         <div class="fleet-swiper__nav" aria-label="Navigation flotte">
                             <button type="button" class="fleet-swiper__btn fleet-swiper__btn--prev" data-i18n-aria="home.fleet_nav_prev" aria-label="Véhicule précédent">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 6l-6 6 6 6"/></svg>
@@ -379,7 +380,7 @@ Mariages, événements, séjours ou déplacements professionnels : chaque locati
                     </div>
                 </section>
 				<section class="slider-projects fleet-preview" id="flotte-mobile">
-                    <p class="related"><span data-i18n="home.fleet_preview">Aperçu de la flotte</span></p>
+                    <p class="related"><span data-i18n-html="home.fleet_preview">Aperçu de la flotte</span></p>
                     <div class="slider-projects__viewport">
                         <div class="slider-projects__container">
                         <div class="slider-projects__slide">
@@ -514,9 +515,7 @@ Mariages, événements, séjours ou déplacements professionnels : chaque locati
                         <div class="slider-projects__buttons">
                         <button class="slider-projects__button slider-projects__button--prev" type="button" disabled=""><svg class="slider-projects__button__svg" viewBox="0 0 532 532"><path fill="currentColor" d="M355.66 11.354c13.793-13.805 36.208-13.805 50.001 0 13.785 13.804 13.785 36.238 0 50.034L201.22 266l204.442 204.61c13.785 13.805 13.785 36.239 0 50.044-13.793 13.796-36.208 13.796-50.002 0a5994246.277 5994246.277 0 0 0-229.332-229.454 35.065 35.065 0 0 1-10.326-25.126c0-9.2 3.393-18.26 10.326-25.2C172.192 194.973 332.731 34.31 355.66 11.354Z"></path></svg></button><button class="slider-projects__button slider-projects__button--next" type="button" disabled=""><svg class="slider-projects__button__svg" viewBox="0 0 532 532"><path fill="currentColor" d="M176.34 520.646c-13.793 13.805-36.208 13.805-50.001 0-13.785-13.804-13.785-36.238 0-50.034L330.78 266 126.34 61.391c-13.785-13.805-13.785-36.239 0-50.044 13.793-13.796 36.208-13.796 50.002 0 22.928 22.947 206.395 206.507 229.332 229.454a35.065 35.065 0 0 1 10.326 25.126c0 9.2-3.393 18.26-10.326 25.2-45.865 45.901-206.404 206.564-229.332 229.52Z"></path></svg></button></div></div>
                     <div class="slider-projects__controls">
-                        <a href="flotte.html" class="slider-projects__link a">
-                        Voir la flotte
-                        </a>
+                        <a href="flotte.html" class="slider-projects__link a" data-i18n="common.see_fleet">Voir la flotte</a>
                     </div>
                 </section>
             </div>
@@ -877,8 +876,8 @@ Mariages, événements, séjours ou déplacements professionnels : chaque locati
 	</div>
 	<div class="contact-global__content">
 		<p data-i18n="home.contact_title">Contactez-nous</p>
-		<h3>Prêt à vivre l'expérience ? Découvrez notre flotte de prestige en France.</h3>
-		<a href="flotte.html" class="a">Voir la flotte</a>
+		<h3 data-i18n="home.contact_cta_title">Prêt à vivre l'expérience ? Découvrez notre flotte de prestige en France.</h3>
+		<a href="flotte.html" class="a" data-i18n="common.see_fleet">Voir la flotte</a>
 	</div>
 </section>
 <footer class="footer footer-light">

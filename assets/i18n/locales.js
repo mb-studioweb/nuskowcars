@@ -131,6 +131,7 @@ window.NUSKOW_LOCALES = {
       "home.faq_all": "Voir toutes les questions",
       "home.contact_title": "Contactez-nous",
       "home.contact_circle": "CONTACTEZ-NOUS CONTACTEZ-NOUS CONTACTEZ-NOUS CONTACTEZ-NOUS CONTACTEZ-NOUS CONTACTEZ-NOUS",
+      "home.contact_cta_title": "Prêt à vivre l'expérience ? Découvrez notre flotte de prestige en France.",
       "home.faq_a2_home": "Une pièce d'identité valide et un permis de conduire en cours de validité sont requis. Selon le véhicule, des justificatifs complémentaires peuvent vous être demandés lors de la confirmation."
     },
     "de": {
@@ -186,7 +187,7 @@ window.NUSKOW_LOCALES = {
       "home.hero_title": "Mieten Sie Ihr Traumauto",
       "home.hero_desc": "Bei NuskowCars — Exzellenz mieten, Emotionen fahren.",
       "home.why_title": "Warum NuskowCars wählen?",
-      "home.fleet_preview": "Flottenübersicht",
+      "home.fleet_preview": "Flotten<br>übersicht",
       "home.step1_title": "Wählen",
       "home.step1_desc": "Durchstöbern Sie die Flotte und wählen Sie Ihr Modell.",
       "home.step2_title": "WhatsApp",
@@ -264,6 +265,7 @@ window.NUSKOW_LOCALES = {
       "home.faq_all": "Alle Fragen ansehen",
       "home.contact_title": "Kontaktieren Sie uns",
       "home.contact_circle": "KONTAKT KONTAKT KONTAKT KONTAKT KONTAKT KONTAKT",
+      "home.contact_cta_title": "Bereit für das Erlebnis? Entdecken Sie unsere Premium-Flotte in Frankreich.",
       "home.faq_a2_home": "Ein gültiger Ausweis und Führerschein sind erforderlich. Je nach Fahrzeug können bei der Bestätigung weitere Nachweise verlangt werden."
     },
     "en": {
@@ -397,6 +399,7 @@ window.NUSKOW_LOCALES = {
       "home.faq_all": "See all questions",
       "home.contact_title": "Contact us",
       "home.contact_circle": "CONTACT US CONTACT US CONTACT US CONTACT US CONTACT US CONTACT US",
+      "home.contact_cta_title": "Ready for the experience? Discover our prestige fleet in France.",
       "home.faq_a2_home": "A valid ID and driving licence are required. Depending on the vehicle, additional documents may be requested at confirmation."
     }
   },
