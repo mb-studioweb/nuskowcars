@@ -204,14 +204,55 @@
     document.title = t("vehicle.page_title_prefix") + " " + title + " — NuskowCars";
   }
 
+  function updateHomeFleet() {
+    var l = lang();
+    document.querySelectorAll(".fleet-card, .project-card").forEach(function (card) {
+      var link = card.querySelector('a[href*="vehicules/"]');
+      if (!link) return;
+      var m = link.getAttribute("href").match(/vehicules\/([^/]+)\.html/);
+      if (!m) return;
+      var v = vehicles().find(function (item) {
+        return item.slug === m[1];
+      });
+      if (!v) return;
+      var loc = card.querySelector(".location");
+      var desc = card.querySelector(".desc");
+      var btn = card.querySelector(".btn");
+      if (loc) loc.textContent = vehicleField(v, "category", l);
+      if (desc) desc.textContent = vehicleField(v, "desc_short", l);
+      if (btn) btn.textContent = t("common.see_sheet");
+      card.querySelectorAll(".fleet-pricing__label").forEach(function (el, i) {
+        el.textContent = i === 0 ? t("common.24h_week") : t("common.deposit");
+      });
+    });
+  }
+
+  function updateHomeReviews() {
+    document.querySelectorAll(".review-card__stars[data-i18n-aria], .review-card__stars").forEach(function (el) {
+      if (el.hasAttribute("data-i18n-aria") || el.getAttribute("aria-label")) {
+        var stars = t("home.reviews_stars");
+        if (stars) el.setAttribute("aria-label", stars);
+      }
+    });
+    var circle = document.querySelector("textPath[data-i18n]");
+    if (circle) {
+      var txt = t(circle.getAttribute("data-i18n"));
+      if (txt) circle.textContent = txt;
+    }
+  }
+
   function onLangChange() {
     renderFleet();
     updateVehiclePage();
+    updateHomeFleet();
+    updateHomeReviews();
   }
 
   function boot() {
     renderFleet();
     updateVehiclePage();
+    updateHomeFleet();
+    updateHomeReviews();
     global.addEventListener("nuskow:langchange", onLangChange);
   }
 
@@ -220,6 +261,7 @@
     onLangChange: onLangChange,
     renderFleet: renderFleet,
     updateVehiclePage: updateVehiclePage,
+    updateHomeFleet: updateHomeFleet,
   };
 
   if (document.readyState === "loading") {
