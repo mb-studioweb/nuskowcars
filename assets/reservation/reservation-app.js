@@ -224,11 +224,22 @@
   var root = document.querySelector("[data-reservation-app]");
   if (!root) return;
 
-  var lang = (document.documentElement.lang || "fr").toLowerCase();
-  if (lang.indexOf("de") === 0) lang = "de";
-  else if (lang.indexOf("en") === 0) lang = "en";
-  else lang = "fr";
-  var t = TEXT[lang];
+  function currentLang() {
+    if (window.NuskowI18n && window.NuskowI18n.getLang) {
+      return window.NuskowI18n.getLang();
+    }
+    var lang = (document.documentElement.lang || "fr").toLowerCase();
+    if (lang.indexOf("de") === 0) return "de";
+    if (lang.indexOf("en") === 0) return "en";
+    return "fr";
+  }
+
+  function getT() {
+    var lang = currentLang();
+    return TEXT[lang] || TEXT.fr;
+  }
+
+  var t = getT();
   var assetPrefix = root.getAttribute("data-asset-prefix") || "";
 
   var state = { step: 0, vehicleId: null, offerIndex: null };
@@ -247,10 +258,11 @@
 
   function offerLabel(key) {
     var labels = OFFER_LABELS[key];
-    return labels ? labels[lang] || labels.fr : key;
+    return labels ? labels[currentLang()] || labels.fr : key;
   }
 
   function vehicleName(v) {
+    var lang = currentLang();
     return (v.names && v.names[lang]) || v.names.fr || v.name || "";
   }
 
@@ -299,7 +311,16 @@
     document.title = t.title + " — NuskowCars";
     var meta = document.querySelector('meta[name="description"]');
     if (meta) meta.setAttribute("content", t.metaDescription);
+    var lang = currentLang();
     document.documentElement.lang = lang === "de" ? "de-DE" : lang === "en" ? "en" : "fr-FR";
+  }
+
+  function refreshLanguage() {
+    t = getT();
+    applyStaticCopy();
+    renderSteps();
+    renderVehicles();
+    renderOffers();
   }
 
   function renderSteps() {
@@ -484,4 +505,6 @@
   renderSteps();
   renderVehicles();
   showStep(0);
+
+  window.addEventListener("nuskow:langchange", refreshLanguage);
 })();

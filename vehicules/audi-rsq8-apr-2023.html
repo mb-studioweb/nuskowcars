@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="fr">
   <head>
+<script>
+(function(){try{var p=new URLSearchParams(location.search),l=p.get('lang')||localStorage.getItem('nuskow-lang');if(l&&/^(de|en|fr)$/.test(l))document.documentElement.lang=l==='de'?'de-DE':l==='en'?'en':'fr-FR';}catch(e){}})();
+</script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Location Audi RSQ8 APR 2023 — NuskowCars</title>
@@ -19,6 +22,10 @@
 .header__inner .header__logo{display:block!important;height:clamp(2rem,4vw,2.75rem);width:auto;max-width:9rem;object-fit:contain}
 
 .header__lang{display:flex;align-items:center;gap:.35rem;margin-right:.75rem}
+.header__lang{display:flex;align-items:center;gap:.35rem;margin-right:.75rem}
+.header__lang-btn,.header__lang a{font-size:1.1rem;line-height:1;opacity:.55;transition:opacity .2s,transform .2s;text-decoration:none;background:none;border:0;cursor:pointer;padding:0}
+.header__lang-btn:hover,.header__lang-btn.is-active,.header__lang a:hover,.header__lang a.is-active{opacity:1;transform:scale(1.1)}
+@media(max-width:48em){.header__lang{margin-right:.25rem}.header__lang-btn,.header__lang a{font-size:1rem}}
 .header__lang a{font-size:1.1rem;line-height:1;opacity:.55;transition:opacity .2s,transform .2s;text-decoration:none}
 .header__lang a:hover,.header__lang a.is-active{opacity:1;transform:scale(1.1)}
 @media(max-width:48em){.header__lang{margin-right:.25rem}.header__lang a{font-size:1rem}}
@@ -62,7 +69,7 @@
 </style>
     <script src="../wp-includes/js/jquery/jquery.min.js"></script>
   </head>
-  <body>
+  <body data-vehicle-slug="audi-rsq8-apr-2023">
     <header class="header">
       <div class="header__inner">
         <a href="../index.html" class="a">
@@ -70,8 +77,12 @@
         </a>
         <a href="../index.html" class="header__title a">NuskowCars</a>
         <nav class="header__nav">
-          <div class="header__lang" aria-label="Langue"><a href="../vehicules/audi-rsq8-apr-2023.html" class="header__lang-link is-active" hreflang="fr" aria-label="FR">🇫🇷</a><a href="../german/vehicules/audi-rsq8-apr-2023.html" class="header__lang-link" hreflang="de" aria-label="DE">🇩🇪</a><a href="../en/vehicules/audi-rsq8-apr-2023.html" class="header__lang-link" hreflang="en" aria-label="EN">🇬🇧</a></div>
-          <a href="https://wa.me/33637002045" class="header-link a" target="_blank" rel="noopener">Contact</a>
+          <div class="header__lang" aria-label="Langue">
+  <button type="button" class="header__lang-btn" data-lang="fr" aria-label="Français">🇫🇷</button>
+  <button type="button" class="header__lang-btn" data-lang="de" aria-label="Deutsch">🇩🇪</button>
+  <button type="button" class="header__lang-btn" data-lang="en" aria-label="English">🇬🇧</button>
+</div>
+          <a href="https://wa.me/33637002045" class="header-link a" target="_blank" rel="noopener" data-i18n="nav.contact">Contact</a>
           <button type="menu" class="toggle-btn">
             <div class="hamburger-icon"><span></span></div>
           </button>
@@ -81,38 +92,38 @@
         <ul>
           <li class="header__li">
             <a class="header__a a" href="../index.html">
-              <span class="a-main anim-a">Accueil</span>
+              <span class="a-main anim-a" data-i18n="nav.home">Accueil</span>
               <span class="a-sub anim-sub-a">NuskowCars</span>
             </a>
           </li>
           <li class="header__li">
             <a class="header__a a" href="../a-propos.html">
-              <span class="a-main anim-a">À propos</span>
-              <span class="a-sub anim-sub-a">L'agence</span>
+              <span class="a-main anim-a" data-i18n="nav.about">À propos</span>
+              <span class="a-sub anim-sub-a" data-i18n="nav.about_sub">L'agence</span>
             </a>
           </li>
           <li class="header__li">
             <a class="header__a a" href="../flotte.html">
-              <span class="a-main anim-a">Flotte</span>
-              <span class="a-sub anim-sub-a">Nos véhicules</span>
+              <span class="a-main anim-a" data-i18n="nav.fleet">Flotte</span>
+              <span class="a-sub anim-sub-a" data-i18n="nav.fleet_sub">Nos véhicules</span>
             </a>
           </li>
           <li class="header__li">
             <a class="header__a a" href="../reservation.html">
-              <span class="a-main anim-a">Réservation</span>
-              <span class="a-sub anim-sub-a">En ligne</span>
+              <span class="a-main anim-a" data-i18n="nav.reservation">Réservation</span>
+              <span class="a-sub anim-sub-a" data-i18n="nav.reservation_sub">En ligne</span>
             </a>
           </li>
           <li class="header__li">
             <a class="header__a a" href="../faq.html">
-              <span class="a-main anim-a">FAQ</span>
-              <span class="a-sub anim-sub-a">Questions fréquentes</span>
+              <span class="a-main anim-a" data-i18n="nav.faq">FAQ</span>
+              <span class="a-sub anim-sub-a" data-i18n="nav.faq_sub">Questions fréquentes</span>
             </a>
           </li>
         </ul>
         <div class="header__contact">
           <a href="https://wa.me/33637002045" class="a contact-block" target="_blank" rel="noopener">
-            <div class="txt"><p>Contact</p><p class="link" role="link">WhatsApp</p></div>
+            <div class="txt"><p data-i18n="nav.contact">Contact</p><p class="link" role="link" data-i18n="nav.whatsapp">WhatsApp</p></div>
             <img src="../wp-content/themes/digital-present/front/build/assets/mail-_8aEdFii.png" alt="" />
           </a>
         </div>
@@ -181,7 +192,7 @@
 	<div class="footer__inner">
 		<div class="address-block">
 			<p>NuskowCars</p>
-			<address>© NuskowCars — Tous droits réservés.<br />France · 06 37 00 20 45</address>
+			<address>© NuskowCars — <span data-i18n="common.rights">Tous droits réservés.</span><br />France · 06 37 00 20 45</address>
 		</div>
 		<div class="social-links">
 			<a href="https://www.instagram.com/nuskowcars/" target="_blank" rel="noopener">Ig</a>
@@ -198,5 +209,10 @@
 </main>
 <script src="../wp-content/themes/digital-present/front/build/assets/main-B2AruZ9N.js"></script>
 <script src="../assets/wa-float.js"></script>
+
+<script src="../assets/i18n/locales.js"></script>
+<script src="../assets/i18n/i18n.js"></script>
+<script src="../assets/i18n/pages.js"></script>
+
 </body>
 </html>

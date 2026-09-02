@@ -26,9 +26,13 @@
   };
 
   var lang = (document.documentElement.lang || "fr").toLowerCase();
-  if (lang.indexOf("de") === 0) lang = "de";
-  else if (lang.indexOf("en") === 0) lang = "en";
-  else lang = "fr";
+  if (window.NuskowI18n && window.NuskowI18n.getLang) {
+    lang = window.NuskowI18n.getLang();
+  } else {
+    if (lang.indexOf("de") === 0) lang = "de";
+    else if (lang.indexOf("en") === 0) lang = "en";
+    else lang = "fr";
+  }
   var t = TEXT[lang];
 
   var root = document.createElement("div");
@@ -74,14 +78,37 @@
 
   if (closeBtn) closeBtn.addEventListener("click", hideHint);
 
+  window.addEventListener("nuskow:langchange", function (e) {
+    var newLang = (e.detail && e.detail.lang) || "fr";
+    if (newLang.indexOf("de") === 0) newLang = "de";
+    else if (newLang.indexOf("en") === 0) newLang = "en";
+    else newLang = "fr";
+    t = TEXT[newLang];
+    var label = root.querySelector(".wa-float__label");
+    if (label) label.textContent = t.label;
+    if (hint) {
+      hint.innerHTML =
+        '<button type="button" class="wa-float__close" data-wa-close aria-label="' +
+        t.close +
+        '">×</button><p><span class="wa-float__hint-title">' +
+        t.label +
+        "</span>" +
+        t.hint +
+        "</p>";
+      root.querySelector("[data-wa-close]").addEventListener("click", hideHint);
+    }
+    var btn = root.querySelector(".wa-float__btn");
+    if (btn) btn.setAttribute("aria-label", t.aria);
+  });
+
   var link = document.createElement("link");
   link.rel = "stylesheet";
   var scripts = document.getElementsByTagName("script");
   var self = scripts[scripts.length - 1];
-  if (self && self.src) {
+    if (self && self.src) {
     link.href = self.src.replace(/wa-float\.js.*$/, "wa-float.css");
   } else {
-    link.href = "/assets/wa-float.css";
+    link.href = (window.NuskowI18n ? window.NuskowI18n.resolveAssetPath("assets/wa-float.css") : "/assets/wa-float.css");
   }
   document.head.appendChild(link);
 })();
