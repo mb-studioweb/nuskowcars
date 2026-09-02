@@ -82,10 +82,10 @@
 @media(max-width:75em){.fleet-card{flex:0 0 calc((100% - 1.5rem) / 2);min-width:calc((100% - 1.5rem) / 2)}}
 @media(max-width:48.0625em){.fleet-desktop{display:none!important}}
 @media(max-width:48.0625em){.pop-up-gallery__inner>p{display:none!important}}
-.pop-up-gallery__inner .nuskow-stacked-title{display:flex!important;flex-direction:column;align-items:flex-start;gap:0;width:100%!important;max-width:100%!important;font-size:clamp(6rem,12vw,14rem)!important;line-height:.76;letter-spacing:-.025em;text-align:left}
+.pop-up-gallery__inner .nuskow-stacked-title{display:flex!important;flex-direction:column;align-items:flex-start;gap:0;width:100%!important;max-width:100%!important;font-size:clamp(6rem,12vw,14rem)!important;line-height:.76;letter-spacing:.01em;text-align:left}
 .pop-up-gallery__inner .nuskow-stacked-title .hero-line{display:block;width:100%}
 .pop-up-gallery__inner .counting-txt-reponsive.nuskow-stacked-title{display:none!important}
-@media(max-width:48.0625em){.pop-up-gallery__inner .nuskow-stacked-title{font-size:clamp(5.25rem,26vw,10.5rem)!important;line-height:.74;letter-spacing:-.035em}}
+@media(max-width:48.0625em){.pop-up-gallery__inner .nuskow-stacked-title{font-size:clamp(5.25rem,26vw,10.5rem)!important;line-height:.74;letter-spacing:.012em}}
 .slider-morph-rental{background:#fff}
 .slider-morph-rental #path-1{fill:#111!important}
 .slider-morph-rental .slider-morph__see-more-btn{border-bottom-color:#111;color:#111}
@@ -93,12 +93,14 @@
 section.slider-morph-responsive.slider-morph-rental .slider-morph-responsive__card{position:relative!important;display:block!important;height:auto!important;min-height:0!important;aspect-ratio:16/9!important;width:100%!important;overflow:hidden!important;border-radius:16px!important;background:#111!important}
 section.slider-morph-responsive.slider-morph-rental .slider-morph-responsive__card .card-background{position:absolute!important;inset:0!important;height:100%!important;width:100%!important}
 section.slider-morph-responsive.slider-morph-rental .slider-morph-responsive__card .card-background img{width:100%!important;height:100%!important;object-fit:cover!important;object-position:center!important;display:block!important}
-section.slider-morph-responsive.slider-morph-rental .slider-morph-responsive__card .card-content{position:absolute!important;inset:auto 0 0 0!important;z-index:2!important;height:auto!important;min-height:0!important;display:flex!important;flex-direction:row!important;align-items:center!important;justify-content:space-between!important;gap:.75rem!important;padding:.75rem 1rem!important;background:rgba(0,0,0,.85)!important;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
-section.slider-morph-responsive.slider-morph-rental .slider-morph-responsive__card .card-content .step-card-title{font-size:1.05rem!important;font-weight:600!important;line-height:1.2!important;letter-spacing:.02em!important;text-transform:none!important;margin:0!important;padding:0!important;color:#fff!important;white-space:nowrap!important;font-family:Inter Tight,sans-serif!important}
-section.slider-morph-responsive.slider-morph-rental .slider-morph-responsive__card .card-content .step-num{display:inline-block;font-size:.8em;font-weight:500;opacity:.55;margin-right:.35em;font-variant-numeric:tabular-nums}
-section.slider-morph-responsive.slider-morph-rental .slider-morph-responsive__card .card-content .step-card-cta{font-size:.65rem!important;font-weight:600!important;letter-spacing:.08em!important;text-transform:uppercase!important;color:#fff!important;padding:.4rem .65rem!important;border:1px solid rgba(255,255,255,.4)!important;border-radius:999px!important;white-space:nowrap!important;flex-shrink:0!important;width:auto!important;display:inline-block!important}
+section.slider-morph-responsive.slider-morph-rental .slider-morph-responsive__card .card-content{position:absolute!important;inset:auto 0 0 0!important;z-index:2!important;height:auto!important;min-height:0!important;display:flex!important;flex-direction:row!important;align-items:flex-end!important;justify-content:space-between!important;gap:.85rem!important;padding:2.5rem 1rem .85rem!important;background:linear-gradient(180deg,rgba(0,0,0,0) 0%,rgba(0,0,0,.18) 45%,rgba(0,0,0,.52) 100%)!important}
+section.slider-morph-responsive.slider-morph-rental .slider-morph-responsive__card .card-content .step-card-copy{flex:1;min-width:0;display:flex;flex-direction:column;gap:.2rem}
+section.slider-morph-responsive.slider-morph-rental .slider-morph-responsive__card .card-content .step-card-title{font-size:1rem!important;font-weight:600!important;line-height:1.15!important;letter-spacing:.02em!important;text-transform:none!important;margin:0!important;padding:0!important;color:#fff!important;white-space:nowrap!important;font-family:Inter Tight,sans-serif!important;text-shadow:0 1px 6px rgba(0,0,0,.45)}
+section.slider-morph-responsive.slider-morph-rental .slider-morph-responsive__card .card-content .step-num{display:inline;font-size:inherit;font-weight:600;opacity:.75;margin-right:.35em;letter-spacing:0}
+section.slider-morph-responsive.slider-morph-rental .slider-morph-responsive__card .card-content .step-card-desc{display:block!important;font-size:.72rem!important;line-height:1.35!important;font-weight:400!important;color:rgba(255,255,255,.92)!important;margin:0!important;padding:0!important;letter-spacing:.01em!important;text-shadow:0 1px 5px rgba(0,0,0,.4)}
+section.slider-morph-responsive.slider-morph-rental .slider-morph-responsive__card .card-content .step-card-cta{font-size:.62rem!important;font-weight:600!important;letter-spacing:.08em!important;text-transform:uppercase!important;color:#fff!important;padding:.38rem .6rem!important;border:1px solid rgba(255,255,255,.45)!important;border-radius:999px!important;white-space:nowrap!important;flex-shrink:0!important;width:auto!important;display:inline-block!important;background:rgba(0,0,0,.25)!important;margin-bottom:.1rem}
 section.slider-morph-responsive.slider-morph-rental .slider-morph-responsive__card .card-content h3{display:none!important}
-section.slider-morph-responsive.slider-morph-rental .slider-morph-responsive__card .card-content p:not(.step-card-title){display:none!important}
+section.slider-morph-responsive.slider-morph-rental .slider-morph-responsive__card .card-content p:not(.step-card-title):not(.step-card-desc){display:none!important}
 section.slider-morph-responsive.slider-morph-rental>a.btn.wa-step-link{display:none!important}
 .faq-section.latest-news-light{background:#fff;color:#000}
 .faq-section .faq-section__content{max-width:56rem;margin:0 auto;padding-top:4.6875rem}
@@ -613,7 +615,10 @@ Mariages, événements, séjours ou déplacements professionnels : chaque locati
                         <img src="assets/vehicules/mercedes-benz-g63-amg/1.jpg" alt="Mercedes G63 AMG"/>
                     </div>
                     <div class="card-content">
-                        <p class="step-card-title"><span class="step-num">01</span>Wählen</p>
+                        <div class="step-card-copy">
+                            <p class="step-card-title"><span class="step-num">01</span>Wählen</p>
+                            <p class="step-card-desc">Durchsuchen Sie die Flotte und wählen Sie Ihr Modell.</p>
+                        </div>
                         <span class="step-card-cta">Flotte</span>
                     </div>
                 </a>
@@ -622,7 +627,10 @@ Mariages, événements, séjours ou déplacements professionnels : chaque locati
                         <img src="assets/vehicules/mercedes-benz-gle63s-amg-coupe/1.jpg" alt="Mercedes GLE 63 S"/>
                     </div>
                     <div class="card-content">
-                        <p class="step-card-title"><span class="step-num">02</span>WhatsApp</p>
+                        <div class="step-card-copy">
+                            <p class="step-card-title"><span class="step-num">02</span>WhatsApp</p>
+                            <p class="step-card-desc">Senden Sie uns Ihre Daten und Wünsche per Nachricht.</p>
+                        </div>
                         <span class="step-card-cta">Nachricht</span>
                     </div>
                 </a>
@@ -631,7 +639,10 @@ Mariages, événements, séjours ou déplacements professionnels : chaque locati
                         <img src="assets/vehicules/audi-rs3-2024/1.jpg" alt="Audi RS3"/>
                     </div>
                     <div class="card-content">
-                        <p class="step-card-title"><span class="step-num">03</span>Bestätigen</p>
+                        <div class="step-card-copy">
+                            <p class="step-card-title"><span class="step-num">03</span>Bestätigen</p>
+                            <p class="step-card-desc">24h-Tarif und Kaution werden bestätigt.</p>
+                        </div>
                         <span class="step-card-cta">WhatsApp</span>
                     </div>
                 </a>
@@ -640,7 +651,10 @@ Mariages, événements, séjours ou déplacements professionnels : chaque locati
                         <img src="assets/vehicules/lamborghini-urus/1.jpg" alt="Lamborghini Urus"/>
                     </div>
                     <div class="card-content">
-                        <p class="step-card-title"><span class="step-num">04</span>Abholung</p>
+                        <div class="step-card-copy">
+                            <p class="step-card-title"><span class="step-num">04</span>Abholung</p>
+                            <p class="step-card-desc">Fahrzeug bereit in Frankreich, Vertrag unterschrieben.</p>
+                        </div>
                         <span class="step-card-cta">WhatsApp</span>
                     </div>
                 </a>
@@ -649,7 +663,10 @@ Mariages, événements, séjours ou déplacements professionnels : chaque locati
                         <img src="assets/vehicules/bmw-m3-competition-510ch-2025/1.jpg" alt="BMW M3 Compétition"/>
                     </div>
                     <div class="card-content">
-                        <p class="step-card-title"><span class="step-num">05</span>Buchen</p>
+                        <div class="step-card-copy">
+                            <p class="step-card-title"><span class="step-num">05</span>Buchen</p>
+                            <p class="step-card-desc">Schließen Sie Ihre Buchung über WhatsApp ab.</p>
+                        </div>
                         <span class="step-card-cta">WhatsApp</span>
                     </div>
                 </a>
