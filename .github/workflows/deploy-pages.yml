@@ -26,7 +26,35 @@ jobs:
         with:
           lfs: true
 
+      - name: Vérifier que GitHub Pages est activé
+        id: pages_check
+        run: |
+          set -euo pipefail
+          code=$(curl -sS -o /tmp/pages.json -w "%{http_code}" \
+            -H "Authorization: Bearer ${GITHUB_TOKEN}" \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/${GITHUB_REPOSITORY}/pages")
+          if [ "$code" = "200" ]; then
+            echo "enabled=true" >> "$GITHUB_OUTPUT"
+            echo "GitHub Pages est activé sur ce dépôt."
+            exit 0
+          fi
+          echo "enabled=false" >> "$GITHUB_OUTPUT"
+          echo "::error::GitHub Pages n'est pas activé sur ce dépôt (HTTP ${code})."
+          echo ""
+          echo "Action requise (une seule fois, par un admin du repo) :"
+          echo "  1. Ouvrir https://github.com/${GITHUB_REPOSITORY}/settings/pages"
+          echo "  2. Build and deployment → Source : GitHub Actions"
+          echo "  3. Enregistrer, puis relancer ce workflow (Actions → Deploy GitHub Pages → Run workflow)"
+          echo ""
+          echo "Note : sur le plan gratuit, Pages fonctionne uniquement avec un dépôt public."
+          echo "Si le repo reste privé, il faut GitHub Pro (compte perso) ou Team (organisation)."
+          exit 1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Prepare site artifact
+        if: steps.pages_check.outputs.enabled == 'true'
         run: |
           mkdir -p site
           rsync -a \
@@ -38,15 +66,16 @@ jobs:
             ./ site/
 
       - name: Setup Pages
+        if: steps.pages_check.outputs.enabled == 'true'
         uses: actions/configure-pages@v5
-        with:
-          enablement: true
 
       - name: Upload site
+        if: steps.pages_check.outputs.enabled == 'true'
         uses: actions/upload-pages-artifact@v3
         with:
           path: site
 
       - name: Deploy to GitHub Pages
+        if: steps.pages_check.outputs.enabled == 'true'
         id: deployment
         uses: actions/deploy-pages@v4
