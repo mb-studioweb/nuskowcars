@@ -82,9 +82,10 @@
 @media(max-width:75em){.fleet-card{flex:0 0 calc((100% - 1.5rem) / 2);min-width:calc((100% - 1.5rem) / 2)}}
 @media(max-width:48.0625em){.fleet-desktop{display:none!important}}
 @media(max-width:48.0625em){.pop-up-gallery__inner>p{display:none!important}}
-.pop-up-gallery__inner .nuskow-stacked-title{display:flex;flex-direction:column;align-items:flex-start;gap:0;font-size:clamp(3rem,6.5vw,7.5rem)!important;line-height:.82;letter-spacing:.01em;max-width:min(100%,22rem);text-align:left}
+.pop-up-gallery__inner .nuskow-stacked-title{display:flex!important;flex-direction:column;align-items:flex-start;gap:0;font-size:clamp(4.5rem,9vw,10rem)!important;line-height:.8;letter-spacing:.01em;max-width:min(100%,26rem);text-align:left}
 .pop-up-gallery__inner .nuskow-stacked-title .hero-line{display:block}
-@media(max-width:48.0625em){.pop-up-gallery__inner .nuskow-stacked-title{font-size:clamp(2.25rem,11vw,3.75rem)!important;max-width:100%}}
+.pop-up-gallery__inner .counting-txt-reponsive.nuskow-stacked-title{display:none!important}
+@media(max-width:48.0625em){.pop-up-gallery__inner .nuskow-stacked-title{font-size:clamp(3.5rem,15vw,5.75rem)!important;max-width:100%}}
 .slider-morph-rental{background:#fff}
 .slider-morph-rental #path-1{fill:#111!important}
 .slider-morph-rental .slider-morph__see-more-btn{border-bottom-color:#111;color:#111}
@@ -92,10 +93,10 @@
 .slider-morph-rental .slider-morph-responsive__card{background:#111!important;color:#fff}
 .slider-morph-rental .slider-morph-responsive__card .card-content h3,.slider-morph-rental .slider-morph-responsive__card .card-content p,.slider-morph-rental .slider-morph-responsive__card .card-content span{color:#fff}
 .slider-morph-rental .slider-morph-responsive{display:grid;gap:1rem;padding:1.25rem}
-.slider-morph-rental .slider-morph-responsive__card{display:grid;grid-template-columns:1fr;overflow:hidden;border-radius:16px}
-.slider-morph-rental .slider-morph-responsive__card .card-background{aspect-ratio:16/9;overflow:hidden;background:#111}
-.slider-morph-rental .slider-morph-responsive__card .card-background img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;opacity:1}
-.slider-morph-rental .slider-morph-responsive__card .card-content{padding:1rem 1.1rem 1.25rem}
+.slider-morph-rental .slider-morph-responsive__card{position:relative;display:block!important;height:auto!important;aspect-ratio:16/9;width:100%;overflow:hidden;border-radius:16px;background:#111!important}
+.slider-morph-rental .slider-morph-responsive__card .card-background{position:absolute!important;inset:0;height:100%!important;width:100%!important;aspect-ratio:unset}
+.slider-morph-rental .slider-morph-responsive__card .card-background img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;opacity:.75}
+.slider-morph-rental .slider-morph-responsive__card .card-content{position:absolute!important;inset:0;z-index:1;height:100%!important;display:flex;flex-direction:column;justify-content:flex-end;padding:1rem 1.1rem 1.25rem;background:linear-gradient(180deg,rgba(0,0,0,0) 30%,rgba(0,0,0,.88) 100%)}
 .slider-morph-rental .slider-morph-responsive .btn{background:#111;color:#fff;border:1px solid rgba(255,255,255,.2)}
 .faq-section.latest-news-light{background:#fff;color:#000}
 .faq-section .faq-section__content{max-width:56rem;margin:0 auto;padding-top:4.6875rem}
@@ -506,12 +507,6 @@ Mariages, événements, séjours ou déplacements professionnels : chaque locati
                         <span class="heading-no-revert hero-line">CARS</span>
                         <span class="heading-no-revert hero-line">PARTOUT</span>
                         <span class="heading-no-revert hero-line">EN FRANCE</span>
-                    </h3>
-                    <h3 class="counting-txt-reponsive heading nuskow-stacked-title" aria-label="NuskowCars partout en France">
-                        <span class="hero-line">NUSKOW</span>
-                        <span class="hero-line">CARS</span>
-                        <span class="hero-line">PARTOUT</span>
-                        <span class="hero-line">EN FRANCE</span>
                     </h3>
                 </div>
             </section>
