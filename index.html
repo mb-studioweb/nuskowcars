@@ -47,6 +47,8 @@
 .hero__video-bg{overflow:hidden;pointer-events:none;position:absolute;top:0;left:0;right:0;bottom:0;width:100%;height:105%;z-index:-1}
 .hero__video-bg .hero__video{width:100%;height:100%;object-fit:cover;display:block}
 .hero__video-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,.55) 100%);pointer-events:none}
+.hero__inner h1 .main-text .hero-country-word{white-space:nowrap;display:inline-block}
+@media(max-width:48.0625em){html[lang="de-DE"] .hero__inner h1{font-size:clamp(5.25rem,16.5vw,7rem)!important;line-height:.78}html[lang="de-DE"] .hero__inner h1 .main-text{word-break:keep-all;hyphens:none}}
 #gradient-canvas-container{display:none!important}
 .fleet-pricing{display:flex;flex-wrap:wrap;gap:1.25rem 2.5rem;margin-top:.75rem}
 .fleet-pricing__item{display:flex;flex-direction:column;gap:.25rem}
@@ -226,7 +228,7 @@ section.slider-morph-responsive.slider-morph-rental>a.btn.wa-step-link{display:n
                     <h1>
                         <span class="sub-text anim-fade-in" data-i18n-html="home.hero_title_html">
                         Louez votre <b>véhicule de rêve</b>                        </span>
-                        <span class="main-text heading" data-i18n="home.hero_country"> en France </span>
+                        <span class="main-text heading" data-i18n-html="home.hero_country"> en France </span>
                     </h1>
                     <p class="anim-fade-in small-description">
                         <span data-i18n="home.hero_agency">Agence de location de prestige</span>                    </p>
