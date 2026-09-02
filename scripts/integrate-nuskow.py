@@ -13,6 +13,16 @@ ROOT = Path("/workspace")
 ARCHIVE = ROOT / "archive/nuskowcars-original-20250902"
 ASSETS = ROOT / "assets"
 CDN = ARCHIVE / "assets/cdn.prod.website-files.com"
+GLOBAL_CDN = "666a07b245930cb23ff3b913"
+VEHICLE_CDN = "666bb9e682a568931397e7f9"
+HOMEPAGE_FEATURE_SLUG = "lamborghini-huracan-evo"
+HOMEPAGE_GALLERY_SLUG = "audi-rsq8-apr-2023"
+STEP_VEHICLE_SLUGS = [
+    "audi-rs3-2024",
+    "mercedes-benz-g63-amg",
+    "lamborghini-huracan-evo",
+    "bmw-m3-competition-510ch-2025",
+]
 
 SITE = {
     "name": "NuskowCars",
@@ -647,34 +657,118 @@ def fleet_list_item(v: dict, t: dict, prefix: str = "") -> str:
 
 
 def copy_branding_assets():
-    logo_src = CDN / "666a07b245930cb23ff3b913/666a4156648b83c7d4054d94_Logo nuskow off-p-800.jpg"
-    fav_src = CDN / "666a07b245930cb23ff3b913/6672e4cd45fb958c490406ca_mini 2.jpg"
-    apple_src = CDN / "666a07b245930cb23ff3b913/6672e4689aebf2e4a633a119_minii.jpg"
+    logo_src = CDN / f"{GLOBAL_CDN}/666a4156648b83c7d4054d94_Logo nuskow off-p-800.jpg"
+    fav_src = CDN / f"{GLOBAL_CDN}/6672e4cd45fb958c490406ca_mini 2.jpg"
+    apple_src = CDN / f"{GLOBAL_CDN}/6672e4689aebf2e4a633a119_minii.jpg"
     shutil.copy2(logo_src, ASSETS / "logo.png")
     shutil.copy2(fav_src, ASSETS / "favicon.png")
     shutil.copy2(apple_src, ASSETS / "apple-touch-icon.png")
-    # hero video from archive LFS
-    hero_vid = ARCHIVE / "assets/cdn.prod.website-files.com/666a07b245930cb23ff3b913/668801726c7ee14880ab8e85_vidéo background(1)(1)-transcode.mp4"
+    hero_vid = ARCHIVE / f"assets/cdn.prod.website-files.com/{GLOBAL_CDN}/668801726c7ee14880ab8e85_vidéo background(1)(1)-transcode.mp4"
     if hero_vid.exists():
         shutil.copy2(hero_vid, ASSETS / "hero.mp4")
-    # hero image from g63
-    g63_img = list((CDN / "666bb9e682a568931397e7f9").glob("*_1.jpg"))
-    if g63_img:
-        shutil.copy2(g63_img[0], ASSETS / "1.jpg")
-        shutil.copy2(g63_img[0], ASSETS / "hero-flotte.jpg")
-        shutil.copy2(g63_img[0], ASSETS / "og-share.jpg")
+    hero_img = ASSETS / "vehicules" / HOMEPAGE_FEATURE_SLUG / "1.jpg"
+    flotte_img = ASSETS / "vehicules" / "mercedes-benz-g63-amg" / "1.jpg"
+    if hero_img.exists():
+        shutil.copy2(hero_img, ASSETS / "1.jpg")
+        shutil.copy2(hero_img, ASSETS / "og-share.jpg")
+    if flotte_img.exists():
+        shutil.copy2(flotte_img, ASSETS / "hero-flotte.jpg")
+
+
+def vehicle_image_keywords(slug: str, title: str) -> list[str]:
+    overrides = {
+        "audi-rs3-2024": ["rs3"],
+        "audi-rs6-performance": ["rs6"],
+        "audi-rsq8-apr-2023": ["rsq8", "rsq"],
+        "bmw-m3-competition-510ch-2025": ["m3"],
+        "ferrari-488": ["488", "ferrari"],
+        "lamborghini-huracan-evo": ["huracan"],
+        "lamborghini-urus": ["urus"],
+        "lamborghini-urus-2": ["urus", "performante"],
+        "mercedes-benz-g63-amg": ["g63"],
+        "mercedes-benz-gle63s-amg-coupe": ["gle"],
+        "mercedes-gt63-amg": ["gt63"],
+        "mercedes-gt63s-eperformance": ["gt63", "eperformance", "e-performance"],
+        "mercedes-benz-cla45s-amg": ["cla45", "cla"],
+    }
+    if slug in overrides:
+        return overrides[slug]
+    tokens = []
+    for part in slug.replace("-", " ").split():
+        if len(part) >= 2:
+            tokens.append(part)
+    for part in title.lower().replace("é", "e").split():
+        if len(part) >= 2:
+            tokens.append(part)
+    return list(dict.fromkeys(tokens))
+
+
+def contaminant_in_name(name: str, slug: str, title: str) -> bool:
+    name = name.lower()
+    allowed = " ".join(vehicle_image_keywords(slug, title))
+    markers = [
+        ("gle", ("gle", "gle63")),
+        ("g63", ("g63",)),
+        ("rs3", ("rs3",)),
+        ("rs6", ("rs6",)),
+        ("rsq8", ("rsq8", "rsq")),
+        ("huracan", ("huracan",)),
+        ("urus", ("urus",)),
+        ("ferrari", ("ferrari", "488")),
+        ("488", ("ferrari", "488")),
+        (" m3", ("m3",)),
+        ("cla45", ("cla45", "cla")),
+        ("gt63", ("gt63",)),
+        ("audi_01", ("audi", "rs3", "rs6", "rsq8")),
+        ("performante", ("performante", "urus")),
+    ]
+    for needle, owners in markers:
+        if needle in name and not any(owner in allowed for owner in owners):
+            return True
+    return False
+
+
+def is_vehicle_gallery_image(rel_path: str, slug: str, title: str) -> bool:
+    name = Path(rel_path).name.lower()
+    if "logo" in name or "-p-" in name or "poster" in name:
+        return False
+    if f"/{GLOBAL_CDN}/" in rel_path.replace("\\", "/"):
+        return False
+    if not re.search(r"(?:_[1-9]| [1-9])\.jpg$", name):
+        return False
+    if contaminant_in_name(name, slug, title):
+        return False
+    keywords = vehicle_image_keywords(slug, title)
+    # Numbered Webflow exports often omit the model name in the filename.
+    if any(kw in name for kw in keywords):
+        return True
+    return f"/{VEHICLE_CDN}/" in rel_path.replace("\\", "/")
 
 
 def extract_vehicle_images(slug: str) -> list[str]:
+    vehicle = next(v for v in VEHICLES if v["slug"] == slug)
     html = (ARCHIVE / "vehicules" / f"{slug}.html").read_text(encoding="utf-8", errors="replace")
-    imgs = re.findall(r'src="(\.\./assets/[^"]+\.jpg)"', html)
     paths = []
-    for i in imgs:
-        if "-p-" in i or "poster" in i:
-            continue
-        rel = i.replace("../assets/", "")
-        paths.append(rel)
+    for match in re.findall(r'src="(\.\./assets/[^"]+\.jpg)"', html):
+        rel = match.replace("../assets/", "")
+        if is_vehicle_gallery_image(rel, slug, vehicle["title"]):
+            paths.append(rel)
     return list(dict.fromkeys(paths))[:6]
+
+
+def copy_cla45_assets():
+    rels = [
+        f"{VEHICLE_CDN}/667d76ae08ad8b729408e07e_1.jpg",
+        f"{VEHICLE_CDN}/667d76b0616b791515617d50_2.jpg",
+        f"{VEHICLE_CDN}/667d76b108f927ea95e64c28_3.jpg",
+        f"{VEHICLE_CDN}/667d76b3c2791074f4b4f83a_4.jpg",
+    ]
+    dest = ASSETS / "vehicules/mercedes-benz-cla45s-amg"
+    dest.mkdir(parents=True, exist_ok=True)
+    for i, rel in enumerate(rels, 1):
+        src = ARCHIVE / "assets/cdn.prod.website-files.com" / rel
+        if src.exists():
+            shutil.copy2(src, dest / f"{i}.jpg")
 
 
 def copy_vehicle_assets():
@@ -682,7 +776,14 @@ def copy_vehicle_assets():
         slug = v["slug"]
         dest = ASSETS / "vehicules" / slug
         dest.mkdir(parents=True, exist_ok=True)
+        archive_html = ARCHIVE / "vehicules" / f"{slug}.html"
+        if not archive_html.exists():
+            continue
         srcs = extract_vehicle_images(slug)
+        if not srcs:
+            continue
+        for old in dest.glob("*.jpg"):
+            old.unlink()
         for idx, rel in enumerate(srcs, 1):
             src = ARCHIVE / "assets" / rel
             if src.exists():
@@ -804,6 +905,149 @@ def mobile_fleet_html(lang: str = "fr", prefix: str = "") -> str:
     return "\n".join(blocks)
 
 
+def vehicle_img(slug: str, index: int = 1, prefix: str = "") -> str:
+    return f"{prefix}assets/vehicules/{slug}/{index}.jpg"
+
+
+def homepage_extra_css() -> str:
+    return """
+.slider-morph-rental.slider-morph{position:relative}
+.slider-morph-rental .slider-morph__bgs{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.slider-morph-rental .slider-morph__bgs img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .7s ease}
+.slider-morph-rental .slider-morph__bgs img.is-active{opacity:.32}
+.slider-morph-rental #morph-svg,.slider-morph-rental .slider-morph__panel,.slider-morph-rental .static-numbered,.slider-morph-rental .static-description,.slider-morph-rental .slider-morph__see-more-btn{position:relative;z-index:1}
+"""
+
+
+def patch_homepage_images(text: str, prefix: str = "") -> str:
+    gallery_slug = HOMEPAGE_GALLERY_SLUG
+    feature_slug = HOMEPAGE_FEATURE_SLUG
+
+    step_markers = [
+        ('data-wa-step="1"', STEP_VEHICLE_SLUGS[0]),
+        ('data-wa-step="2"', STEP_VEHICLE_SLUGS[1]),
+        ('data-wa-step="3"', STEP_VEHICLE_SLUGS[2]),
+        ('data-wa-step="4"', STEP_VEHICLE_SLUGS[3]),
+    ]
+    responsive = re.search(
+        r'<section class="slider-morph-responsive slider-morph-rental">.*?</section>',
+        text,
+        flags=re.S,
+    )
+    if responsive:
+        block = responsive.group(0)
+        for marker, slug in step_markers:
+            block = re.sub(
+                rf'({marker}[^>]*>[\s\S]*?<img src=")[^"]+(")',
+                rf'\1{vehicle_img(slug, prefix=prefix)}\2',
+                block,
+                count=1,
+            )
+        text = text[: responsive.start()] + block + text[responsive.end() :]
+
+    text = re.sub(
+        r'(<img src=")(?:assets/1\.jpg|[^"]+)(\" alt="[^"]*" class="gallery__content")',
+        rf'\1{vehicle_img(gallery_slug, prefix=prefix)}\2',
+        text,
+        count=1,
+    )
+    text = re.sub(
+        r'<section class="gallery-responsive">\s*<img src="[^"]+" alt="[^"]*" />\s*</section>',
+        f'<section class="gallery-responsive"><img src="{vehicle_img(feature_slug, prefix=prefix)}" alt="{SITE["name"]}" /></section>',
+        text,
+        count=1,
+        flags=re.S,
+    )
+
+    popup_slugs = [v["slug"] for v in VEHICLES if not v.get("on_demand")][:6]
+    popup_html = "\n".join(
+        f'                        <div class="media"><img src="{vehicle_img(slug, prefix=prefix)}" alt="{SITE["name"]}" /></div>'
+        for slug in popup_slugs
+    )
+    text = re.sub(
+        r'<div class="container">.*?</div>\s*<div class="preload-medias">',
+        f'<div class="container">\n{popup_html}\n                    </div>\n                    <div class="preload-medias">',
+        text,
+        count=1,
+        flags=re.S,
+    )
+    preload_html = "\n".join(
+        f'                        <img src="{vehicle_img(slug, prefix=prefix)}" alt="{SITE["name"]}" />'
+        for slug in popup_slugs
+    )
+    text = re.sub(
+        r'<div class="preload-medias">.*?</div>\s*</div>\s*<div class="pop-up-gallery__inner">',
+        f'<div class="preload-medias">\n{preload_html}\n                    </div>\n                </div>\n                <div class="pop-up-gallery__inner">',
+        text,
+        count=1,
+        flags=re.S,
+    )
+
+    morph_bgs = "\n".join(
+        f'                    <img src="{vehicle_img(slug, prefix=prefix)}" alt="" class="{"is-active" if i == 0 else ""}" data-morph-step="{i}" />'
+        for i, slug in enumerate(STEP_VEHICLE_SLUGS)
+    )
+    while text.count('<div class="slider-morph__bgs"') > 1:
+        text = re.sub(
+            r'\s*<div class="slider-morph__bgs" aria-hidden="true">.*?</div>',
+            "",
+            text,
+            count=1,
+            flags=re.S,
+        )
+    if "slider-morph__bgs" not in text:
+        text = text.replace(
+            '<section class="slider-morph slider-morph-rental" id="etapes-location">',
+            f'<section class="slider-morph slider-morph-rental" id="etapes-location">\n                <div class="slider-morph__bgs" aria-hidden="true">\n{morph_bgs}\n                </div>',
+            1,
+        )
+    else:
+        text = re.sub(
+            r'<div class="slider-morph__bgs" aria-hidden="true">.*?</div>',
+            f'<div class="slider-morph__bgs" aria-hidden="true">\n{morph_bgs}\n                </div>',
+            text,
+            count=1,
+            flags=re.S,
+        )
+
+    if "initMorphBackgrounds" not in text:
+        text = text.replace(
+            "function boot() {\n    fixSingleGallery();",
+            """function initMorphBackgrounds() {
+    var section = document.getElementById("etapes-location");
+    if (!section) return;
+    var imgs = Array.from(section.querySelectorAll(".slider-morph__bgs img"));
+    if (!imgs.length) return;
+    var nums = Array.from(section.querySelectorAll(".static-numbered .numb"));
+    function setStep(i) {
+      imgs.forEach(function (img, n) { img.classList.toggle("is-active", n === i); });
+    }
+    setStep(0);
+    if (window.ScrollTrigger && nums.length) {
+      nums.forEach(function (el, i) {
+        ScrollTrigger.create({
+          trigger: section,
+          start: "top+=" + (i * (window.innerHeight * 0.18)) + " top",
+          end: "top+=" + ((i + 1) * (window.innerHeight * 0.18)) + " top",
+          onEnter: function () { setStep(i); },
+          onEnterBack: function () { setStep(i); },
+        });
+      });
+    }
+  }
+
+  function boot() {
+    fixSingleGallery();
+    initMorphBackgrounds();""",
+            1,
+        )
+
+    if homepage_extra_css().strip() not in text:
+        text = text.replace("</style>", homepage_extra_css() + "\n</style>", 1)
+
+    return text
+
+
 def patch_index(path: Path, lang: str = "fr", prefix: str = ""):
     page = "index.html" if lang == "fr" else ("german.html" if lang == "de" else "en.html")
     text = path.read_text(encoding="utf-8")
@@ -833,12 +1077,7 @@ def patch_index(path: Path, lang: str = "fr", prefix: str = ""):
         flags=re.S,
     )
 
-    # Pop-up gallery images
-    gallery_imgs = [f"assets/vehicules/{v['slug']}/1.jpg" for v in VEHICLES[:6]]
-    for i, img in enumerate(gallery_imgs):
-        text = re.sub(rf'<div class="media"><img src="assets/[^"]+" alt="[^"]*" /></div>', f'<div class="media"><img src="{prefix}{img}" alt="{SITE["name"]}" /></div>', text, count=1)
-    for img in gallery_imgs:
-        text = re.sub(rf'<img src="assets/[^"]+" alt="[^"]*" />', f'<img src="{prefix}{img}" alt="{SITE["name"]}" />', text, count=1)
+    text = patch_homepage_images(text, prefix)
 
     # Content section Nuskow
     if lang == "fr":
@@ -857,11 +1096,12 @@ def patch_index(path: Path, lang: str = "fr", prefix: str = ""):
             "",
         )
 
-    # Morph slider background images
-    morph_imgs = [f"{prefix}assets/vehicules/{v['slug']}/1.jpg" for v in VEHICLES[:4]]
+    # Morph slider background images (legacy btcar paths — no-op if absent)
+    morph_imgs = [vehicle_img(slug, prefix=prefix) for slug in STEP_VEHICLE_SLUGS]
     for old_pat in ["g800-brabus/1.jpg", "audi-rs6/1.jpg", "Lamborghini-Huracan-Tecnica/1.jpg", "sl63s/1.jpg"]:
         if morph_imgs:
-            text = text.replace(old_pat, morph_imgs.pop(0).replace(f"{prefix}assets/", "assets/") if not prefix else morph_imgs[-1], 1)
+            replacement = morph_imgs.pop(0).replace(f"{prefix}assets/", "assets/") if not prefix else morph_imgs.pop(0)
+            text = text.replace(old_pat, replacement, 1)
 
     text = text.replace('alt="G800 Brabus"', f'alt="{SITE["name"]}"')
     text = text.replace('alt="Audi RS6"', f'alt="{SITE["name"]}"')
@@ -968,8 +1208,9 @@ def create_lang_copies():
 
 def main():
     print("Copying assets...")
-    copy_branding_assets()
     copy_vehicle_assets()
+    copy_cla45_assets()
+    copy_branding_assets()
     if (ASSETS / "hero-flotte.jpg").exists():
         shutil.copy2(ASSETS / "hero-flotte.jpg", ASSETS / "hero-fotte.jpg")
 

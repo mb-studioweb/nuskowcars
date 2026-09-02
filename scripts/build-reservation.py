@@ -38,6 +38,7 @@ PAGE_KEYS = {"fr": "reservation.html", "de": "german/reservation.html", "en": "e
 PREFIX = {"fr": "", "de": "../", "en": "../"}
 
 BT_OVERRIDE = """
+body{opacity:1!important}
 .reservation-page{background:#0a0a0a;color:#fff;min-height:100vh;padding:clamp(6rem,10vw,8rem) 1.25rem 4rem}
 .reservation-page .section-reservation{max-width:72rem;margin:0 auto}
 .reservation-page h1{font-family:Inter Tight,sans-serif;font-weight:300;font-size:clamp(2rem,1rem + 4vw,3.5rem);text-align:center;margin:0 0 2.5rem;letter-spacing:-.02em}
@@ -103,10 +104,21 @@ def copy_reservation_assets():
                     refs.add(path)
     for rel in refs:
         src = ARCHIVE / rel
-        dst = ROOT / rel.replace("assets/cdn", "assets/reservation/cdn", 1)
+        dst = ROOT / rel.replace("assets/cdn.prod.website-files.com/", "assets/reservation/cdn/", 1)
         if src.exists():
             dst.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(src, dst)
+
+    # Rattrapage si des fichiers ont été copiés sous l'ancien chemin
+    legacy = RES_ASSETS / "cdn.prod.website-files.com"
+    if legacy.exists():
+        for src in legacy.rglob("*"):
+            if src.is_file():
+                rel = src.relative_to(legacy)
+                dst = RES_ASSETS / "cdn" / rel
+                dst.parent.mkdir(parents=True, exist_ok=True)
+                if not dst.exists():
+                    shutil.copy2(src, dst)
 
 
 def rewrite_asset_paths(html: str, prefix: str) -> str:
@@ -146,6 +158,12 @@ def reservation_page(lang: str) -> str:
     src_html = ARCHIVE_SOURCES[lang].read_text(encoding="utf-8", errors="replace")
     body = extract_form_body(src_html)
     body = rewrite_asset_paths(body, prefix)
+    body = re.sub(
+        r'(<div[^>]*if-step="Vehicule choice"[^>]*class="form_step)(")',
+        r"\1 is-active\2",
+        body,
+        count=1,
+    )
     page = PAGE_KEYS[lang]
     titles = {"fr": "Réservation", "de": "Reservierung", "en": "Reservation"}
     t = integrate.TRANSLATIONS[lang]
@@ -172,7 +190,6 @@ def reservation_page(lang: str) -> str:
   </section>
 </main>
 {footer_html(lang, prefix)}
-<script src="{prefix}wp-includes/js/jquery/jquery.min.js"></script>
 <script src="{prefix}assets/reservation/cdn/js/webflow.schunk.36b8fb49256177c8.js"></script>
 <script src="{prefix}assets/reservation/cdn/js/webflow.schunk.b4d22231aff0ace7.js"></script>
 <script src="{prefix}assets/reservation/cdn/js/webflow.8681f271.6361df568e788d72.js"></script>

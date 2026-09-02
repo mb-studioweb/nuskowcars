@@ -101,10 +101,17 @@
 @media(max-width:48em){.faq-section .accordion__question{font-size:1rem;line-height:1.4;padding-right:2.5rem}.faq-section .accordion__question .plus,.faq-section .accordion__question .minus{top:1.35rem}}
 .faq-section .accordion__answer p{padding:0 0 1.5rem;font-family:Inter Tight,sans-serif;font-size:clamp(1rem,.85rem + .4vw,1.125rem);line-height:1.55;opacity:.85}
 .faq-section__cta{text-align:center;margin-top:2.5rem}
+
+.slider-morph-rental.slider-morph{position:relative}
+.slider-morph-rental .slider-morph__bgs{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.slider-morph-rental .slider-morph__bgs img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .7s ease}
+.slider-morph-rental .slider-morph__bgs img.is-active{opacity:.32}
+.slider-morph-rental #morph-svg,.slider-morph-rental .slider-morph__panel,.slider-morph-rental .static-numbered,.slider-morph-rental .static-description,.slider-morph-rental .slider-morph__see-more-btn{position:relative;z-index:1}
+
 </style>
   </head>
   <body>
-            <header class="header">
+                                        <header class="header">
       <div class="header__inner">
         <a href="index.html" class="a">
           <img src="assets/logo.png" alt="NuskowCars" class="header__logo" />
@@ -138,7 +145,7 @@
               <span class="a-sub anim-sub-a">Nos véhicules</span>
             </a>
           </li>
-                    <li class="header__li">
+          <li class="header__li">
             <a class="header__a a" href="reservation.html">
               <span class="a-main anim-a">Réservation</span>
               <span class="a-sub anim-sub-a">En ligne</span>
@@ -190,12 +197,10 @@ Mariages, événements, séjours ou déplacements professionnels : chaque locati
                 <div class="background-canvas" id="gradient-canvas-container" hidden></div>
             </section>
             <div class="wrapper-relative remove-canvas">
-				<section class="gallery-responsive">
-					<img src="assets/vehicules/lamborghini-huracan-evo/1.jpg" alt="NuskowCars" />
-				  </section>
+				<section class="gallery-responsive"><img src="assets/vehicules/lamborghini-huracan-evo/1.jpg" alt="NuskowCars" /></section>
                 <section class="gallery gallery--single">
                     <div class="gallery__wrapper">
-                        <img src="assets/1.jpg" alt="NuskowCars — véhicule de prestige" class="gallery__content"/>
+                        <img src="assets/vehicules/audi-rsq8-apr-2023/1.jpg" alt="NuskowCars — véhicule de prestige" class="gallery__content"/>
                     </div>
                 </section>
 				
@@ -412,20 +417,20 @@ Mariages, événements, séjours ou déplacements professionnels : chaque locati
                 <div class="mwg_effect012">
                     <!-- the number of container media is 6(regardles of how many images are there), should be increased if they want more images to pop up or decreased if they want less. If there are only 2 images they will multiply 6 times, if you want only 2 images to show decrease the container media. happy coding! ^_^ -->
                     <div class="container">
-                        <div class="media"><img src="assets/vehicules/lamborghini-huracan-evo/1.jpg" alt="NuskowCars" /></div>
-                        <div class="media"><img src="assets/assets/vehicules/audi-rs3-2024/1.jpg" alt="NuskowCars" /></div>
-                        <div class="media"><img src="assets/assets/vehicules/audi-rs6-performance/1.jpg" alt="NuskowCars" /></div>
-                        <div class="media"><img src="assets/assets/vehicules/audi-rsq8-apr-2023/1.jpg" alt="NuskowCars" /></div>
-                        <div class="media"><img src="assets/vehicules/lamborghini-huracan-evo/2.jpg" alt="NuskowCars" /></div>
                         <div class="media"><img src="assets/vehicules/audi-rs3-2024/1.jpg" alt="NuskowCars" /></div>
+                        <div class="media"><img src="assets/vehicules/audi-rsq8-apr-2023/1.jpg" alt="NuskowCars" /></div>
+                        <div class="media"><img src="assets/vehicules/bmw-m3-competition-510ch-2025/1.jpg" alt="NuskowCars" /></div>
+                        <div class="media"><img src="assets/vehicules/lamborghini-huracan-evo/1.jpg" alt="NuskowCars" /></div>
+                        <div class="media"><img src="assets/vehicules/lamborghini-urus/1.jpg" alt="NuskowCars" /></div>
+                        <div class="media"><img src="assets/vehicules/lamborghini-urus-2/1.jpg" alt="NuskowCars" /></div>
                     </div>
                     <div class="preload-medias">
-                        <img src="assets/1.jpg" alt="NuskowCars" />
                         <img src="assets/vehicules/audi-rs3-2024/1.jpg" alt="NuskowCars" />
-                        <img src="assets/vehicules/mercedes-benz-g63-amg/1.jpg" alt="NuskowCars" />
+                        <img src="assets/vehicules/audi-rsq8-apr-2023/1.jpg" alt="NuskowCars" />
+                        <img src="assets/vehicules/bmw-m3-competition-510ch-2025/1.jpg" alt="NuskowCars" />
                         <img src="assets/vehicules/lamborghini-huracan-evo/1.jpg" alt="NuskowCars" />
-                        <img src="assets/vehicules/lamborghini-huracan-evo/2.jpg" alt="NuskowCars" />
-                        <img src="assets/vehicules/audi-rs3-2024/1.jpg" alt="NuskowCars" />
+                        <img src="assets/vehicules/lamborghini-urus/1.jpg" alt="NuskowCars" />
+                        <img src="assets/vehicules/lamborghini-urus-2/1.jpg" alt="NuskowCars" />
                     </div>
                 </div>
                 <div class="pop-up-gallery__inner">
@@ -471,6 +476,12 @@ Mariages, événements, séjours ou déplacements professionnels : chaque locati
             </section>
 
             <section class="slider-morph slider-morph-rental" id="etapes-location">
+                <div class="slider-morph__bgs" aria-hidden="true">
+                    <img src="assets/vehicules/audi-rs3-2024/1.jpg" alt="" class="is-active" data-morph-step="0" />
+                    <img src="assets/vehicules/mercedes-benz-g63-amg/1.jpg" alt="" class="" data-morph-step="1" />
+                    <img src="assets/vehicules/lamborghini-huracan-evo/1.jpg" alt="" class="" data-morph-step="2" />
+                    <img src="assets/vehicules/bmw-m3-competition-510ch-2025/1.jpg" alt="" class="" data-morph-step="3" />
+                </div>
                 <!-- MORPHING SVG -->
                 <svg fill=none height=700 id=morph-svg viewBox="0 0 700 700"width=700 xmlns=http://www.w3.org/2000/svg>
                     <path d="M567.231 351.811C448.807 351.811 352.806 255.571 352.806 136.852C352.806 255.571 256.804 351.811 138.38 351.811C136.581 351.811 134.788 351.789 133 351.745V351.878C134.788 351.834 136.581 351.811 138.38 351.811C256.548 351.811 352.39 447.636 352.804 566H352.807C353.221 447.636 449.064 351.811 567.231 351.811Z"id=path-1 fill=#111111 />
@@ -562,7 +573,7 @@ Mariages, événements, séjours ou déplacements professionnels : chaque locati
                 </a>
                                 <a href="https://wa.me/33637002045" class="slider-morph-responsive__card a wa-step-link" data-wa-step="4" target="_blank" rel="noopener">
                     <div class="card-background">
-                        <img src="assets/1.jpg" alt="NuskowCars"/>
+                        <img src="assets/vehicules/bmw-m3-competition-510ch-2025/1.jpg" alt="NuskowCars"/>
                     </div>
                     <div class="card-content">
                         <h3>04 — Prise en charge</h3>
@@ -800,8 +811,32 @@ Mariages, événements, séjours ou déplacements professionnels : chaque locati
     goTo(0, false);
   }
 
+  function initMorphBackgrounds() {
+    var section = document.getElementById("etapes-location");
+    if (!section) return;
+    var imgs = Array.from(section.querySelectorAll(".slider-morph__bgs img"));
+    if (!imgs.length) return;
+    var nums = Array.from(section.querySelectorAll(".static-numbered .numb"));
+    function setStep(i) {
+      imgs.forEach(function (img, n) { img.classList.toggle("is-active", n === i); });
+    }
+    setStep(0);
+    if (window.ScrollTrigger && nums.length) {
+      nums.forEach(function (el, i) {
+        ScrollTrigger.create({
+          trigger: section,
+          start: "top+=" + (i * (window.innerHeight * 0.18)) + " top",
+          end: "top+=" + ((i + 1) * (window.innerHeight * 0.18)) + " top",
+          onEnter: function () { setStep(i); },
+          onEnterBack: function () { setStep(i); },
+        });
+      });
+    }
+  }
+
   function boot() {
     fixSingleGallery();
+    initMorphBackgrounds();
     document.querySelectorAll("[data-fleet-swiper]").forEach(initFleetSwiper);
   }
 
