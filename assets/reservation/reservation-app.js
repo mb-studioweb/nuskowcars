@@ -1,104 +1,117 @@
 (function () {
+  var OFFER_LABELS = {
+    w24_250: { fr: "24h semaine (250 km)", de: "24h Wochentags (250 km)", en: "24h weekday (250 km)" },
+    w24_unlim: { fr: "24h semaine (illimité)", de: "24h Wochentags (unbegrenzt)", en: "24h weekday (unlimited)" },
+    we24_250: { fr: "24h week-end (250 km)", de: "24h Wochenende (250 km)", en: "24h weekend (250 km)" },
+    we24_unlim: { fr: "24h week-end (illimité)", de: "24h Wochenende (unbegrenzt)", en: "24h weekend (unlimited)" },
+    w24: { fr: "24h semaine", de: "24h Wochentags", en: "24h weekday" },
+    we24: { fr: "24h week-end", de: "24h Wochenende", en: "24h weekend" },
+    we48: { fr: "48h week-end", de: "48h Wochenende", en: "48h weekend" },
+    we48_unlim: { fr: "48h week-end (illimité)", de: "48h Wochenende (unbegrenzt)", en: "48h weekend (unlimited)" },
+    h72: { fr: "72h", de: "72h", en: "72h" },
+    d7: { fr: "7 jours", de: "7 Tage", en: "7 days" },
+  };
+
   var VEHICLES = [
     {
       id: "g63",
-      name: "Mercedes-Benz G63 AMG",
+      names: { fr: "Mercedes-Benz G63 AMG", de: "Mercedes-Benz G63 AMG", en: "Mercedes-Benz G63 AMG" },
       image: "assets/vehicules/mercedes-benz-g63-amg/1.jpg",
       from: "699 €",
       offers: [
-        { label: "24h semaine (250 km)", price: "699 €" },
-        { label: "24h semaine (illimité)", price: "999 €" },
-        { label: "24h week-end", price: "1 300 €" },
-        { label: "48h week-end", price: "2 200 €" },
-        { label: "72h", price: "2 800 €" },
-        { label: "7 jours", price: "4 500 €" },
+        { key: "w24_250", price: "699 €" },
+        { key: "w24_unlim", price: "999 €" },
+        { key: "we24", price: "1 300 €" },
+        { key: "we48", price: "2 200 €" },
+        { key: "h72", price: "2 800 €" },
+        { key: "d7", price: "4 500 €" },
       ],
     },
     {
       id: "gle",
-      name: "Mercedes GLE 63 S AMG Coupé",
+      names: { fr: "Mercedes GLE 63 S AMG Coupé", de: "Mercedes GLE 63 S AMG Coupé", en: "Mercedes GLE 63 S AMG Coupé" },
       image: "assets/vehicules/mercedes-benz-gle63s-amg-coupe/1.jpg",
       from: "499 €",
       offers: [
-        { label: "24h semaine (250 km)", price: "499 €" },
-        { label: "24h semaine (illimité)", price: "699 €" },
-        { label: "24h week-end (250 km)", price: "1 000 €" },
-        { label: "48h week-end", price: "1 900 €" },
-        { label: "7 jours", price: "3 800 €" },
+        { key: "w24_250", price: "499 €" },
+        { key: "w24_unlim", price: "699 €" },
+        { key: "we24_250", price: "1 000 €" },
+        { key: "we48", price: "1 900 €" },
+        { key: "d7", price: "3 800 €" },
       ],
     },
     {
       id: "rs3",
-      name: "Audi RS3 2024",
+      names: { fr: "Audi RS3 2024", de: "Audi RS3 2024", en: "Audi RS3 2024" },
       image: "assets/vehicules/audi-rs3-2024/1.jpg",
       from: "299 €",
       offers: [
-        { label: "24h semaine (250 km)", price: "299 €" },
-        { label: "24h semaine (illimité)", price: "399 €" },
-        { label: "48h week-end", price: "900 €" },
-        { label: "72h", price: "1 100 €" },
-        { label: "7 jours", price: "1 770 €" },
+        { key: "w24_250", price: "299 €" },
+        { key: "w24_unlim", price: "399 €" },
+        { key: "we48", price: "900 €" },
+        { key: "h72", price: "1 100 €" },
+        { key: "d7", price: "1 770 €" },
       ],
     },
     {
       id: "m3",
-      name: "BMW M3 Compétition 2025",
+      names: { fr: "BMW M3 Compétition 2025", de: "BMW M3 Competition 2025", en: "BMW M3 Competition 2025" },
       image: "assets/vehicules/bmw-m3-competition-510ch-2025/1.jpg",
       from: "399 €",
       offers: [
-        { label: "24h semaine (250 km)", price: "399 €" },
-        { label: "24h semaine (illimité)", price: "499 €" },
-        { label: "48h week-end", price: "1 200 €" },
-        { label: "72h", price: "1 400 €" },
-        { label: "7 jours", price: "2 200 €" },
+        { key: "w24_250", price: "399 €" },
+        { key: "w24_unlim", price: "499 €" },
+        { key: "we48", price: "1 200 €" },
+        { key: "h72", price: "1 400 €" },
+        { key: "d7", price: "2 200 €" },
       ],
     },
     {
       id: "rsq8",
-      name: "Audi RSQ8 APR 2023",
+      names: { fr: "Audi RSQ8 APR 2023", de: "Audi RSQ8 APR 2023", en: "Audi RSQ8 APR 2023" },
       image: "assets/vehicules/audi-rsq8-apr-2023/1.jpg",
       from: "499 €",
       offers: [
-        { label: "24h semaine (250 km)", price: "499 €" },
-        { label: "24h semaine (illimité)", price: "699 €" },
-        { label: "24h week-end (250 km)", price: "1 000 €" },
-        { label: "24h week-end (illimité)", price: "1 300 €" },
-        { label: "48h week-end", price: "1 900 €" },
-        { label: "72h", price: "2 300 €" },
-        { label: "7 jours", price: "3 800 €" },
+        { key: "w24_250", price: "499 €" },
+        { key: "w24_unlim", price: "699 €" },
+        { key: "we24_250", price: "1 000 €" },
+        { key: "we24_unlim", price: "1 300 €" },
+        { key: "we48", price: "1 900 €" },
+        { key: "h72", price: "2 300 €" },
+        { key: "d7", price: "3 800 €" },
       ],
     },
     {
       id: "urus",
-      name: "Lamborghini Urus",
+      names: { fr: "Lamborghini Urus", de: "Lamborghini Urus", en: "Lamborghini Urus" },
       image: "assets/vehicules/lamborghini-urus/1.jpg",
       from: "1 800 €",
       offers: [
-        { label: "24h semaine", price: "1 800 €" },
-        { label: "24h week-end", price: "2 000 €" },
-        { label: "48h week-end", price: "3 500 €" },
+        { key: "w24", price: "1 800 €" },
+        { key: "we24", price: "2 000 €" },
+        { key: "we48", price: "3 500 €" },
       ],
     },
     {
       id: "urus-perf",
-      name: "Lamborghini Urus Performante",
+      names: { fr: "Lamborghini Urus Performante", de: "Lamborghini Urus Performante", en: "Lamborghini Urus Performante" },
       image: "assets/vehicules/lamborghini-urus-2/1.jpg",
       from: "2 000 €",
       offers: [
-        { label: "24h semaine (illimité)", price: "2 000 €" },
-        { label: "24h week-end (illimité)", price: "2 500 €" },
-        { label: "48h week-end (illimité)", price: "4 000 €" },
+        { key: "w24_unlim", price: "2 000 €" },
+        { key: "we24_unlim", price: "2 500 €" },
+        { key: "we48_unlim", price: "4 000 €" },
       ],
     },
     {
       id: "huracan",
-      name: "Lamborghini Huracán Evo",
+      names: { fr: "Lamborghini Huracán Evo", de: "Lamborghini Huracán Evo", en: "Lamborghini Huracán Evo" },
       image: "assets/vehicules/lamborghini-huracan-evo/1.jpg",
       from: "1 750 €",
       offers: [
-        { label: "24h semaine", price: "1 750 €" },
-        { label: "24h week-end", price: "1 900 €" },
-        { label: "48h week-end", price: "3 500 €" },
+        { key: "w24", price: "1 750 €" },
+        { key: "we24", price: "1 900 €" },
+        { key: "we48", price: "3 500 €" },
       ],
     },
   ];
@@ -106,6 +119,7 @@
   var TEXT = {
     fr: {
       title: "Demande de réservation",
+      metaDescription: "Réservez votre véhicule de prestige NuskowCars en ligne. Choix du modèle, offre et confirmation WhatsApp.",
       lead: "Sélectionnez votre véhicule et complétez le formulaire. Nous vous confirmons la disponibilité sur WhatsApp.",
       steps: ["Véhicule", "Offre", "Dates", "Coordonnées"],
       panels: ["Choix du véhicule", "Choix de l'offre", "Informations de réservation", "Vos coordonnées"],
@@ -128,6 +142,7 @@
       address: "Adresse",
       zip: "Code postal",
       city: "Ville",
+      defaultCountry: "France",
       errVehicle: "Veuillez sélectionner un véhicule.",
       errOffer: "Veuillez sélectionner une offre.",
       errRequired: "Veuillez remplir tous les champs obligatoires.",
@@ -138,6 +153,7 @@
     },
     de: {
       title: "Reservierungsanfrage",
+      metaDescription: "Reservieren Sie Ihr NuskowCars Prestigefahrzeug online. Modellwahl, Angebot und WhatsApp-Bestätigung.",
       lead: "Wählen Sie Ihr Fahrzeug und füllen Sie das Formular aus. Wir bestätigen die Verfügbarkeit per WhatsApp.",
       steps: ["Fahrzeug", "Angebot", "Daten", "Kontakt"],
       panels: ["Fahrzeugwahl", "Angebotswahl", "Reservierungsinformationen", "Ihre Kontaktdaten"],
@@ -160,6 +176,7 @@
       address: "Adresse",
       zip: "Postleitzahl",
       city: "Stadt",
+      defaultCountry: "Frankreich",
       errVehicle: "Bitte wählen Sie ein Fahrzeug.",
       errOffer: "Bitte wählen Sie ein Angebot.",
       errRequired: "Bitte füllen Sie alle Pflichtfelder aus.",
@@ -170,6 +187,7 @@
     },
     en: {
       title: "Reservation request",
+      metaDescription: "Book your NuskowCars prestige vehicle online. Choose your model, offer and confirm via WhatsApp.",
       lead: "Select your vehicle and complete the form. We confirm availability on WhatsApp.",
       steps: ["Vehicle", "Offer", "Dates", "Details"],
       panels: ["Vehicle choice", "Offer choice", "Booking details", "Your details"],
@@ -192,6 +210,7 @@
       address: "Address",
       zip: "Postcode",
       city: "City",
+      defaultCountry: "France",
       errVehicle: "Please select a vehicle.",
       errOffer: "Please select an offer.",
       errRequired: "Please fill in all required fields.",
@@ -205,8 +224,10 @@
   var root = document.querySelector("[data-reservation-app]");
   if (!root) return;
 
-  var lang = (document.documentElement.lang || "fr").slice(0, 2);
-  if (!TEXT[lang]) lang = "fr";
+  var lang = (document.documentElement.lang || "fr").toLowerCase();
+  if (lang.indexOf("de") === 0) lang = "de";
+  else if (lang.indexOf("en") === 0) lang = "en";
+  else lang = "fr";
   var t = TEXT[lang];
   var assetPrefix = root.getAttribute("data-asset-prefix") || "";
 
@@ -224,8 +245,61 @@
     waLink: root.querySelector("[data-res-wa]"),
   };
 
+  function offerLabel(key) {
+    var labels = OFFER_LABELS[key];
+    return labels ? labels[lang] || labels.fr : key;
+  }
+
+  function vehicleName(v) {
+    return (v.names && v.names[lang]) || v.names.fr || v.name || "";
+  }
+
   function img(path) {
     return assetPrefix + path;
+  }
+
+  function setText(sel, text) {
+    var el = root.querySelector(sel) || document.querySelector(sel);
+    if (el && text != null) el.textContent = text;
+  }
+
+  function applyStaticCopy() {
+    setText(".res-page__title", t.title);
+    setText(".res-page__lead", t.lead);
+    root.querySelectorAll("[data-i18n-panel]").forEach(function (el) {
+      var i = parseInt(el.getAttribute("data-i18n-panel"), 10);
+      if (!isNaN(i) && t.panels[i]) el.textContent = t.panels[i];
+    });
+    setText('label[for="pickup_date"]', t.pickupDate);
+    setText('label[for="pickup_time"]', t.pickupTime);
+    setText('label[for="return_date"]', t.returnDate);
+    setText('label[for="return_time"]', t.returnTime);
+    setText('label[for="location"]', t.location);
+    setText('label[for="first_name"]', t.firstName);
+    setText('label[for="last_name"]', t.lastName);
+    setText('label[for="birth_year"]', t.birthYear);
+    setText('label[for="email"]', t.email);
+    setText('label[for="phone"]', t.phone);
+    setText('label[for="country"]', t.country);
+    setText('label[for="address"]', t.address);
+    setText('label[for="zip"]', t.zip);
+    setText('label[for="city"]', t.city);
+    if (els.back) els.back.textContent = t.back;
+    if (els.next) els.next.textContent = t.next;
+    if (els.submit) els.submit.textContent = t.submit;
+    var loc = root.querySelector("#location");
+    if (loc) loc.placeholder = t.locationPh;
+    var country = root.querySelector("#country");
+    if (country && !country.dataset.userEdited) country.value = t.defaultCountry;
+    var successTitle = root.querySelector(".res-success h2");
+    var successText = root.querySelector(".res-success p");
+    if (successTitle) successTitle.textContent = t.successTitle;
+    if (successText) successText.textContent = t.successText;
+    if (els.waLink) els.waLink.textContent = t.successWa;
+    document.title = t.title + " — NuskowCars";
+    var meta = document.querySelector('meta[name="description"]');
+    if (meta) meta.setAttribute("content", t.metaDescription);
+    document.documentElement.lang = lang === "de" ? "de-DE" : lang === "en" ? "en" : "fr-FR";
   }
 
   function renderSteps() {
@@ -235,7 +309,7 @@
         var cls = "res-step";
         if (i === state.step) cls += " is-active";
         if (i < state.step) cls += " is-done";
-        return '<div class="' + cls + '" data-step="' + i + '"><span class="res-step__num">' + (i + 1) + "</span><span class=\"res-step__label\">" + label + "</span></div>";
+        return '<div class="' + cls + '"><span class="res-step__num">' + (i + 1) + "</span><span class=\"res-step__label\">" + label + "</span></div>";
       })
       .join("");
   }
@@ -244,13 +318,14 @@
     if (!els.vehicles) return;
     els.vehicles.innerHTML = VEHICLES.map(function (v) {
       var checked = state.vehicleId === v.id ? " checked" : "";
+      var name = vehicleName(v);
       return (
         '<label class="res-vehicle">' +
         '<input type="radio" name="vehicle" value="' + v.id + '"' + checked + " />" +
         '<span class="res-vehicle__card">' +
-        '<span class="res-vehicle__img"><img src="' + img(v.image) + '" alt="" loading="lazy" /></span>' +
+        '<span class="res-vehicle__img"><img src="' + img(v.image) + '" alt="' + name.replace(/"/g, "&quot;") + '" loading="lazy" /></span>' +
         '<span class="res-vehicle__body">' +
-        '<span class="res-vehicle__name">' + v.name + "</span>" +
+        '<span class="res-vehicle__name">' + name + "</span>" +
         '<span class="res-vehicle__price">' + t.from + " " + v.from + "</span>" +
         "</span></span></label>"
       );
@@ -273,10 +348,11 @@
     els.offers.innerHTML = vehicle.offers
       .map(function (o, i) {
         var checked = state.offerIndex === i ? " checked" : "";
+        var label = offerLabel(o.key);
         return (
           '<label class="res-offer">' +
           '<input type="radio" name="offer" value="' + i + '"' + checked + " />" +
-          '<span class="res-offer__card"><span class="res-offer__label">' + o.label + '</span><span class="res-offer__price">' + o.price + "</span></span></label>"
+          '<span class="res-offer__card"><span class="res-offer__label">' + label + '</span><span class="res-offer__price">' + o.price + "</span></span></label>"
         );
       })
       .join("");
@@ -341,11 +417,12 @@
   function buildWaUrl() {
     var vehicle = getVehicle();
     var offer = vehicle && vehicle.offers[state.offerIndex] ? vehicle.offers[state.offerIndex] : null;
+    var offerText = offer ? offerLabel(offer.key) + " — " + offer.price : "";
     var lines = [
       t.waIntro,
       "",
-      "🚗 " + (vehicle ? vehicle.name : ""),
-      "📦 " + (offer ? offer.label + " — " + offer.price : ""),
+      "🚗 " + (vehicle ? vehicleName(vehicle) : ""),
+      "📦 " + offerText,
       "📅 " + field("pickup_date") + " " + field("pickup_time") + " → " + field("return_date") + " " + field("return_time"),
       "📍 " + field("location"),
       "",
@@ -366,6 +443,7 @@
       if (state.step >= 1) renderOffers();
     }
     if (e.target.name === "offer") readOffer();
+    if (e.target.id === "country") e.target.dataset.userEdited = "1";
   });
 
   if (els.back) {
@@ -395,12 +473,14 @@
       var wa = buildWaUrl();
       if (els.waLink) els.waLink.href = wa;
       els.form.hidden = true;
-      root.querySelector(".res-progress").hidden = true;
+      var progress = root.querySelector(".res-progress");
+      if (progress) progress.hidden = true;
       if (els.success) els.success.hidden = false;
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
   }
 
+  applyStaticCopy();
   renderSteps();
   renderVehicles();
   showStep(0);

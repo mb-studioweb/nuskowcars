@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Reservation — NuskowCars</title>
-  <meta name="description" content="Réservez votre véhicule de prestige NuskowCars en ligne. Choix du modèle, offre et confirmation WhatsApp." />
+  <meta name="description" content="Book your NuskowCars prestige vehicle online. Choose your model, offer and confirm via WhatsApp." />
   <link rel="canonical" href="https://www.nuskowcars-gmbh.com/en/reservation.html" />
   <link rel="icon" href="../assets/favicon.png" type="image/png" />
   <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png" />
@@ -76,12 +76,12 @@ body{opacity:1!important;background:#000}
 <body>
   <header class="header">
     <div class="header__inner">
-      <a href="../index.html" class="a">
+      <a href="../en.html" class="a">
         <img src="../assets/logo.png" alt="NuskowCars" class="header__logo" />
       </a>
-      <a href="../index.html" class="header__title a">NuskowCars</a>
+      <a href="../en.html" class="header__title a">NuskowCars</a>
       <nav class="header__nav">
-        <div class="header__lang" aria-label="Langue">
+        <div class="header__lang" aria-label="Language">
           <a href="../reservation.html" class="header__lang-link" hreflang="fr" aria-label="FR">🇫🇷</a>
           <a href="../german/reservation.html" class="header__lang-link" hreflang="de" aria-label="DE">🇩🇪</a>
           <a href="reservation.html" class="header__lang-link is-active" hreflang="en" aria-label="EN">🇬🇧</a>
@@ -94,11 +94,11 @@ body{opacity:1!important;background:#000}
     </div>
     <nav class="header__dropdown">
       <ul>
-        <li class="header__li"><a class="header__a a" href="../index.html"><span class="a-main anim-a">Home</span><span class="a-sub anim-sub-a">NuskowCars</span></a></li>
-        <li class="header__li"><a class="header__a a" href="../en/a-propos.html"><span class="a-main anim-a">À propos</span><span class="a-sub anim-sub-a">The agency</span></a></li>
-        <li class="header__li"><a class="header__a a" href="../en/flotte.html"><span class="a-main anim-a">Flotte</span><span class="a-sub anim-sub-a">Our fleet</span></a></li>
-        <li class="header__li"><a class="header__a a" href="../en/reservation.html"><span class="a-main anim-a">Reservation</span><span class="a-sub anim-sub-a">Online</span></a></li>
-        <li class="header__li"><a class="header__a a" href="../en/faq.html"><span class="a-main anim-a">FAQ</span><span class="a-sub anim-sub-a">FAQ</span></a></li>
+        <li class="header__li"><a class="header__a a" href="../en.html"><span class="a-main anim-a">Home</span><span class="a-sub anim-sub-a">NuskowCars</span></a></li>
+        <li class="header__li"><a class="header__a a" href="../en/a-propos.html"><span class="a-main anim-a">About</span><span class="a-sub anim-sub-a">The agency</span></a></li>
+        <li class="header__li"><a class="header__a a" href="../en/flotte.html"><span class="a-main anim-a">Fleet</span><span class="a-sub anim-sub-a">Our vehicles</span></a></li>
+        <li class="header__li"><a class="header__a a" href="reservation.html"><span class="a-main anim-a">Reservation</span><span class="a-sub anim-sub-a">Online</span></a></li>
+        <li class="header__li"><a class="header__a a" href="../en/faq.html"><span class="a-main anim-a">FAQ</span><span class="a-sub anim-sub-a">Frequently asked questions</span></a></li>
       </ul>
       <div class="header__contact">
         <a href="https://wa.me/33637002045" class="a contact-block" target="_blank" rel="noopener">
@@ -112,7 +112,7 @@ body{opacity:1!important;background:#000}
   <main class="res-page">
     <div class="res-page__inner" data-reservation-app data-asset-prefix="../">
       <h1 class="res-page__title">Reservation request</h1>
-      <p class="res-page__lead">Select your vehicle et complétez le formulaire. Nous vous confirmons la disponibilité sur WhatsApp.</p>
+      <p class="res-page__lead">Select your vehicle and complete the form. We confirm availability on WhatsApp.</p>
 
       <div class="res-progress">
         <div class="res-steps" data-res-steps></div>
@@ -121,17 +121,17 @@ body{opacity:1!important;background:#000}
       <div class="res-card">
         <form class="res-form" data-res-form novalidate>
           <section class="res-panel is-active" data-res-panel>
-            <h2 class="res-panel__title">Vehicle choice</h2>
+            <h2 class="res-panel__title" data-i18n-panel="0">Vehicle choice</h2>
             <div class="res-vehicles" data-res-vehicles></div>
           </section>
 
           <section class="res-panel" data-res-panel hidden>
-            <h2 class="res-panel__title">Offer choice</h2>
+            <h2 class="res-panel__title" data-i18n-panel="1">Offer choice</h2>
             <div class="res-offers" data-res-offers></div>
           </section>
 
           <section class="res-panel" data-res-panel hidden>
-            <h2 class="res-panel__title">Booking details</h2>
+            <h2 class="res-panel__title" data-i18n-panel="2">Booking details</h2>
             <div class="res-fields res-fields--grid">
               <div class="res-field">
                 <label for="pickup_date">Pick-up date</label>
@@ -157,7 +157,7 @@ body{opacity:1!important;background:#000}
           </section>
 
           <section class="res-panel" data-res-panel hidden>
-            <h2 class="res-panel__title">Your details</h2>
+            <h2 class="res-panel__title" data-i18n-panel="3">Your details</h2>
             <div class="res-fields res-fields--grid">
               <div class="res-field">
                 <label for="first_name">First name</label>
@@ -184,7 +184,7 @@ body{opacity:1!important;background:#000}
                 <input id="country" name="country" type="text" value="France" required />
               </div>
               <div class="res-field res-field--full">
-                <label for="address">Adresse</label>
+                <label for="address">Address</label>
                 <input id="address" name="address" type="text" autocomplete="street-address" required />
               </div>
               <div class="res-field">
