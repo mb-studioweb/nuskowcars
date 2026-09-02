@@ -1,21 +1,21 @@
-# Archives template btcar75
+# Archives
 
-## Export ZIP (73 Mo)
+## `nuskowcars-original-20250902/`
 
-Le fichier volumineux est hébergé en **GitHub Release** (trop lourd pour un push mobile/git standard) :
+Sauvegarde intégrale de l'ancien site Webflow NuskowCars, archivée le 2 septembre 2026 avant le déploiement de la base btcar75.
 
-- **Téléchargement direct** : [btcar75-export-20260902.zip](https://github.com/mb-studioweb/nuskowcars/releases/download/btcar75-export-20260902/btcar75-export-20260902.zip)
-- **Page release** : https://github.com/mb-studioweb/nuskowcars/releases/tag/btcar75-export-20260902
+**Contenu :**
+- 50 pages HTML (FR / DE / EN) : accueil, véhicules, réservation, mentions légales
+- ~250 assets locaux (images, CSS, JS, polices)
+- 5 vidéos via Git LFS dans `assets/cdn.prod.website-files.com/…`
 
-## Contenu du ZIP
+**Usage :** référence pour l'intégration future du contenu Nuskow dans le design btcar75 (textes, véhicules, logo, traductions, médias).
 
-Export complet du site btcar75 (design neuf) du 2 septembre 2026 :
-- Pages HTML (`index.html`, flotte, véhicules, FAQ, à propos…)
-- `assets/`, `wp-content/`, `wp-includes/`
-- `robots.txt`, `sitemap.xml`
+## Export btcar75 (release GitHub)
 
-## Utilisation
+Le ZIP volumineux (73 Mo) reste hébergé en release, pas dans le dépôt :
 
-1. Télécharger et décompresser le ZIP.
-2. Utiliser comme base visuelle / template pour nuskowcars.
-3. Le site actif dans [btcar75](https://github.com/mb-studioweb/btcar75) reste la référence intacte.
+- [btcar75-export-20260902.zip](https://github.com/mb-studioweb/nuskowcars/releases/download/btcar75-export-20260902/btcar75-export-20260902.zip)
+- [Page release](https://github.com/mb-studioweb/nuskowcars/releases/tag/btcar75-export-20260902)
+
+Le site actif à la racine du dépôt provient de cet export.
