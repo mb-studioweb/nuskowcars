@@ -91,12 +91,15 @@
 .slider-morph-rental .slider-morph__see-more-btn{border-bottom-color:#111;color:#111}
 .slider-morph-rental .slider-morph-responsive{background:#fff}
 .slider-morph-rental .slider-morph-responsive__card{background:#111!important;color:#fff}
-.slider-morph-rental .slider-morph-responsive__card .card-content h3,.slider-morph-rental .slider-morph-responsive__card .card-content p,.slider-morph-rental .slider-morph-responsive__card .card-content span{color:#fff}
 .slider-morph-rental .slider-morph-responsive{display:grid;gap:1rem;padding:1.25rem}
 .slider-morph-rental .slider-morph-responsive__card{position:relative;display:block!important;height:auto!important;aspect-ratio:16/9;width:100%;overflow:hidden;border-radius:16px;background:#111!important}
 .slider-morph-rental .slider-morph-responsive__card .card-background{position:absolute!important;inset:0;height:100%!important;width:100%!important;aspect-ratio:unset}
-.slider-morph-rental .slider-morph-responsive__card .card-background img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;opacity:.75}
-.slider-morph-rental .slider-morph-responsive__card .card-content{position:absolute!important;inset:0;z-index:1;height:100%!important;display:flex;flex-direction:column;justify-content:flex-end;padding:1rem 1.1rem 1.25rem;background:linear-gradient(180deg,rgba(0,0,0,0) 30%,rgba(0,0,0,.88) 100%)}
+.slider-morph-rental .slider-morph-responsive__card .card-background img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
+.slider-morph-rental .slider-morph-responsive__card .card-content{position:absolute!important;inset:auto 0 0 0;z-index:1;height:auto!important;display:flex;align-items:center;justify-content:space-between;gap:.75rem;padding:.7rem .95rem;background:rgba(8,8,8,.78);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.slider-morph-rental .slider-morph-responsive__card .card-content h3{font-size:clamp(.95rem,3.4vw,1.2rem)!important;font-weight:600!important;line-height:1.2!important;letter-spacing:.01em!important;text-transform:none!important;margin:0!important;color:#fff!important;white-space:nowrap}
+.slider-morph-rental .slider-morph-responsive__card .card-content .step-num{display:inline-block;font-size:.78em;font-weight:500;opacity:.6;margin-right:.4em;font-variant-numeric:tabular-nums}
+.slider-morph-rental .slider-morph-responsive__card .card-content p{display:none!important}
+.slider-morph-rental .slider-morph-responsive__card .card-content span{font-size:.68rem!important;font-weight:500!important;letter-spacing:.07em!important;text-transform:uppercase!important;color:#fff!important;padding:.38rem .6rem;border:1px solid rgba(255,255,255,.35);border-radius:999px;white-space:nowrap;flex-shrink:0}
 .slider-morph-rental .slider-morph-responsive .btn{background:#111;color:#fff;border:1px solid rgba(255,255,255,.2)}
 .faq-section.latest-news-light{background:#fff;color:#000}
 .faq-section .faq-section__content{max-width:56rem;margin:0 auto;padding-top:4.6875rem}
@@ -610,9 +613,8 @@ Mariages, événements, séjours ou déplacements professionnels : chaque locati
                         <img src="assets/vehicules/mercedes-benz-g63-amg/1.jpg" alt="NuskowCars"/>
                     </div>
                     <div class="card-content">
-                        <h3>01 — Choisir votre véhicule</h3>
-						<p>Consultez la flotte et sélectionnez le modèle qui vous correspond.</p>
-                        <span>Flotte ansehen</span>
+                        <h3><span class="step-num">01</span>Wählen</h3>
+                        <span>Flotte</span>
                     </div>
                 </a>
                                 <a href="https://wa.me/33637002045" class="slider-morph-responsive__card a wa-step-link" data-wa-step="2" target="_blank" rel="noopener">
@@ -620,9 +622,8 @@ Mariages, événements, séjours ou déplacements professionnels : chaque locati
                         <img src="assets/vehicules/mercedes-benz-gle63s-amg-coupe/1.jpg" alt="NuskowCars"/>
                     </div>
                     <div class="card-content">
-                        <h3>02 — WhatsApp</h3>
-						<p>Envoyez-nous votre demande de location en quelques messages.</p>
-                        <span>Ouvrir WhatsApp</span>
+                        <h3><span class="step-num">02</span>WhatsApp</h3>
+                        <span>Nachricht</span>
                     </div>
                 </a>
                                 <a href="https://wa.me/33637002045" class="slider-morph-responsive__card a wa-step-link" data-wa-step="3" target="_blank" rel="noopener">
@@ -630,9 +631,8 @@ Mariages, événements, séjours ou déplacements professionnels : chaque locati
                         <img src="assets/vehicules/audi-rs3-2024/1.jpg" alt="NuskowCars"/>
                     </div>
                     <div class="card-content">
-                        <h3>03 — Valider &amp; caution</h3>
-						<p>Confirmation des dates, tarif 24h et dépôt de garantie.</p>
-                        <span>Continuer sur WhatsApp</span>
+                        <h3><span class="step-num">03</span>Bestätigen</h3>
+                        <span>WhatsApp</span>
                     </div>
                 </a>
                                 <a href="https://wa.me/33637002045" class="slider-morph-responsive__card a wa-step-link" data-wa-step="4" target="_blank" rel="noopener">
@@ -640,9 +640,8 @@ Mariages, événements, séjours ou déplacements professionnels : chaque locati
                         <img src="assets/vehicules/lamborghini-urus/1.jpg" alt="Lamborghini Urus"/>
                     </div>
                     <div class="card-content">
-                        <h3>04 — Prise en charge</h3>
-						<p>Récupérez votre véhicule en France, prêt pour votre trajet.</p>
-                        <span>Finaliser sur WhatsApp</span>
+                        <h3><span class="step-num">04</span>Abholung</h3>
+                        <span>Buchen</span>
                     </div>
                 </a>
                                 <a href="https://wa.me/33637002045" class="a btn wa-step-link" data-wa-step="cta" target="_blank" rel="noopener">Réserver sur WhatsApp</a>
