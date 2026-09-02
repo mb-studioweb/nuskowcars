@@ -15,3 +15,13 @@ python3 -m http.server 8080
 ```
 
 Puis ouvrir http://localhost:8080
+
+
+## Vidéos (Git LFS)
+
+Les 5 vidéos de fond sont stockées via Git LFS. Après clone :
+
+```bash
+git lfs install
+git lfs pull
+```
