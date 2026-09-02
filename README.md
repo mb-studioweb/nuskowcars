@@ -7,7 +7,7 @@ Site de location de véhicules de prestige [NuskowCars](https://www.nuskowcars-g
 | Emplacement | Contenu |
 |---|---|
 | **Racine** | Site actif FR : `index.html`, `flotte.html`, `a-propos.html`, `faq.html` |
-| **`vehicules/`** | 12 fiches véhicules (FR) |
+| **`reservation.html`** | Formulaire de réservation multi-étapes (identique à l'ancien site) |
 | **`german.html`** + **`german/`** | Version allemande (accueil + pages + véhicules) |
 | **`en.html`** + **`en/`** | Version anglaise |
 | **`assets/`** | Logo, favicon, hero, images véhicules (`assets/vehicules/{slug}/`) |

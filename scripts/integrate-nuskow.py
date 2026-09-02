@@ -266,6 +266,26 @@ VEHICLES = [
         ],
         "on_demand": False,
     },
+    {
+        "slug": "mercedes-benz-cla45s-amg",
+        "title": "Mercedes-Benz CLA45S AMG",
+        "brand": "Mercedes-Benz",
+        "category": "Berline sportive",
+        "power": "520 ch",
+        "price_24h": "dès 299 €",
+        "deposit": "6 000 €",
+        "hero_title": "CLA45S AMG",
+        "tag": "Berline sportive · France",
+        "desc_short": "Compacte sportive 520 ch — performances et élégance au quotidien.",
+        "desc_long": "La Mercedes-Benz CLA45S AMG combine design coupé et moteur AMG de 520 ch. Idéale pour un essai sportif ou une location courte, avec formules flexibles.",
+        "pricing": [
+            ("24h semaine (250 km)", "299 €"),
+            ("24h semaine (illimité)", "399 €"),
+            ("48h week-end", "1 500 €"),
+            ("72h", "1 900 €"),
+        ],
+        "on_demand": False,
+    },
 ]
 
 LANG_CSS = """
@@ -288,6 +308,8 @@ TRANSLATIONS = {
         "hero_desc": "Chez NuskowCars — louez l'excellence, conduisez l'émotion.",
         "fleet_preview": "Aperçu de la flotte", "fleet_page_title": "NOTRE FLOTTE",
         "on_demand": "Sur demande",
+        "reservation": "Réservation",
+        "reservation_sub": "En ligne",
     },
     "de": {
         "home": "Startseite", "about": "Über uns", "about_sub": "Die Agentur", "fleet": "Flotte",
@@ -301,6 +323,8 @@ TRANSLATIONS = {
         "hero_desc": "Bei NuskowCars — Exzellenz mieten, Emotionen fahren.",
         "fleet_preview": "Flottenübersicht", "fleet_page_title": "UNSERE FLOTTE",
         "on_demand": "Auf Anfrage",
+        "reservation": "Reservierung",
+        "reservation_sub": "Online",
     },
     "en": {
         "home": "Home", "about": "About", "about_sub": "The agency", "fleet": "Fleet",
@@ -314,6 +338,8 @@ TRANSLATIONS = {
         "hero_desc": "At NuskowCars — rent excellence, drive emotion.",
         "fleet_preview": "Fleet preview", "fleet_page_title": "OUR FLEET",
         "on_demand": "On request",
+        "reservation": "Reservation",
+        "reservation_sub": "Online",
     },
 }
 
@@ -342,16 +368,16 @@ def wa_link(text: str, lang: str = "fr") -> str:
 
 def lang_links(current: str, page: str, prefix: str = "") -> str:
     pages = {
-        "fr": {"index": "index.html", "flotte": "flotte.html", "about": "a-propos.html", "faq": "faq.html"},
-        "de": {"index": "german.html", "flotte": "german/flotte.html", "about": "german/a-propos.html", "faq": "german/faq.html"},
-        "en": {"index": "en.html", "flotte": "en/flotte.html", "about": "en/a-propos.html", "faq": "en/faq.html"},
+        "fr": {"index": "index.html", "flotte": "flotte.html", "about": "a-propos.html", "faq": "faq.html", "reservation": "reservation.html"},
+        "de": {"index": "german.html", "flotte": "german/flotte.html", "about": "german/a-propos.html", "faq": "german/faq.html", "reservation": "german/reservation.html"},
+        "en": {"index": "en.html", "flotte": "en/flotte.html", "about": "en/a-propos.html", "faq": "en/faq.html", "reservation": "en/reservation.html"},
     }
     vehicle_suffix = ""
     if page.startswith("vehicules/"):
         vehicle_suffix = page.split("/", 1)[1]
         page_key = "vehicules"
     else:
-        page_key = {"index.html": "index", "flotte.html": "flotte", "a-propos.html": "about", "faq.html": "faq",
+        page_key = {"index.html": "index", "flotte.html": "flotte", "a-propos.html": "about", "faq.html": "faq", "reservation.html": "reservation",
                     "german.html": "index", "en.html": "index"}.get(page, "index")
 
     def href(lang_code: str) -> str:
@@ -410,6 +436,12 @@ def header_html(lang: str, page: str, prefix: str = "") -> str:
             <a class="header__a a" href="{prefix}{'flotte.html' if lang=='fr' else ('german/flotte.html' if lang=='de' else 'en/flotte.html')}">
               <span class="a-main anim-a">{t['fleet']}</span>
               <span class="a-sub anim-sub-a">{t['fleet_sub']}</span>
+            </a>
+          </li>
+          <li class="header__li">
+            <a class="header__a a" href="{prefix}{'reservation.html' if lang=='fr' else ('german/reservation.html' if lang=='de' else 'en/reservation.html')}">
+              <span class="a-main anim-a">{t['reservation']}</span>
+              <span class="a-sub anim-sub-a">{t['reservation_sub']}</span>
             </a>
           </li>
           <li class="header__li">
@@ -679,9 +711,9 @@ def replace_branding_in_file(path: Path):
 
 def build_sitemap():
     urls = [
-        "/", "/flotte.html", "/a-propos.html", "/faq.html",
-        "/german.html", "/german/flotte.html", "/german/a-propos.html", "/german/faq.html",
-        "/en.html", "/en/flotte.html", "/en/a-propos.html", "/en/faq.html",
+        "/", "/flotte.html", "/a-propos.html", "/faq.html", "/reservation.html",
+        "/german.html", "/german/flotte.html", "/german/a-propos.html", "/german/faq.html", "/german/reservation.html",
+        "/en.html", "/en/flotte.html", "/en/a-propos.html", "/en/faq.html", "/en/reservation.html",
     ]
     for v in VEHICLES:
         urls.append(f"/vehicules/{v['slug']}.html")
