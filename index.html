@@ -89,18 +89,17 @@
 .slider-morph-rental{background:#fff}
 .slider-morph-rental #path-1{fill:#111!important}
 .slider-morph-rental .slider-morph__see-more-btn{border-bottom-color:#111;color:#111}
-.slider-morph-rental .slider-morph-responsive{background:#fff}
-.slider-morph-rental .slider-morph-responsive__card{background:#111!important;color:#fff}
-.slider-morph-rental .slider-morph-responsive{display:grid;gap:1rem;padding:1.25rem}
-.slider-morph-rental .slider-morph-responsive__card{position:relative;display:block!important;height:auto!important;aspect-ratio:16/9;width:100%;overflow:hidden;border-radius:16px;background:#111!important}
-.slider-morph-rental .slider-morph-responsive__card .card-background{position:absolute!important;inset:0;height:100%!important;width:100%!important;aspect-ratio:unset}
-.slider-morph-rental .slider-morph-responsive__card .card-background img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
-.slider-morph-rental .slider-morph-responsive__card .card-content{position:absolute!important;inset:auto 0 0 0;z-index:1;height:auto!important;display:flex;align-items:center;justify-content:space-between;gap:.75rem;padding:.7rem .95rem;background:rgba(8,8,8,.78);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
-.slider-morph-rental .slider-morph-responsive__card .card-content h3{font-size:clamp(.95rem,3.4vw,1.2rem)!important;font-weight:600!important;line-height:1.2!important;letter-spacing:.01em!important;text-transform:none!important;margin:0!important;color:#fff!important;white-space:nowrap}
-.slider-morph-rental .slider-morph-responsive__card .card-content .step-num{display:inline-block;font-size:.78em;font-weight:500;opacity:.6;margin-right:.4em;font-variant-numeric:tabular-nums}
-.slider-morph-rental .slider-morph-responsive__card .card-content p{display:none!important}
-.slider-morph-rental .slider-morph-responsive__card .card-content span{font-size:.68rem!important;font-weight:500!important;letter-spacing:.07em!important;text-transform:uppercase!important;color:#fff!important;padding:.38rem .6rem;border:1px solid rgba(255,255,255,.35);border-radius:999px;white-space:nowrap;flex-shrink:0}
-.slider-morph-rental .slider-morph-responsive .btn{background:#111;color:#fff;border:1px solid rgba(255,255,255,.2)}
+.slider-morph-rental .slider-morph-responsive{background:#fff;display:grid!important;gap:1rem;padding:1.25rem}
+section.slider-morph-responsive.slider-morph-rental .slider-morph-responsive__card{position:relative!important;display:block!important;height:auto!important;min-height:0!important;aspect-ratio:16/9!important;width:100%!important;overflow:hidden!important;border-radius:16px!important;background:#111!important}
+section.slider-morph-responsive.slider-morph-rental .slider-morph-responsive__card .card-background{position:absolute!important;inset:0!important;height:100%!important;width:100%!important}
+section.slider-morph-responsive.slider-morph-rental .slider-morph-responsive__card .card-background img{width:100%!important;height:100%!important;object-fit:cover!important;object-position:center!important;display:block!important}
+section.slider-morph-responsive.slider-morph-rental .slider-morph-responsive__card .card-content{position:absolute!important;inset:auto 0 0 0!important;z-index:2!important;height:auto!important;min-height:0!important;display:flex!important;flex-direction:row!important;align-items:center!important;justify-content:space-between!important;gap:.75rem!important;padding:.75rem 1rem!important;background:rgba(0,0,0,.85)!important;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+section.slider-morph-responsive.slider-morph-rental .slider-morph-responsive__card .card-content .step-card-title{font-size:1.05rem!important;font-weight:600!important;line-height:1.2!important;letter-spacing:.02em!important;text-transform:none!important;margin:0!important;padding:0!important;color:#fff!important;white-space:nowrap!important;font-family:Inter Tight,sans-serif!important}
+section.slider-morph-responsive.slider-morph-rental .slider-morph-responsive__card .card-content .step-num{display:inline-block;font-size:.8em;font-weight:500;opacity:.55;margin-right:.35em;font-variant-numeric:tabular-nums}
+section.slider-morph-responsive.slider-morph-rental .slider-morph-responsive__card .card-content .step-card-cta{font-size:.65rem!important;font-weight:600!important;letter-spacing:.08em!important;text-transform:uppercase!important;color:#fff!important;padding:.4rem .65rem!important;border:1px solid rgba(255,255,255,.4)!important;border-radius:999px!important;white-space:nowrap!important;flex-shrink:0!important;width:auto!important;display:inline-block!important}
+section.slider-morph-responsive.slider-morph-rental .slider-morph-responsive__card .card-content h3{display:none!important}
+section.slider-morph-responsive.slider-morph-rental .slider-morph-responsive__card .card-content p:not(.step-card-title){display:none!important}
+section.slider-morph-responsive.slider-morph-rental>a.btn.wa-step-link{display:none!important}
 .faq-section.latest-news-light{background:#fff;color:#000}
 .faq-section .faq-section__content{max-width:56rem;margin:0 auto;padding-top:4.6875rem}
 .faq-section .accordion__wrapper{width:100%}
@@ -565,6 +564,7 @@ Mariages, événements, séjours ou déplacements professionnels : chaque locati
                                         <p class="numb">NO.02</p>
                                         <p class="numb">NO.03</p>
                                         <p class="numb">NO.04</p>
+                                        <p class="numb">NO.05</p>
                                     </div>
                     <div class="slider-morph__see-more-btn">WhatsApp</div>
                 <!-- CAN'T be grouped in one div, absolute, gsap issues, different animations -->
@@ -610,29 +610,29 @@ Mariages, événements, séjours ou déplacements professionnels : chaque locati
             <section class="slider-morph-responsive slider-morph-rental">
                                 <a href="flotte.html" class="slider-morph-responsive__card a wa-step-link" data-wa-step="1">
                     <div class="card-background">
-                        <img src="assets/vehicules/mercedes-benz-g63-amg/1.jpg" alt="NuskowCars"/>
+                        <img src="assets/vehicules/mercedes-benz-g63-amg/1.jpg" alt="Mercedes G63 AMG"/>
                     </div>
                     <div class="card-content">
-                        <h3><span class="step-num">01</span>Choisir</h3>
-                        <span>Flotte</span>
+                        <p class="step-card-title"><span class="step-num">01</span>Choisir</p>
+                        <span class="step-card-cta">Flotte</span>
                     </div>
                 </a>
                                 <a href="https://wa.me/33637002045" class="slider-morph-responsive__card a wa-step-link" data-wa-step="2" target="_blank" rel="noopener">
                     <div class="card-background">
-                        <img src="assets/vehicules/mercedes-benz-gle63s-amg-coupe/1.jpg" alt="NuskowCars"/>
+                        <img src="assets/vehicules/mercedes-benz-gle63s-amg-coupe/1.jpg" alt="Mercedes GLE 63 S"/>
                     </div>
                     <div class="card-content">
-                        <h3><span class="step-num">02</span>WhatsApp</h3>
-                        <span>Message</span>
+                        <p class="step-card-title"><span class="step-num">02</span>WhatsApp</p>
+                        <span class="step-card-cta">Message</span>
                     </div>
                 </a>
                                 <a href="https://wa.me/33637002045" class="slider-morph-responsive__card a wa-step-link" data-wa-step="3" target="_blank" rel="noopener">
                     <div class="card-background">
-                        <img src="assets/vehicules/audi-rs3-2024/1.jpg" alt="NuskowCars"/>
+                        <img src="assets/vehicules/audi-rs3-2024/1.jpg" alt="Audi RS3"/>
                     </div>
                     <div class="card-content">
-                        <h3><span class="step-num">03</span>Valider</h3>
-                        <span>WhatsApp</span>
+                        <p class="step-card-title"><span class="step-num">03</span>Valider</p>
+                        <span class="step-card-cta">WhatsApp</span>
                     </div>
                 </a>
                                 <a href="https://wa.me/33637002045" class="slider-morph-responsive__card a wa-step-link" data-wa-step="4" target="_blank" rel="noopener">
@@ -640,8 +640,17 @@ Mariages, événements, séjours ou déplacements professionnels : chaque locati
                         <img src="assets/vehicules/lamborghini-urus/1.jpg" alt="Lamborghini Urus"/>
                     </div>
                     <div class="card-content">
-                        <h3><span class="step-num">04</span>Livraison</h3>
-                        <span>Réserver</span>
+                        <p class="step-card-title"><span class="step-num">04</span>Récupérer</p>
+                        <span class="step-card-cta">WhatsApp</span>
+                    </div>
+                </a>
+                                <a href="https://wa.me/33637002045" class="slider-morph-responsive__card a wa-step-link" data-wa-step="5" target="_blank" rel="noopener">
+                    <div class="card-background">
+                        <img src="assets/vehicules/bmw-m3-competition-510ch-2025/1.jpg" alt="BMW M3 Compétition"/>
+                    </div>
+                    <div class="card-content">
+                        <p class="step-card-title"><span class="step-num">05</span>Réserver</p>
+                        <span class="step-card-cta">WhatsApp</span>
                     </div>
                 </a>
                                 <a href="https://wa.me/33637002045" class="a btn wa-step-link" data-wa-step="cta" target="_blank" rel="noopener">Réserver sur WhatsApp</a>
