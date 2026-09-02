@@ -38,11 +38,11 @@ Ce site est **100 % statique** (HTML/CSS/JS) : **GitHub Pages suffit**, Render n
 | **Render / Netlify / Vercel** | Possible aussi, mais pas obligatoire |
 | **Serveur PHP/backend** | Non requis (formulaire réservation sans envoi email) |
 
-### Activer Pages (une fois)
+### Publication
 
-1. Repo GitHub → **Settings** → **Pages**
-2. **Build and deployment** → Source : **GitHub Actions**
-3. Après le prochain push sur `main`, le workflow `Deploy GitHub Pages` publie le site
+Le workflow `Deploy GitHub Pages` active Pages automatiquement au premier déploiement (`enablement: true`). Aucune config manuelle n'est normalement requise.
+
+Si l'organisation bloque Pages, aller dans **Settings → Pages** et choisir **GitHub Actions** comme source.
 
 URL par défaut : `https://mb-studioweb.github.io/nuskowcars/`
 

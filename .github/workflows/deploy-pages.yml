@@ -26,13 +26,26 @@ jobs:
         with:
           lfs: true
 
+      - name: Prepare site artifact
+        run: |
+          mkdir -p site
+          rsync -a \
+            --exclude='.git' \
+            --exclude='.github' \
+            --exclude='archive' \
+            --exclude='scripts' \
+            --exclude='README.md' \
+            ./ site/
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
+        with:
+          enablement: true
 
       - name: Upload site
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          path: site
 
       - name: Deploy to GitHub Pages
         id: deployment
