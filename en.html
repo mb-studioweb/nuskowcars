@@ -82,6 +82,9 @@
 @media(max-width:75em){.fleet-card{flex:0 0 calc((100% - 1.5rem) / 2);min-width:calc((100% - 1.5rem) / 2)}}
 @media(max-width:48.0625em){.fleet-desktop{display:none!important}}
 @media(max-width:48.0625em){.pop-up-gallery__inner>p{display:none!important}}
+.pop-up-gallery__inner .nuskow-stacked-title{display:flex;flex-direction:column;align-items:flex-start;gap:0;font-size:clamp(3rem,6.5vw,7.5rem)!important;line-height:.82;letter-spacing:.01em;max-width:min(100%,22rem);text-align:left}
+.pop-up-gallery__inner .nuskow-stacked-title .hero-line{display:block}
+@media(max-width:48.0625em){.pop-up-gallery__inner .nuskow-stacked-title{font-size:clamp(2.25rem,11vw,3.75rem)!important;max-width:100%}}
 .slider-morph-rental{background:#fff}
 .slider-morph-rental #path-1{fill:#111!important}
 .slider-morph-rental .slider-morph__see-more-btn{border-bottom-color:#111;color:#111}
@@ -498,14 +501,18 @@ Mariages, événements, séjours ou déplacements professionnels : chaque locati
                 <div class="pop-up-gallery__inner">
                     <p>
                         NuskowCars — l'excellence automobile au service de vos déplacements.                    </p>
-                    <h3 class="counting-txt">
-                        <span class="heading-no-revert">NuskowCars</span>
-                        <div class="full-counter heading-no-revert">
-                            S<span class="heading-count">UR</span> PARIS
-                        </div>
+                    <h3 class="counting-txt nuskow-stacked-title" aria-label="NuskowCars partout en France">
+                        <span class="heading-no-revert hero-line">NUSKOW</span>
+                        <span class="heading-no-revert hero-line">CARS</span>
+                        <span class="heading-no-revert hero-line">PARTOUT</span>
+                        <span class="heading-no-revert hero-line">EN FRANCE</span>
                     </h3>
-                    <h3 class="counting-txt-reponsive heading">
-                        NuskowCars partout en France                    </h3>
+                    <h3 class="counting-txt-reponsive heading nuskow-stacked-title" aria-label="NuskowCars partout en France">
+                        <span class="hero-line">NUSKOW</span>
+                        <span class="hero-line">CARS</span>
+                        <span class="hero-line">PARTOUT</span>
+                        <span class="hero-line">EN FRANCE</span>
+                    </h3>
                 </div>
             </section>
             
