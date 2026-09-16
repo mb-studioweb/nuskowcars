@@ -42,11 +42,39 @@
 
 /* Hero mobile: text less huge */
 @media(max-width:48.0625em){
-  .about-hero{min-height:82svh}
-  .about-hero .hero__inner{padding:0 1.1rem 3.5rem;display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-start}
-  .about-hero .hero-text{font-size:.62rem!important;letter-spacing:.12em!important;line-height:1.35!important;max-width:100%;opacity:.85}
-  .about-hero .main-text.heading{font-size:clamp(2.1rem,9.5vw,2.85rem)!important;line-height:.92!important;letter-spacing:.005em!important;margin:.35rem 0 .4rem!important}
-  .about-hero .small-description{font-size:.72rem!important;letter-spacing:.04em!important;max-width:16rem;margin:0;opacity:.9;line-height:1.4!important}
+  .about-hero{min-height:78svh}
+  .about-hero .hero__inner{
+    padding:0 1.15rem 4rem!important;
+    width:100%;
+    box-sizing:border-box;
+  }
+  .about-hero .hero-text,
+  .about-hero .hero__inner > p.hero-text{
+    font-size:.6rem!important;
+    letter-spacing:.1em!important;
+    line-height:1.4!important;
+    margin:0 0 .4rem!important;
+    max-width:100%!important;
+  }
+  .about-hero h1.main-text.heading,
+  .about-hero .main-text.heading,
+  .about-hero .hero__inner h1{
+    font-size:clamp(1.85rem,8.2vw,2.45rem)!important;
+    line-height:.95!important;
+    letter-spacing:.01em!important;
+    margin:0 0 .45rem!important;
+    max-width:100%!important;
+  }
+  .about-hero .small-description,
+  .about-hero .hero__inner > p.small-description,
+  .about-hero .hero__inner .small-description{
+    font-size:.7rem!important;
+    letter-spacing:.03em!important;
+    line-height:1.4!important;
+    margin:0!important;
+    max-width:15.5rem!important;
+    opacity:.9;
+  }
 }
 
 /* Values — right side, subtle */
@@ -454,15 +482,11 @@
   }
 
   var timelineReady = false;
+  var timelineRaf = 0;
   function initTimeline() {
-    if (timelineReady) {
-      if (window.ScrollTrigger && window.ScrollTrigger.refresh) window.ScrollTrigger.refresh();
-      return;
-    }
     var root = document.querySelector("[data-cx-timeline]");
     var section = document.getElementById("parcours");
     if (!root || !section) return;
-    timelineReady = true;
     var steps = Array.prototype.slice.call(root.querySelectorAll("[data-cx-step]"));
     var progress = root.querySelector("[data-cx-progress]");
     if (!steps.length || !progress) return;
@@ -480,55 +504,44 @@
       }
     }
 
-    function updateFromProgress(p) {
-      var n = steps.length;
-      steps.forEach(function (step, i) {
-        var threshold = n === 1 ? 0 : i / (n - 1);
-        if (p >= threshold - 0.02) step.classList.add("is-on");
-        else step.classList.remove("is-on");
-      });
-      setProgress(p);
-    }
-
-    function nativeUpdate() {
-      var rect = section.getBoundingClientRect();
+    function update() {
       var viewH = window.innerHeight || document.documentElement.clientHeight;
-      var start = viewH * 0.78;
-      var end = viewH * 0.28;
-      var travel = rect.height + (start - end);
-      var p = travel <= 0 ? 0 : (start - rect.top) / travel;
-      updateFromProgress(p);
+      var trigger = viewH * 0.58;
+      var on = 0;
+      steps.forEach(function (step, i) {
+        var rect = step.getBoundingClientRect();
+        var point = verticalMq.matches
+          ? rect.top + Math.min(40, rect.height * 0.25)
+          : rect.top + 8;
+        if (point <= trigger) {
+          step.classList.add("is-on");
+          on = i + 1;
+        } else {
+          step.classList.remove("is-on");
+        }
+      });
+      var ratio = on <= 0 ? 0 : (on === 1 ? 0.06 : (on - 1) / (steps.length - 1));
+      setProgress(ratio);
     }
 
-    if (window.ScrollTrigger && typeof window.ScrollTrigger.create === "function") {
-      window.ScrollTrigger.create({
-        trigger: section,
-        start: "top 78%",
-        end: "bottom 28%",
-        onUpdate: function (self) {
-          updateFromProgress(self.progress);
-        },
-        onEnter: function (self) { updateFromProgress(self.progress); },
-        onEnterBack: function (self) { updateFromProgress(self.progress); },
-        onLeave: function () { updateFromProgress(1); },
-        onLeaveBack: function () { updateFromProgress(0); }
-      });
-      nativeUpdate();
-      return;
+    function loop() {
+      update();
+      timelineRaf = requestAnimationFrame(loop);
     }
 
-    var ticking = false;
-    function onScroll() {
-      if (ticking) return;
-      ticking = true;
-      requestAnimationFrame(function () {
-        nativeUpdate();
-        ticking = false;
+    if (!timelineReady) {
+      timelineReady = true;
+      loop();
+      document.addEventListener("visibilitychange", function () {
+        if (document.hidden) {
+          cancelAnimationFrame(timelineRaf);
+        } else {
+          loop();
+        }
       });
+    } else {
+      update();
     }
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", nativeUpdate);
-    nativeUpdate();
   }
 
   function boot() {
@@ -543,9 +556,6 @@
   window.addEventListener("load", function () {
     ensureVideoPlay();
     initTimeline();
-    if (window.ScrollTrigger && window.ScrollTrigger.refresh) {
-      window.ScrollTrigger.refresh();
-    }
   });
 })();
 </script>
