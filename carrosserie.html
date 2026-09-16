@@ -125,6 +125,7 @@
   --cx-gold-deep:#8a6d16;
   --cx-dot:1.15rem;
   --cx-rail-w:2px;
+  --cx-marker:1.75rem;
   position:relative;margin-top:2.5rem;
 }
 .cx-timeline__rail{
@@ -140,6 +141,7 @@
 .cx-timeline__grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;position:relative;z-index:1}
 .cx-step{position:relative;padding-top:calc(var(--cx-dot) + 1.35rem);opacity:.4;transform:translateY(10px);transition:opacity .45s ease,transform .45s ease}
 .cx-step.is-on{opacity:1;transform:none}
+.cx-step__marker{display:none}
 .cx-step__dot{
   position:absolute;top:0;left:0;width:var(--cx-dot);height:var(--cx-dot);border-radius:50%;
   border:2px solid rgba(255,255,255,.25);background:#000;box-sizing:border-box;
@@ -156,24 +158,25 @@
 .cx-step p{font-family:Inter Tight,sans-serif;font-size:clamp(.82rem,.75rem + .25vw,.98rem);line-height:1.45;opacity:.7;margin:0}
 
 @media(max-width:62em){
-  .cx-timeline{
-    --cx-rail-x:0.85rem; /* centre du fil */
-    --cx-pad:2.35rem;
-  }
-  .cx-timeline__grid{grid-template-columns:1fr;gap:0;padding-left:var(--cx-pad)}
+  .cx-timeline__grid{grid-template-columns:1fr;gap:0}
   .cx-timeline__rail{
-    left:calc(var(--cx-rail-x) - var(--cx-rail-w) / 2);
+    left:calc(var(--cx-marker) / 2 - var(--cx-rail-w) / 2);
     right:auto;top:0;bottom:0;width:var(--cx-rail-w);height:auto;transform:none;
   }
   .cx-timeline__progress{
     top:0;width:var(--cx-rail-w)!important;height:0;transition:height .35s linear;
     background:linear-gradient(180deg,var(--cx-gold-deep),var(--cx-gold-2));
   }
-  .cx-step{padding:1.15rem 0 1.35rem 0;border:0}
-  .cx-step__dot{
-    left:calc(var(--cx-rail-x) - var(--cx-pad) - var(--cx-dot) / 2);
-    top:1.35rem;
+  .cx-step{
+    display:grid;grid-template-columns:var(--cx-marker) 1fr;column-gap:.9rem;
+    padding:1.1rem 0 1.25rem;align-items:start;
   }
+  .cx-step__marker{
+    display:flex;align-items:flex-start;justify-content:center;
+    width:var(--cx-marker);padding-top:.2rem;
+  }
+  .cx-step__dot{position:static;flex-shrink:0}
+  .cx-step__body{min-width:0}
 }
 @media(max-width:48em){
   .cx-steps{padding-left:1.25rem;padding-right:1.25rem}
@@ -345,44 +348,34 @@
             </div>
             <div class="cx-timeline__grid">
               <article class="cx-step" data-cx-step>
-                <div class="cx-step__marker"><span class="cx-step__dot" aria-hidden="true"></span></div>
-                <div class="cx-step__body">
-                  <span class="cx-step__num">01</span>
-                  <h3 data-i18n="carrosserie.step1_title">Déclaration du sinistre</h3>
-                  <p data-i18n="carrosserie.step1_desc">Nous vous accompagnons</p>
-                </div>
+                <span class="cx-step__dot" aria-hidden="true"></span>
+                <span class="cx-step__num">01</span>
+                <h3 data-i18n="carrosserie.step1_title">Déclaration du sinistre</h3>
+                <p data-i18n="carrosserie.step1_desc">Nous vous accompagnons</p>
               </article>
               <article class="cx-step" data-cx-step>
-                <div class="cx-step__marker"><span class="cx-step__dot" aria-hidden="true"></span></div>
-                <div class="cx-step__body">
-                  <span class="cx-step__num">02</span>
-                  <h3 data-i18n="carrosserie.step2_title">Prise en charge complète</h3>
-                  <p data-i18n="carrosserie.step2_desc">Aucun frais à avancer*</p>
-                </div>
+                <span class="cx-step__dot" aria-hidden="true"></span>
+                <span class="cx-step__num">02</span>
+                <h3 data-i18n="carrosserie.step2_title">Prise en charge complète</h3>
+                <p data-i18n="carrosserie.step2_desc">Aucun frais à avancer*</p>
               </article>
               <article class="cx-step" data-cx-step>
-                <div class="cx-step__marker"><span class="cx-step__dot" aria-hidden="true"></span></div>
-                <div class="cx-step__body">
-                  <span class="cx-step__num">03</span>
-                  <h3 data-i18n="carrosserie.step3_title">Réparation dans les règles de l'art</h3>
-                  <p data-i18n="carrosserie.step3_desc">Pièces d'origine ou équivalentes</p>
-                </div>
+                <span class="cx-step__dot" aria-hidden="true"></span>
+                <span class="cx-step__num">03</span>
+                <h3 data-i18n="carrosserie.step3_title">Réparation dans les règles de l'art</h3>
+                <p data-i18n="carrosserie.step3_desc">Pièces d'origine ou équivalentes</p>
               </article>
               <article class="cx-step" data-cx-step>
-                <div class="cx-step__marker"><span class="cx-step__dot" aria-hidden="true"></span></div>
-                <div class="cx-step__body">
-                  <span class="cx-step__num">04</span>
-                  <h3 data-i18n="carrosserie.step4_title">Véhicule de courtoisie</h3>
-                  <p data-i18n="carrosserie.step4_desc">Selon disponibilité</p>
-                </div>
+                <span class="cx-step__dot" aria-hidden="true"></span>
+                <span class="cx-step__num">04</span>
+                <h3 data-i18n="carrosserie.step4_title">Véhicule de courtoisie</h3>
+                <p data-i18n="carrosserie.step4_desc">Selon disponibilité</p>
               </article>
               <article class="cx-step" data-cx-step>
-                <div class="cx-step__marker"><span class="cx-step__dot" aria-hidden="true"></span></div>
-                <div class="cx-step__body">
-                  <span class="cx-step__num">05</span>
-                  <h3 data-i18n="carrosserie.step5_title">Restitution de votre véhicule</h3>
-                  <p data-i18n="carrosserie.step5_desc">Propre et comme neuf</p>
-                </div>
+                <span class="cx-step__dot" aria-hidden="true"></span>
+                <span class="cx-step__num">05</span>
+                <h3 data-i18n="carrosserie.step5_title">Restitution de votre véhicule</h3>
+                <p data-i18n="carrosserie.step5_desc">Propre et comme neuf</p>
               </article>
             </div>
           </div>
