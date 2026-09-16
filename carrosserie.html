@@ -42,11 +42,11 @@
 
 /* Hero mobile: text less huge */
 @media(max-width:48.0625em){
-  .about-hero{min-height:88svh}
-  .about-hero .hero__inner{padding-bottom:2.5rem}
-  .about-hero .hero-text{font-size:.68rem!important;letter-spacing:.16em!important;max-width:90%}
-  .about-hero .main-text.heading{font-size:clamp(2.6rem,11vw,3.6rem)!important;line-height:.95!important;letter-spacing:.01em!important}
-  .about-hero .small-description{font-size:.78rem!important;letter-spacing:.06em!important;max-width:18rem;margin-top:.5rem}
+  .about-hero{min-height:82svh}
+  .about-hero .hero__inner{padding:0 1.1rem 3.5rem;display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-start}
+  .about-hero .hero-text{font-size:.62rem!important;letter-spacing:.12em!important;line-height:1.35!important;max-width:100%;opacity:.85}
+  .about-hero .main-text.heading{font-size:clamp(2.1rem,9.5vw,2.85rem)!important;line-height:.92!important;letter-spacing:.005em!important;margin:.35rem 0 .4rem!important}
+  .about-hero .small-description{font-size:.72rem!important;letter-spacing:.04em!important;max-width:16rem;margin:0;opacity:.9;line-height:1.4!important}
 }
 
 /* Values — right side, subtle */
@@ -72,9 +72,15 @@
 @keyframes cx-value-in{to{opacity:1;transform:none}}
 @keyframes cx-value-line{to{width:1.75rem}}
 @media(max-width:48.0625em){
-  .cx-values{top:auto;bottom:1.25rem;right:1rem;left:1rem;flex-direction:row;justify-content:center;align-items:center;gap:.85rem}
-  .cx-values span{font-size:.52rem;letter-spacing:.14em;color:rgba(255,255,255,.55)}
+  .cx-values{
+    top:auto;bottom:1rem;left:50%;right:auto;transform:translateX(-50%);
+    flex-direction:row;justify-content:center;align-items:center;gap:.65rem;width:max-content;max-width:92%;
+  }
+  .cx-values span{
+    font-size:.5rem;letter-spacing:.12em;color:rgba(255,255,255,.5);opacity:1;transform:none;animation:none;
+  }
   .cx-values span::after{display:none}
+  .cx-values span:not(:last-child)::before{content:""; /* spacer via gap */}
 }
 
 /* Timeline steps — fil qui s'allume */
@@ -447,18 +453,25 @@
     });
   }
 
+  var timelineReady = false;
   function initTimeline() {
+    if (timelineReady) {
+      if (window.ScrollTrigger && window.ScrollTrigger.refresh) window.ScrollTrigger.refresh();
+      return;
+    }
     var root = document.querySelector("[data-cx-timeline]");
-    if (!root) return;
+    var section = document.getElementById("parcours");
+    if (!root || !section) return;
+    timelineReady = true;
     var steps = Array.prototype.slice.call(root.querySelectorAll("[data-cx-step]"));
     var progress = root.querySelector("[data-cx-progress]");
     if (!steps.length || !progress) return;
 
-    var vertical = window.matchMedia("(max-width: 62em)");
+    var verticalMq = window.matchMedia("(max-width: 62em)");
 
     function setProgress(ratio) {
       ratio = Math.max(0, Math.min(1, ratio));
-      if (vertical.matches) {
+      if (verticalMq.matches) {
         progress.style.width = "2px";
         progress.style.height = (ratio * 100) + "%";
       } else {
@@ -467,34 +480,41 @@
       }
     }
 
-    function update() {
-      var onCount = 0;
-      var rectRoot = root.getBoundingClientRect();
-      var viewH = window.innerHeight || document.documentElement.clientHeight;
-      var trigger = viewH * 0.62;
-
-      steps.forEach(function (step) {
-        var rect = step.getBoundingClientRect();
-        var mid = rect.top + rect.height * 0.35;
-        if (mid < trigger) {
-          step.classList.add("is-on");
-          onCount += 1;
-        } else {
-          step.classList.remove("is-on");
-        }
+    function updateFromProgress(p) {
+      var n = steps.length;
+      steps.forEach(function (step, i) {
+        var threshold = n === 1 ? 0 : i / (n - 1);
+        if (p >= threshold - 0.02) step.classList.add("is-on");
+        else step.classList.remove("is-on");
       });
+      setProgress(p);
+    }
 
-      if (vertical.matches) {
-        var first = steps[0].getBoundingClientRect();
-        var last = steps[steps.length - 1].getBoundingClientRect();
-        var start = first.top + first.height * 0.2;
-        var end = last.top + last.height * 0.2;
-        var span = Math.max(1, end - start);
-        var filled = Math.min(span, Math.max(0, trigger - start));
-        setProgress(filled / span);
-      } else {
-        setProgress(onCount <= 1 ? (onCount === 1 ? 0.08 : 0) : (onCount - 1) / (steps.length - 1));
-      }
+    function nativeUpdate() {
+      var rect = section.getBoundingClientRect();
+      var viewH = window.innerHeight || document.documentElement.clientHeight;
+      var start = viewH * 0.78;
+      var end = viewH * 0.28;
+      var travel = rect.height + (start - end);
+      var p = travel <= 0 ? 0 : (start - rect.top) / travel;
+      updateFromProgress(p);
+    }
+
+    if (window.ScrollTrigger && typeof window.ScrollTrigger.create === "function") {
+      window.ScrollTrigger.create({
+        trigger: section,
+        start: "top 78%",
+        end: "bottom 28%",
+        onUpdate: function (self) {
+          updateFromProgress(self.progress);
+        },
+        onEnter: function (self) { updateFromProgress(self.progress); },
+        onEnterBack: function (self) { updateFromProgress(self.progress); },
+        onLeave: function () { updateFromProgress(1); },
+        onLeaveBack: function () { updateFromProgress(0); }
+      });
+      nativeUpdate();
+      return;
     }
 
     var ticking = false;
@@ -502,17 +522,13 @@
       if (ticking) return;
       ticking = true;
       requestAnimationFrame(function () {
-        update();
+        nativeUpdate();
         ticking = false;
       });
     }
-
     window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", function () {
-      setProgress(0);
-      update();
-    });
-    update();
+    window.addEventListener("resize", nativeUpdate);
+    nativeUpdate();
   }
 
   function boot() {
@@ -524,7 +540,13 @@
   } else {
     boot();
   }
-  window.addEventListener("load", ensureVideoPlay);
+  window.addEventListener("load", function () {
+    ensureVideoPlay();
+    initTimeline();
+    if (window.ScrollTrigger && window.ScrollTrigger.refresh) {
+      window.ScrollTrigger.refresh();
+    }
+  });
 })();
 </script>
 <script src="assets/wa-float.js"></script>
