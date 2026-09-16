@@ -92,7 +92,7 @@
 .cx-values span:nth-child(3){animation-delay:.65s}
 .cx-values span::after{
   content:"";display:block;width:0;height:1px;margin-top:.35rem;margin-left:auto;
-  background:linear-gradient(90deg,transparent,#cbc3e5);animation:cx-value-line .8s ease forwards;
+  background:linear-gradient(90deg,transparent,#e4c56a);animation:cx-value-line .8s ease forwards;
 }
 .cx-values span:nth-child(1)::after{animation-delay:.55s}
 .cx-values span:nth-child(2)::after{animation-delay:.7s}
@@ -119,40 +119,70 @@
 .cx-steps__title{font-family:Inter Tight,sans-serif;font-size:clamp(1.5rem,1.1rem + 1.6vw,2.5rem);font-weight:300;margin:0 0 .85rem;line-height:1.15}
 .cx-steps__desc{font-family:Inter Tight,sans-serif;font-size:clamp(.9rem,.8rem + .35vw,1.1rem);line-height:1.55;opacity:.75;margin:0;max-width:38rem}
 
-.cx-timeline{position:relative;margin-top:2.5rem}
+.cx-timeline{
+  --cx-gold:#c9a227;
+  --cx-gold-2:#e4c56a;
+  --cx-gold-deep:#8a6d16;
+  --cx-dot:1.15rem;
+  --cx-rail-w:2px;
+  --cx-marker:1.75rem;
+  position:relative;margin-top:2.5rem;
+}
 .cx-timeline__rail{
-  position:absolute;left:0;right:0;top:1.05rem;height:2px;background:rgba(255,255,255,.12);border-radius:2px;
+  position:absolute;left:0;right:0;top:calc(var(--cx-dot) / 2);height:var(--cx-rail-w);
+  background:rgba(255,255,255,.12);border-radius:2px;transform:translateY(-50%);
 }
 .cx-timeline__progress{
   position:absolute;left:0;top:0;bottom:0;width:0;border-radius:2px;
-  background:linear-gradient(90deg,#7a71a8,#cbc3e5);
-  box-shadow:0 0 16px rgba(203,195,229,.45);
+  background:linear-gradient(90deg,var(--cx-gold-deep),var(--cx-gold-2));
+  box-shadow:0 0 16px rgba(201,162,39,.45);
   transition:width .35s linear;
 }
 .cx-timeline__grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;position:relative;z-index:1}
-.cx-step{position:relative;padding-top:2.6rem;opacity:.4;transform:translateY(10px);transition:opacity .45s ease,transform .45s ease}
+.cx-step{position:relative;padding-top:calc(var(--cx-dot) + 1.35rem);opacity:.4;transform:translateY(10px);transition:opacity .45s ease,transform .45s ease}
 .cx-step.is-on{opacity:1;transform:none}
+.cx-step__marker{display:none}
 .cx-step__dot{
-  position:absolute;top:.55rem;left:0;width:1.15rem;height:1.15rem;border-radius:50%;
-  border:2px solid rgba(255,255,255,.25);background:#000;
+  position:absolute;top:0;left:0;width:var(--cx-dot);height:var(--cx-dot);border-radius:50%;
+  border:2px solid rgba(255,255,255,.25);background:#000;box-sizing:border-box;
   transition:border-color .35s,background .35s,box-shadow .35s,transform .35s;
 }
 .cx-step.is-on .cx-step__dot{
-  border-color:#cbc3e5;background:#cbc3e5;
-  box-shadow:0 0 0 6px rgba(203,195,229,.18),0 0 18px rgba(203,195,229,.55);
+  border-color:var(--cx-gold-2);background:var(--cx-gold);
+  box-shadow:0 0 0 6px rgba(201,162,39,.16),0 0 18px rgba(228,197,106,.55);
   transform:scale(1.08);
 }
-.cx-step__num{font-family:Geist Mono,monospace;font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(203,195,229,.55);margin:0 0 .55rem;display:block;transition:color .35s}
-.cx-step.is-on .cx-step__num{color:#cbc3e5}
+.cx-step__num{font-family:Geist Mono,monospace;font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(201,162,39,.45);margin:0 0 .55rem;display:block;transition:color .35s}
+.cx-step.is-on .cx-step__num{color:var(--cx-gold-2)}
 .cx-step h3{font-family:Inter Tight,sans-serif;font-size:clamp(.95rem,.85rem + .4vw,1.2rem);font-weight:400;margin:0 0 .45rem;line-height:1.25}
 .cx-step p{font-family:Inter Tight,sans-serif;font-size:clamp(.82rem,.75rem + .25vw,.98rem);line-height:1.45;opacity:.7;margin:0}
 
 @media(max-width:62em){
-  .cx-timeline__grid{grid-template-columns:1fr;gap:0;padding-left:1.75rem}
-  .cx-timeline__rail{left:.5rem;right:auto;top:0;bottom:0;width:2px;height:auto}
-  .cx-timeline__progress{top:0;width:2px!important;height:0;transition:height .35s linear;background:linear-gradient(180deg,#7a71a8,#cbc3e5)}
-  .cx-step{padding:1.15rem 0 1.35rem 1.1rem;border:0}
-  .cx-step__dot{left:-1.25rem;top:1.35rem}
+  .cx-timeline__grid{grid-template-columns:1fr;gap:0}
+  .cx-timeline__rail{
+    left:calc(var(--cx-marker) / 2);
+    right:auto;top:0;bottom:0;width:var(--cx-rail-w);height:auto;
+    transform:translateX(-50%);
+  }
+  .cx-timeline__progress{
+    top:0;width:var(--cx-rail-w)!important;height:0;transition:height .35s linear;
+    background:linear-gradient(180deg,var(--cx-gold-deep),var(--cx-gold-2));
+    box-shadow:0 0 12px rgba(201,162,39,.35);
+  }
+  .cx-step{
+    display:grid;grid-template-columns:var(--cx-marker) minmax(0,1fr);column-gap:.85rem;
+    padding:1.05rem 0 1.2rem!important;align-items:start;transform:none;
+  }
+  .cx-step.is-on{transform:none}
+  .cx-step__marker{
+    display:flex;align-items:flex-start;justify-content:center;
+    width:var(--cx-marker);min-height:var(--cx-dot);padding-top:.15rem;position:relative;z-index:2;
+  }
+  .cx-step__dot{position:static!important;left:auto!important;top:auto!important;flex-shrink:0;transform:none!important}
+  .cx-step.is-on .cx-step__dot{transform:none!important}
+  .cx-step__body{min-width:0;display:flex;flex-direction:column;gap:.35rem}
+  .cx-step__body h3,.cx-step__body p{position:static!important;margin:0!important}
+  .cx-step__num{margin:0!important}
 }
 @media(max-width:48em){
   .cx-steps{padding-left:1.25rem;padding-right:1.25rem}
@@ -324,34 +354,44 @@
             </div>
             <div class="cx-timeline__grid">
               <article class="cx-step" data-cx-step>
-                <span class="cx-step__dot" aria-hidden="true"></span>
-                <span class="cx-step__num">01</span>
-                <h3 data-i18n="carrosserie.step1_title">Déclaration du sinistre</h3>
-                <p data-i18n="carrosserie.step1_desc">Nous vous accompagnons</p>
+                <div class="cx-step__marker"><span class="cx-step__dot" aria-hidden="true"></span></div>
+                <div class="cx-step__body">
+                  <span class="cx-step__num">01</span>
+                  <h3 data-i18n="carrosserie.step1_title">Déclaration du sinistre</h3>
+                  <p data-i18n="carrosserie.step1_desc">Nous vous accompagnons</p>
+                </div>
               </article>
               <article class="cx-step" data-cx-step>
-                <span class="cx-step__dot" aria-hidden="true"></span>
-                <span class="cx-step__num">02</span>
-                <h3 data-i18n="carrosserie.step2_title">Prise en charge complète</h3>
-                <p data-i18n="carrosserie.step2_desc">Aucun frais à avancer*</p>
+                <div class="cx-step__marker"><span class="cx-step__dot" aria-hidden="true"></span></div>
+                <div class="cx-step__body">
+                  <span class="cx-step__num">02</span>
+                  <h3 data-i18n="carrosserie.step2_title">Prise en charge complète</h3>
+                  <p data-i18n="carrosserie.step2_desc">Aucun frais à avancer*</p>
+                </div>
               </article>
               <article class="cx-step" data-cx-step>
-                <span class="cx-step__dot" aria-hidden="true"></span>
-                <span class="cx-step__num">03</span>
-                <h3 data-i18n="carrosserie.step3_title">Réparation dans les règles de l'art</h3>
-                <p data-i18n="carrosserie.step3_desc">Pièces d'origine ou équivalentes</p>
+                <div class="cx-step__marker"><span class="cx-step__dot" aria-hidden="true"></span></div>
+                <div class="cx-step__body">
+                  <span class="cx-step__num">03</span>
+                  <h3 data-i18n="carrosserie.step3_title">Réparation dans les règles de l'art</h3>
+                  <p data-i18n="carrosserie.step3_desc">Pièces d'origine ou équivalentes</p>
+                </div>
               </article>
               <article class="cx-step" data-cx-step>
-                <span class="cx-step__dot" aria-hidden="true"></span>
-                <span class="cx-step__num">04</span>
-                <h3 data-i18n="carrosserie.step4_title">Véhicule de courtoisie</h3>
-                <p data-i18n="carrosserie.step4_desc">Selon disponibilité</p>
+                <div class="cx-step__marker"><span class="cx-step__dot" aria-hidden="true"></span></div>
+                <div class="cx-step__body">
+                  <span class="cx-step__num">04</span>
+                  <h3 data-i18n="carrosserie.step4_title">Véhicule de courtoisie</h3>
+                  <p data-i18n="carrosserie.step4_desc">Selon disponibilité</p>
+                </div>
               </article>
               <article class="cx-step" data-cx-step>
-                <span class="cx-step__dot" aria-hidden="true"></span>
-                <span class="cx-step__num">05</span>
-                <h3 data-i18n="carrosserie.step5_title">Restitution de votre véhicule</h3>
-                <p data-i18n="carrosserie.step5_desc">Propre et comme neuf</p>
+                <div class="cx-step__marker"><span class="cx-step__dot" aria-hidden="true"></span></div>
+                <div class="cx-step__body">
+                  <span class="cx-step__num">05</span>
+                  <h3 data-i18n="carrosserie.step5_title">Restitution de votre véhicule</h3>
+                  <p data-i18n="carrosserie.step5_desc">Propre et comme neuf</p>
+                </div>
               </article>
             </div>
           </div>
