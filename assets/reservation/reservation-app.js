@@ -498,6 +498,8 @@
       if (progress) progress.hidden = true;
       if (els.success) els.success.hidden = false;
       window.scrollTo({ top: 0, behavior: "smooth" });
+      var opened = window.open(wa, "_blank");
+      if (!opened) window.location.href = wa;
     });
   }
 
