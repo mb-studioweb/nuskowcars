@@ -56,8 +56,25 @@
 .fleet-pricing__value{font-size:1.125rem;font-weight:600}
 .project-card .fleet-pricing{margin-top:.5rem;gap:1rem 2rem}
 .project-card .fleet-pricing__value{font-size:1rem}
-@media(min-width:48.125em){.gallery.gallery--single{min-height:75vh!important;padding:4rem 2rem;display:flex;align-items:center;justify-content:center}.gallery.gallery--single .gallery__wrapper{position:relative!important;width:100%;max-width:57.5rem;clip-path:none!important;inset:auto!important}.gallery.gallery--single .gallery__content{border-radius:20px;width:100%;height:auto;max-height:70vh;object-fit:cover}}
-.fleet-desktop{display:none;background:#000;color:#fff;padding:5rem 0 7rem;overflow:hidden}
+@media(min-width:48.125em){
+  .gallery.gallery--single{
+    min-height:0!important;height:auto!important;padding:1.5rem 2rem 0;display:flex;align-items:center;justify-content:center;
+    background:#000;overflow:visible!important;
+  }
+  .gallery.gallery--single .gallery__wrapper{
+    position:relative!important;width:100%;max-width:57.5rem;height:auto!important;min-height:0!important;
+    clip-path:none!important;inset:auto!important;transform:none!important;
+  }
+  .gallery.gallery--single .gallery__content{
+    border-radius:20px;width:100%;height:auto;max-height:min(42vh,24rem);object-fit:cover;display:block;
+  }
+  /* Annule les pin-spacers ScrollTrigger qui créent le trou noir */
+  .pin-spacer:has(> .gallery.gallery--single),
+  .pin-spacer:has(.gallery.gallery--single){
+    height:auto!important;padding:0!important;margin:0!important;
+  }
+}
+.fleet-desktop{display:none;background:#000;color:#fff;padding:2.25rem 0 5.5rem;overflow:hidden}
 .fleet-desktop__head{display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;padding:0 4rem 2.5rem;max-width:100%}
 .fleet-desktop .related{color:#cbc3e5;margin:0;font-size:clamp(1.375rem,-3.0712025316rem + 6.3291139241vw,2.625rem);font-family:Inter Tight,sans-serif;font-weight:400}
 .fleet-swiper__nav{display:flex;gap:.75rem}
@@ -87,7 +104,7 @@
 .fleet-swiper__dot{width:.5rem;height:.5rem;border-radius:50%;border:none;padding:0;background:rgba(255,255,255,.25);cursor:pointer;transition:transform .3s,background .3s}
 .fleet-swiper__dot.is-active{background:#cbc3e5;transform:scale(1.35)}
 .fleet-swiper__hint{text-align:center;margin-top:1rem;font-family:Geist Mono,monospace;font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;opacity:.45;padding:0 4rem}
-@media(min-width:48.125em){.fleet-desktop{display:block}.projects.fleet-preview{display:none!important}}
+@media(min-width:48.125em){.fleet-desktop{display:block}.slider-projects.fleet-preview{display:none!important}}
 .slider-projects.fleet-preview .related,.slider-projects.fleet-preview .related span{white-space:normal;overflow-wrap:break-word;word-break:break-word;max-width:100%}
 @media(max-width:75em){.fleet-card{flex:0 0 calc((100% - 1.5rem) / 2);min-width:calc((100% - 1.5rem) / 2)}}
 @media(max-width:48.0625em){.fleet-desktop{display:none!important}}
@@ -96,10 +113,59 @@
 .pop-up-gallery__inner .nuskow-stacked-title .hero-line{display:block;width:100%}
 .pop-up-gallery__inner .counting-txt-reponsive.nuskow-stacked-title{display:none!important}
 @media(max-width:48.0625em){.pop-up-gallery__inner .nuskow-stacked-title{font-size:clamp(5.25rem,26vw,10.5rem)!important;line-height:.74;letter-spacing:.012em}}
+
+/* Desktop : 24/7 en flux normal (plus d’overlay absolu qui passe à travers) */
+@media(min-width:48.125em){
+  .info-block.info-block-light .title{
+    display:flex;flex-direction:column;align-items:flex-start;gap:1.25rem;padding-bottom:0!important;
+  }
+  .info-block.info-block-light .absolute-desc{
+    position:relative!important;bottom:auto!important;left:auto!important;right:auto!important;
+    margin:0;max-width:32rem;z-index:1;
+  }
+  .info-block.info-block-light .absolute-desc .numbered{
+    font-size:clamp(2.5rem,4vw,4rem)!important;line-height:1;margin:0 0 .35rem;
+  }
+  .info-block.info-block-light .absolute-desc .desc{
+    font-size:clamp(1rem,.9rem + .35vw,1.2rem);line-height:1.45;opacity:.85;margin:0;
+  }
+}
+
 .slider-morph-rental{background:#fff}
 .slider-morph-rental #path-1{fill:#111!important}
 .slider-morph-rental .slider-morph__see-more-btn{border-bottom-color:#111;color:#111}
-.slider-morph-rental .slider-morph-responsive{background:#fff;display:grid!important;gap:1rem;padding:1.25rem}
+/* Mobile + desktop : cartes images des 5 étapes (pas le long slider texte) */
+section.slider-morph-responsive.slider-morph-rental{background:#fff;display:none;gap:1rem;padding:1.25rem}
+@media(max-width:48.0625em){
+  section.slider-morph-responsive.slider-morph-rental{display:grid!important}
+}
+@media(min-width:48.125em){
+  .slider-morph.slider-morph-rental{display:none!important}
+  section.slider-morph-responsive.slider-morph-rental{
+    display:grid!important;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:1.35rem;
+    padding:3.5rem 4rem 4.5rem;
+  }
+  .pin-spacer:has(> .slider-morph.slider-morph-rental),
+  .pin-spacer:has(.slider-morph.slider-morph-rental){
+    height:auto!important;padding:0!important;margin:0!important;display:none!important;
+  }
+}
+@media(min-width:75em){
+  section.slider-morph-responsive.slider-morph-rental{
+    grid-template-columns:repeat(6,minmax(0,1fr));
+  }
+  section.slider-morph-responsive.slider-morph-rental > .slider-morph-responsive__card{
+    grid-column:span 2;
+  }
+  section.slider-morph-responsive.slider-morph-rental > .slider-morph-responsive__card:nth-child(4){
+    grid-column:2 / span 2;
+  }
+  section.slider-morph-responsive.slider-morph-rental > .slider-morph-responsive__card:nth-child(5){
+    grid-column:4 / span 2;
+  }
+}
 section.slider-morph-responsive.slider-morph-rental .slider-morph-responsive__card{position:relative!important;display:block!important;height:auto!important;min-height:0!important;aspect-ratio:16/9!important;width:100%!important;overflow:hidden!important;border-radius:16px!important;background:#111!important}
 section.slider-morph-responsive.slider-morph-rental .slider-morph-responsive__card .card-background{position:absolute!important;inset:0!important;height:100%!important;width:100%!important}
 section.slider-morph-responsive.slider-morph-rental .slider-morph-responsive__card .card-background img{width:100%!important;height:100%!important;object-fit:cover!important;object-position:center!important;display:block!important}
@@ -383,6 +449,7 @@ Mariages, événements, séjours ou déplacements professionnels : chaque locati
   </div>
 </article>
                             </div>
+                        </div>
                         <div class="fleet-swiper__dots" role="tablist" aria-label="Véhicules"></div>
                         <p class="fleet-swiper__hint" data-i18n="home.fleet_hint">Glisser ou utiliser les flèches pour parcourir la flotte</p>
                     </div>
@@ -911,6 +978,24 @@ Mariages, événements, séjours ou déplacements professionnels : chaque locati
 <script type="text/javascript" src="wp-content/themes/digital-present/front/build/assets/main-B2AruZ9N.js" id="main-B2AruZ9N.js-js"></script>
 <script>
 (function () {
+  function killPinAround(el) {
+    if (!el) return;
+    if (window.ScrollTrigger) {
+      ScrollTrigger.getAll().forEach(function (st) {
+        var t = st.trigger;
+        if (!t) return;
+        if (t === el || (el.contains && el.contains(t)) || (t.contains && t.contains(el))) {
+          try { st.kill(true); } catch (e) { try { st.kill(); } catch (e2) {} }
+        }
+      });
+    }
+    var spacer = el.closest && el.closest(".pin-spacer");
+    if (spacer && spacer.parentNode) {
+      while (spacer.firstChild) spacer.parentNode.insertBefore(spacer.firstChild, spacer);
+      spacer.parentNode.removeChild(spacer);
+    }
+  }
+
   function fixSingleGallery() {
     if (!window.matchMedia("(min-width: 48.125em)").matches) return;
     var gallery = document.querySelector(".gallery.gallery--single");
@@ -918,12 +1003,29 @@ Mariages, événements, séjours ou déplacements professionnels : chaque locati
     gallery.querySelectorAll(".gallery__wrapper").forEach(function (w) {
       w.style.clipPath = "none";
       w.style.position = "relative";
+      w.style.height = "auto";
+      w.style.minHeight = "0";
+      w.style.transform = "none";
+      w.style.inset = "auto";
     });
-    if (window.ScrollTrigger) {
-      ScrollTrigger.getAll().forEach(function (st) {
-        if (st.trigger === gallery) st.kill();
-      });
-    }
+    killPinAround(gallery);
+  }
+
+  function fixDesktopSteps() {
+    if (!window.matchMedia("(min-width: 48.125em)").matches) return;
+    var morph = document.querySelector(".slider-morph.slider-morph-rental");
+    if (!morph) return;
+    killPinAround(morph);
+    morph.style.display = "none";
+  }
+
+  function fixDesktopServiceBlock() {
+    if (!window.matchMedia("(min-width: 48.125em)").matches) return;
+    document.querySelectorAll(".info-block.info-block-light .absolute-desc").forEach(function (el) {
+      el.style.position = "relative";
+      el.style.bottom = "auto";
+      el.style.left = "auto";
+    });
   }
 
   function initFleetSwiper(root) {
@@ -1141,19 +1243,33 @@ Mariages, événements, séjours ou déplacements professionnels : chaque locati
 
   function boot() {
     fixSingleGallery();
+    fixDesktopSteps();
+    fixDesktopServiceBlock();
     initMorphBackgrounds();
     document.querySelectorAll("[data-fleet-swiper]").forEach(initFleetSwiper);
     document.querySelectorAll("[data-reviews-swiper]").forEach(initReviewsSwiper);
+    if (window.ScrollTrigger) {
+      try { ScrollTrigger.refresh(); } catch (e) {}
+    }
   }
 
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", function () {
-      setTimeout(boot, 120);
+      setTimeout(boot, 60);
+      setTimeout(function () { fixSingleGallery(); fixDesktopSteps(); }, 400);
+      setTimeout(function () { fixSingleGallery(); fixDesktopSteps(); if (window.ScrollTrigger) try { ScrollTrigger.refresh(); } catch (e) {} }, 900);
     });
   } else {
-    setTimeout(boot, 120);
+    setTimeout(boot, 60);
   }
-  window.addEventListener("load", fixSingleGallery);
+  window.addEventListener("load", function () {
+    fixSingleGallery();
+    fixDesktopSteps();
+    fixDesktopServiceBlock();
+    if (window.ScrollTrigger) {
+      try { ScrollTrigger.refresh(); } catch (e) {}
+    }
+  });
 })();
 </script>
 <script src="assets/wa-float.js"></script>
