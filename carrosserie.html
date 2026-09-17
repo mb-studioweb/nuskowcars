@@ -206,17 +206,29 @@
 .cx-marquee__title{font-family:Inter Tight,sans-serif;font-size:clamp(1.5rem,1.1rem + 1.5vw,2.35rem);font-weight:300;margin:0 0 .65rem;line-height:1.15}
 .cx-marquee__desc{font-family:Inter Tight,sans-serif;font-size:clamp(.9rem,.8rem + .3vw,1.05rem);line-height:1.5;opacity:.72;margin:0;max-width:38rem}
 .cx-marquee__track-wrap{overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
-.cx-marquee__track{display:flex;align-items:center;gap:clamp(2rem,4vw,3.5rem);width:max-content;animation:cx-marquee 32s linear infinite;padding:1.25rem 0}
-.cx-marquee--dark .cx-marquee__track{animation-duration:36s;animation-direction:reverse}
+.cx-marquee__track{
+  --cx-marquee-shift:50%;
+  --cx-marquee-duration:28s;
+  display:flex;align-items:center;gap:clamp(2rem,4vw,3.5rem);width:max-content;
+  padding:1.25rem 0;will-change:transform;
+  animation:cx-marquee var(--cx-marquee-duration) linear infinite;
+}
+.cx-marquee--dark .cx-marquee__track{animation-duration:var(--cx-marquee-duration);animation-direction:reverse}
+.cx-marquee__group{display:flex;align-items:center;gap:clamp(2rem,4vw,3.5rem);flex-shrink:0}
 .cx-marquee__item{display:flex;align-items:center;justify-content:center;flex-shrink:0;height:3.5rem;padding:.35rem .5rem}
-.cx-marquee__item img{height:clamp(2rem,3.5vw,2.85rem);width:auto;max-width:8rem;object-fit:contain;display:block}
+.cx-marquee__item img,.cx-marquee__item svg{height:clamp(2rem,3.5vw,2.85rem);width:auto;max-width:8rem;object-fit:contain;display:block}
 .cx-marquee--light .cx-marquee__item img{filter:drop-shadow(0 1px 0 rgba(0,0,0,.04))}
+.cx-marquee--dark .cx-marquee__item img{filter:brightness(1.08) contrast(1.05)}
+.cx-marquee--dark .cx-marquee__item img[src$=".svg"]{filter:brightness(0) invert(1)}
 @media(max-width:48em){
   .cx-marquee__inner{padding:0 1.25rem 1.1rem}
   .cx-marquee__item{height:3rem}
-  .cx-marquee__item img{height:2.15rem;max-width:6.5rem}
+  .cx-marquee__item img,.cx-marquee__item svg{height:2.15rem;max-width:6.5rem}
 }
-@keyframes cx-marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes cx-marquee{
+  from{transform:translate3d(0,0,0)}
+  to{transform:translate3d(calc(-1 * var(--cx-marquee-shift)),0,0)}
+}
 
 .about-cta{padding:clamp(2.75rem,5.5vw,4.5rem) 4rem 5rem;background:#f7f7f7;color:#111;text-align:center}
 .about-cta h2{font-family:Inter Tight,sans-serif;font-size:clamp(1.35rem,.95rem + 1.5vw,2.1rem);font-weight:300;margin:0 0 .85rem;color:#111!important}
@@ -229,7 +241,8 @@
 @media(max-width:48em){.about-cta{padding-left:1.25rem;padding-right:1.25rem}.about-cta__actions{flex-direction:column;align-items:stretch}.about-cta__btn{width:100%}}
 
 @media(prefers-reduced-motion:reduce){
-  .cx-marquee__track,.cx-values span,.cx-values span::after{animation:none!important}
+  .cx-marquee__track{animation:none!important;transform:none!important}
+  .cx-values span,.cx-values span::after{animation:none!important}
   .cx-values span{opacity:1;transform:none}
   .cx-step{opacity:1;transform:none}
 }
@@ -426,13 +439,6 @@
             <div class="cx-marquee__item"><img src="assets/carrosserie/logos/assurances/macif.png" alt="MACIF" /></div>
             <div class="cx-marquee__item"><img src="assets/carrosserie/logos/assurances/gmf.png" alt="GMF" /></div>
             <div class="cx-marquee__item"><img src="assets/carrosserie/logos/assurances/matmut.png" alt="Matmut" /></div>
-            <div class="cx-marquee__item"><img src="assets/carrosserie/logos/assurances/axa.png" alt="" aria-hidden="true" /></div>
-            <div class="cx-marquee__item"><img src="assets/carrosserie/logos/assurances/maaf.png" alt="" aria-hidden="true" /></div>
-            <div class="cx-marquee__item"><img src="assets/carrosserie/logos/assurances/groupama.png" alt="" aria-hidden="true" /></div>
-            <div class="cx-marquee__item"><img src="assets/carrosserie/logos/assurances/allianz.png" alt="" aria-hidden="true" /></div>
-            <div class="cx-marquee__item"><img src="assets/carrosserie/logos/assurances/macif.png" alt="" aria-hidden="true" /></div>
-            <div class="cx-marquee__item"><img src="assets/carrosserie/logos/assurances/gmf.png" alt="" aria-hidden="true" /></div>
-            <div class="cx-marquee__item"><img src="assets/carrosserie/logos/assurances/matmut.png" alt="" aria-hidden="true" /></div>
           </div>
         </div>
       </section>
@@ -441,7 +447,7 @@
         <div class="cx-marquee__inner">
           <span class="cx-marquee__eyebrow" data-i18n="carrosserie.brands_eyebrow">Multimarques</span>
           <h2 class="cx-marquee__title" data-i18n="carrosserie.brands_title">Carrosserie toutes marques</h2>
-          <p class="cx-marquee__desc" data-i18n="carrosserie.brands_desc">Mercedes, Audi, BMW, Volkswagen, Tesla, Porsche, Land Rover et plus encore.</p>
+          <p class="cx-marquee__desc" data-i18n="carrosserie.brands_desc">Mercedes, Audi, BMW, Volkswagen, Tesla, Porsche, Land Rover, Lamborghini et plus encore.</p>
         </div>
         <div class="cx-marquee__track-wrap">
           <div class="cx-marquee__track">
@@ -452,13 +458,7 @@
             <div class="cx-marquee__item"><img src="assets/carrosserie/logos/marques/tesla.png" alt="Tesla" /></div>
             <div class="cx-marquee__item"><img src="assets/carrosserie/logos/marques/porsche.png" alt="Porsche" /></div>
             <div class="cx-marquee__item"><img src="assets/carrosserie/logos/marques/landrover.png" alt="Land Rover" /></div>
-            <div class="cx-marquee__item"><img src="assets/carrosserie/logos/marques/mercedes.png" alt="" aria-hidden="true" /></div>
-            <div class="cx-marquee__item"><img src="assets/carrosserie/logos/marques/audi.png" alt="" aria-hidden="true" /></div>
-            <div class="cx-marquee__item"><img src="assets/carrosserie/logos/marques/bmw.png" alt="" aria-hidden="true" /></div>
-            <div class="cx-marquee__item"><img src="assets/carrosserie/logos/marques/volkswagen.png" alt="" aria-hidden="true" /></div>
-            <div class="cx-marquee__item"><img src="assets/carrosserie/logos/marques/tesla.png" alt="" aria-hidden="true" /></div>
-            <div class="cx-marquee__item"><img src="assets/carrosserie/logos/marques/porsche.png" alt="" aria-hidden="true" /></div>
-            <div class="cx-marquee__item"><img src="assets/carrosserie/logos/marques/landrover.png" alt="" aria-hidden="true" /></div>
+            <div class="cx-marquee__item"><img src="assets/carrosserie/logos/marques/lamborghini.svg" alt="Lamborghini" /></div>
           </div>
         </div>
       </section>
@@ -599,6 +599,7 @@
   });
 })();
 </script>
+<script src="assets/cx-marquee.js"></script>
 <script src="assets/wa-float.js"></script>
 <script src="assets/i18n/locales.js"></script>
 <script src="assets/i18n/i18n.js"></script>
