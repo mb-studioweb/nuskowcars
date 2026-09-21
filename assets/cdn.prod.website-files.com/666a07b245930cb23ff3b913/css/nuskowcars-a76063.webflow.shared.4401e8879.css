@@ -2043,7 +2043,7 @@ textarea.w-input, textarea.w-select {
 
 @font-face {
   font-family: Clashgrotesk;
-  src: url(../666a3a7162628de2cfe4cd6c_ClashGrotesk-Bold.ttf) format("truetype");
+  src: url("../666a3a7162628de2cfe4cd6c_ClashGrotesk-Bold.ttf") format("truetype");
   font-weight: 700;
   font-style: normal;
   font-display: auto;
@@ -2051,7 +2051,7 @@ textarea.w-input, textarea.w-select {
 
 @font-face {
   font-family: Clashgrotesk;
-  src: url(../666a3a80329f8681ef01c44c_ClashGrotesk-Semibold.ttf) format("truetype");
+  src: url("../666a3a80329f8681ef01c44c_ClashGrotesk-Semibold.ttf") format("truetype");
   font-weight: 600;
   font-style: normal;
   font-display: auto;
@@ -2059,7 +2059,7 @@ textarea.w-input, textarea.w-select {
 
 @font-face {
   font-family: "Brhendrix Bf 6556 D 1 B 528 E 86";
-  src: url(../666a3d3466dd8f1c84dbf4f3_BRHendrix-Black-BF6556d1b528e86.otf) format("opentype");
+  src: url("../666a3d3466dd8f1c84dbf4f3_BRHendrix-Black-BF6556d1b528e86.otf") format("opentype");
   font-weight: 900;
   font-style: normal;
   font-display: auto;
@@ -2067,7 +2067,7 @@ textarea.w-input, textarea.w-select {
 
 @font-face {
   font-family: "Brhendrix Bf 6556 D 1 B 5459 D 3";
-  src: url(../666a3d3d47311ee56568d1cd_BRHendrix-Bold-BF6556d1b5459d3.otf) format("opentype");
+  src: url("../666a3d3d47311ee56568d1cd_BRHendrix-Bold-BF6556d1b5459d3.otf") format("opentype");
   font-weight: 700;
   font-style: normal;
   font-display: auto;
@@ -2075,7 +2075,7 @@ textarea.w-input, textarea.w-select {
 
 @font-face {
   font-family: "Brhendrix Bf 6556 D 1 B 51 Cbb 8";
-  src: url(../666a3d44cf1a17300e593b84_BRHendrix-SemiBold-BF6556d1b51cbb8.otf) format("opentype");
+  src: url("../666a3d44cf1a17300e593b84_BRHendrix-SemiBold-BF6556d1b51cbb8.otf") format("opentype");
   font-weight: 600;
   font-style: normal;
   font-display: auto;
@@ -2083,7 +2083,7 @@ textarea.w-input, textarea.w-select {
 
 @font-face {
   font-family: Ubermove;
-  src: url(../666a3d72fe0720724ef43044_UberMoveBold.otf) format("opentype");
+  src: url("../666a3d72fe0720724ef43044_UberMoveBold.otf") format("opentype");
   font-weight: 700;
   font-style: normal;
   font-display: auto;
@@ -2091,7 +2091,7 @@ textarea.w-input, textarea.w-select {
 
 @font-face {
   font-family: Ubermove;
-  src: url(../666a3d83598a6f88ba1ad343_UberMoveMedium.otf) format("opentype");
+  src: url("../666a3d83598a6f88ba1ad343_UberMoveMedium.otf") format("opentype");
   font-weight: 500;
   font-style: normal;
   font-display: auto;
@@ -4064,7 +4064,7 @@ figcaption {
 }
 
 .map_wrapper {
-  background-image: url(../667ac361936f231ff349ed07_Sans titre-1.jpg);
+  background-image: url("../667ac361936f231ff349ed07_Sans-titre-1.jpg");
   background-position: 50%;
   background-size: auto;
 }
@@ -5147,7 +5147,7 @@ figcaption {
 }
 
 .cta-section {
-  background-image: url(../666a49ecf58f5cd9cff3e784_fond LP.jpg);
+  background-image: url("../666a49ecf58f5cd9cff3e784_fond-LP.jpg");
   background-position: 50%;
   background-size: cover;
   height: 89vh;
@@ -5208,7 +5208,7 @@ figcaption {
 }
 
 .map_wrapper-footer {
-  background-image: url(../667ac361936f231ff349ed07_Sans titre-1.jpg);
+  background-image: url("../667ac361936f231ff349ed07_Sans-titre-1.jpg");
   background-position: 50%;
   background-repeat: no-repeat;
   background-size: cover;
@@ -5283,14 +5283,14 @@ figcaption {
 }
 
 .why-page_bg {
-  background-image: url(../667fcbddc11c11433a1b3bc5_1.jpg);
+  background-image: url("../667fcbddc11c11433a1b3bc5_1.jpg");
   background-position: 50%;
   background-repeat: no-repeat;
   background-size: auto;
 }
 
 .offers-page_bg {
-  background-image: url(../667fcc31d2f63a8d4b0004b9_4.jpg);
+  background-image: url("../667fcc31d2f63a8d4b0004b9_4.jpg");
   background-position: 0 0;
   background-size: auto;
 }
@@ -5551,7 +5551,7 @@ figcaption {
 
 @media screen and (min-width: 1280px) {
   .home-page_vid-bg {
-    background-image: url(../666a49ecf58f5cd9cff3e784_fond LP.jpg);
+    background-image: url("../666a49ecf58f5cd9cff3e784_fond-LP.jpg");
     background-position: 50%;
     background-repeat: no-repeat;
     background-size: cover;
