@@ -12,7 +12,7 @@
   transform: none !important;
 }
 
-/* Hero : fond sombre immédiat (évite le flash blanc avant poster/vidéo) */
+/* Hero : fond sombre + poster immédiat (évite le flash blanc avant la vidéo) */
 .home-page_section,
 .home-page_wrappper,
 .background-video,
@@ -20,8 +20,20 @@
   background-color: #0a0a0a;
 }
 
+.background-video-phone {
+  background-image: url("cdn.prod.website-files.com/666a07b245930cb23ff3b913/66880261adbb361b3b1db5fc_classG%20compressed-poster-00001.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.background-video {
+  background-image: url("cdn.prod.website-files.com/666a07b245930cb23ff3b913/668801726c7ee14880ab8e85_vid%C3%A9o%20background(1)(1)-poster-00001.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
 .w-background-video > video {
-  background-color: #0a0a0a;
+  background-color: transparent;
   background-size: cover;
   background-position: center;
 }

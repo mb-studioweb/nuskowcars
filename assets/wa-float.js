@@ -73,11 +73,19 @@
     } catch (e) {}
   }
 
+  // Mobile : pastille WhatsApp seule (comme Smartarget), sans bulle permanente
+  var isMobile = window.matchMedia && window.matchMedia("(max-width: 47.99em)").matches;
   try {
-    if (sessionStorage.getItem(STORAGE_KEY)) hideHint();
-  } catch (e) {}
+    if (sessionStorage.getItem(STORAGE_KEY) || isMobile) hideHint();
+  } catch (e) {
+    if (isMobile) hideHint();
+  }
 
   if (closeBtn) closeBtn.addEventListener("click", hideHint);
+  // Desktop : auto-fermeture de la bulle après quelques secondes
+  if (!isMobile) {
+    setTimeout(hideHint, 6000);
+  }
 
   window.addEventListener("nuskow:langchange", function (e) {
     var newLang = (e.detail && e.detail.lang) || "fr";
