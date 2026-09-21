@@ -9,15 +9,19 @@
 
 .wa-float__btn {
   pointer-events: auto;
+  box-sizing: border-box;
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 3.6rem;
-  height: 3.6rem;
-  background: #25d366;
+  display: grid !important;
+  place-items: center !important;
+  width: 3.6rem !important;
+  height: 3.6rem !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  background: #25d366 !important;
   color: #fff !important;
-  border-radius: 50%;
+  border: 0 !important;
+  border-radius: 50% !important;
+  line-height: 0 !important;
   box-shadow:
     0 0 0 0 rgba(37, 211, 102, 0.45),
     0 6px 16px rgba(0, 0, 0, 0.28);
@@ -33,9 +37,13 @@
 }
 
 .wa-float__icon {
-  width: 1.75rem;
-  height: 1.75rem;
-  display: block;
+  width: 1.7rem !important;
+  height: 1.7rem !important;
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  flex: none;
+  transform: none !important;
 }
 
 @keyframes wa-shadow-pulse {
@@ -63,12 +71,12 @@
   }
 
   .wa-float__btn {
-    width: 3.85rem;
-    height: 3.85rem;
+    width: 3.85rem !important;
+    height: 3.85rem !important;
   }
 
   .wa-float__icon {
-    width: 1.9rem;
-    height: 1.9rem;
+    width: 1.85rem !important;
+    height: 1.85rem !important;
   }
 }
