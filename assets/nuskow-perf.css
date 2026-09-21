@@ -1,0 +1,64 @@
+/* NuskowCars — perf + correctifs visuels (site Webflow statique) */
+
+/* Navbar toujours visible (évite le menu invisible tant que Webflow IX n'a pas tourné) */
+.navbar-nuskow,
+.navbar-nuskow .nav-link,
+.navbar-nuskow .brand,
+.navbar-nuskow .button-2,
+.navbar-nuskow .language-flag,
+.navbar-nuskow .link-2,
+.navbar-nuskow .menu-button {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* Hero : fond sombre immédiat (évite le flash blanc avant poster/vidéo) */
+.home-page_section,
+.home-page_wrappper,
+.background-video,
+.background-video-phone {
+  background-color: #0a0a0a;
+}
+
+.w-background-video > video {
+  background-color: #0a0a0a;
+  background-size: cover;
+  background-position: center;
+}
+
+/* Offres / why / cta : image de fond bien visible sur mobile */
+.offers-page_bg {
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+
+.why-page_bg {
+  background-size: cover !important;
+  background-position: center !important;
+}
+
+.cta-section {
+  background-size: cover !important;
+  background-position: center !important;
+}
+
+/* Fallback : si les animations Webflow ne démarrent pas assez vite */
+body.nuskow-ix-fallback .accueil-text,
+body.nuskow-ix-fallback .home-cta-btn,
+body.nuskow-ix-fallback .why-section_title,
+body.nuskow-ix-fallback .offers-section_title,
+body.nuskow-ix-fallback .how-page_title,
+body.nuskow-ix-fallback .review-title_text,
+body.nuskow-ix-fallback .cta-tilte,
+body.nuskow-ix-fallback .contact-title,
+body.nuskow-ix-fallback .why-page_card-01,
+body.nuskow-ix-fallback .why-page_card-02,
+body.nuskow-ix-fallback .why-page_card03,
+body.nuskow-ix-fallback .why-page_card-04,
+body.nuskow-ix-fallback .offers-card-1,
+body.nuskow-ix-fallback .offers-card-2,
+body.nuskow-ix-fallback .offers-card-3 {
+  opacity: 1 !important;
+  transform: none !important;
+}
