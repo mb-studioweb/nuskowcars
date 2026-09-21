@@ -51,8 +51,11 @@
 }
 
 .cta-section {
+  background-image: url("cdn.prod.website-files.com/666a07b245930cb23ff3b913/666a49ecf58f5cd9cff3e784_fond-LP.jpg") !important;
   background-size: cover !important;
   background-position: center !important;
+  background-repeat: no-repeat !important;
+  min-height: 60vh;
 }
 
 /* Fallback : si les animations Webflow ne démarrent pas assez vite */
